@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Verification Error - Quick Contract Generator{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="glassmorphic-card error-card">
+        <h1>Verification Error</h1>
+        <p class="error-message">{{ error }}</p>
+        
+        <div class="button-group">
+            <a href="{{ url_for('auth.signin') }}" class="btn btn-primary">Back to Sign In</a>
+            <a href="{{ url_for('auth.signup') }}" class="btn btn-secondary">Create New Account</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

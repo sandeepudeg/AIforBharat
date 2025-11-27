@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}View Contract - Quick Contract Generator{% endblock %}
+
+{% block content %}
+<div class="view-container">
+    <div class="view-header">
+        <h1>{{ contract.title }}</h1>
+        <div class="view-actions">
+            <a href="{{ url_for('contracts_mgmt.list_contracts') }}" class="btn btn-secondary">← Back to Contracts</a>
+            <a href="{{ url_for('contracts_mgmt.edit_contract', contract_id=contract.id) }}" class="btn btn-primary">Edit</a>
+            <a href="{{ url_for('contracts_mgmt.download_contract_pdf', contract_id=contract.id) }}" class="btn btn-primary">📄 PDF</a>
+            <a href="{{ url_for('contracts_mgmt.download_contract_docx', contract_id=contract.id) }}" class="btn btn-primary">📝 Word</a>
+        </div>
+    </div>
+    
+    <div class="contract-metadata">
+        <p><strong>Created:</strong> {{ contract.created_at }}</p>
+        <p><strong>Last Updated:</strong> {{ contract.updated_at }}</p>
+    </div>
+    
+    <div class="contract-preview glassmorphic-card">
+        {{ contract_html | safe }}
+    </div>
+    
+    <div class="view-footer">
+        <a href="{{ url_for('contracts_mgmt.list_contracts') }}" class="btn btn-secondary">← Back to Contracts</a>
+        <a href="{{ url_for('contracts_mgmt.edit_contract', contract_id=contract.id) }}" class="btn btn-primary">Edit Contract</a>
+    </div>
+</div>
+
+<style>
+.view-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: white;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.view-header h1 {
+    font-size: 28px;
+    margin: 0;
+    flex: 1;
+}
+
+.view-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.contract-metadata {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.contract-metadata p {
+    margin: 5px 0;
+}
+
+.contract-preview {
+    padding: 40px;
+    margin-bottom: 30px;
+    max-height: 800px;
+    overflow-y: auto;
+}
+
+.view-footer {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .view-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .view-actions {
+        width: 100%;
+    }
+    
+    .view-actions .btn {
+        flex: 1;
+        min-width: 100px;
+    }
+}
+</style>
+{% endblock %}

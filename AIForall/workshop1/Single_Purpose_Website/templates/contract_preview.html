@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Contract Preview - Quick Contract Generator{% endblock %}
+
+{% block content %}
+<div class="preview-container">
+    <div class="preview-header">
+        <h1>Contract Preview</h1>
+        <div class="preview-actions">
+            <a href="{{ url_for('contract.generator') }}" class="btn btn-secondary">Back to Generator</a>
+            <a href="{{ url_for('contract.download_pdf') }}" class="btn btn-primary">Download PDF</a>
+            <a href="{{ url_for('contract.download_docx') }}" class="btn btn-primary">Download Word</a>
+        </div>
+    </div>
+    
+    <div class="contract-preview glassmorphic-card">
+        {{ contract_html | safe }}
+    </div>
+    
+    <div class="preview-footer">
+        <a href="{{ url_for('contract.generator') }}" class="btn btn-secondary">Back to Generator</a>
+        <a href="{{ url_for('contract.download_pdf') }}" class="btn btn-primary">Download PDF</a>
+        <a href="{{ url_for('contract.download_docx') }}" class="btn btn-primary">Download Word</a>
+    </div>
+</div>
+{% endblock %}

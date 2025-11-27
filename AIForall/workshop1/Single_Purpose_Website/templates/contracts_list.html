@@ -1,0 +1,390 @@
+{% extends "base.html" %}
+
+{% block title %}My Contracts - Quick Contract Generator{% endblock %}
+
+{% block content %}
+<div class="contracts-container">
+    <div class="welcome-banner glassmorphic-card">
+        <div class="welcome-content">
+            <h2>👋 Welcome, {{ user_name }}!</h2>
+            <p>{{ user_email }}</p>
+        </div>
+        <div class="banner-actions">
+            <a href="{{ url_for('contract.generator') }}" class="btn btn-primary">Create New</a>
+            <a href="{{ url_for('auth.logout') }}" class="btn btn-logout">Logout</a>
+        </div>
+    </div>
+    
+    <div class="contracts-header">
+        <h1>My Contracts</h1>
+        <div class="header-actions">
+            <a href="{{ url_for('contract.generator') }}" class="btn btn-primary">Create New Contract</a>
+        </div>
+    </div>
+    
+    {% if drafts %}
+        <div class="section-title">
+            <h3>📝 Drafts</h3>
+            <span class="draft-count">{{ drafts|length }}</span>
+        </div>
+        <div class="contracts-grid">
+            {% for contract in drafts %}
+                <div class="contract-card glassmorphic-card draft-card">
+                    <div class="draft-badge">DRAFT</div>
+                    <div class="contract-header">
+                        <h3>{{ contract.title }}</h3>
+                        <div class="contract-actions">
+                            <a href="{{ url_for('contracts_mgmt.edit_contract', contract_id=contract.id) }}" 
+                               class="btn btn-small btn-primary" title="Edit">✏️</a>
+                            <button class="btn btn-small btn-danger" onclick="deleteContract({{ contract.id }})" 
+                                    title="Delete">🗑️</button>
+                        </div>
+                    </div>
+                    
+                    <div class="contract-info">
+                        <p><strong>Created:</strong> {{ contract.created_at }}</p>
+                        <p><strong>Updated:</strong> {{ contract.updated_at }}</p>
+                    </div>
+                    
+                    <div class="contract-actions-full">
+                        <button onclick="continueDraft({{ contract.id }})" class="btn btn-primary btn-full">Continue Editing</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    {% if contracts %}
+        <div class="section-title">
+            <h3>✅ Saved Contracts</h3>
+            <span class="contract-count">{{ contracts|length }}</span>
+        </div>
+        <div class="contracts-grid">
+            {% for contract in contracts %}
+                <div class="contract-card glassmorphic-card">
+                    <div class="contract-header">
+                        <h3>{{ contract.title }}</h3>
+                        <div class="contract-actions">
+                            <a href="{{ url_for('contracts_mgmt.view_contract', contract_id=contract.id) }}" 
+                               class="btn btn-small btn-primary" title="View">👁️</a>
+                            <a href="{{ url_for('contracts_mgmt.edit_contract', contract_id=contract.id) }}" 
+                               class="btn btn-small btn-secondary" title="Edit">✏️</a>
+                            <button class="btn btn-small btn-danger" onclick="deleteContract({{ contract.id }})" 
+                                    title="Delete">🗑️</button>
+                        </div>
+                    </div>
+                    
+                    <div class="contract-info">
+                        <p><strong>Created:</strong> {{ contract.created_at }}</p>
+                        <p><strong>Updated:</strong> {{ contract.updated_at }}</p>
+                    </div>
+                    
+                    <div class="contract-actions-full">
+                        <button onclick="duplicateContract({{ contract.id }})" class="btn btn-small btn-primary" title="Duplicate">📋 Duplicate</button>
+                        <button onclick="useAsTemplate({{ contract.id }})" class="btn btn-small btn-secondary" title="Use as Template">🔄 Use as Template</button>
+                    </div>
+                    
+                    <div class="contract-downloads">
+                        <a href="{{ url_for('contracts_mgmt.download_contract_pdf', contract_id=contract.id) }}" 
+                           class="btn btn-small">📄 PDF</a>
+                        <a href="{{ url_for('contracts_mgmt.download_contract_docx', contract_id=contract.id) }}" 
+                           class="btn btn-small">📝 Word</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state glassmorphic-card">
+            <h2>No Contracts Yet</h2>
+            <p>You haven't created any contracts yet. Start by creating a new one!</p>
+            <a href="{{ url_for('contract.generator') }}" class="btn btn-primary btn-large">Create Your First Contract</a>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+function deleteContract(contractId) {
+    if (confirm('Are you sure you want to delete this contract?')) {
+        fetch(`/contracts/${contractId}/delete`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                location.reload();
+            } else {
+                alert('Error deleting contract: ' + data.error);
+            }
+        })
+        .catch(error => {
+            alert('Error: ' + error);
+        });
+    }
+}
+
+function continueDraft(contractId) {
+    window.location.href = `/contracts/${contractId}/edit`;
+}
+
+function duplicateContract(contractId) {
+    if (confirm('Create a copy of this contract as a new draft?')) {
+        fetch(`/contracts/${contractId}/duplicate`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.redirect_url) {
+                window.location.href = data.redirect_url;
+            } else {
+                alert('Error duplicating contract: ' + data.error);
+            }
+        })
+        .catch(error => {
+            alert('Error: ' + error);
+        });
+    }
+}
+
+function useAsTemplate(contractId) {
+    if (confirm('Use this contract as a template for a new one?')) {
+        fetch(`/contracts/${contractId}/use-as-template`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.redirect_url) {
+                window.location.href = data.redirect_url;
+            } else {
+                alert('Error loading template: ' + data.error);
+            }
+        })
+        .catch(error => {
+            alert('Error: ' + error);
+        });
+    }
+}
+</script>
+
+<style>
+<style>
+.contracts-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.welcome-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3));
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.welcome-content {
+    flex: 1;
+    min-width: 200px;
+}
+
+.welcome-content h2 {
+    color: white;
+    margin: 0 0 5px 0;
+    font-size: 24px;
+}
+
+.welcome-content p {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    font-size: 14px;
+}
+
+.banner-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.section-title h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.draft-count, .contract-count {
+    background: rgba(99, 102, 241, 0.3);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.contracts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.contracts-header h1 {
+    font-size: 32px;
+    margin: 0;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.contracts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.contract-card {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contract-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.contract-header h3 {
+    margin: 0;
+    color: var(--text-color);
+    flex: 1;
+    word-break: break-word;
+}
+
+.contract-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.contract-info {
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.contract-info p {
+    margin: 5px 0;
+}
+
+.contract-downloads {
+    display: flex;
+    gap: 10px;
+}
+
+.contract-downloads .btn {
+    flex: 1;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-state h2 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.btn-danger {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.btn-danger:hover {
+    background: rgba(239, 68, 68, 0.3);
+    border-color: rgba(239, 68, 68, 0.5);
+}
+
+.draft-card {
+    position: relative;
+    border: 2px solid rgba(251, 191, 36, 0.3);
+}
+
+.draft-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid rgba(251, 191, 36, 0.4);
+}
+
+.contract-actions-full {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.contract-actions-full .btn {
+    flex: 1;
+    font-size: 12px;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .contracts-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .header-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .header-actions .btn {
+        width: 100%;
+    }
+    
+    .contracts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}

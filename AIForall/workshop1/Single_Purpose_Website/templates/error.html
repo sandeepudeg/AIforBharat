@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Error - Quick Contract Generator{% endblock %}
+
+{% block content %}
+<div class="error-container">
+    <div class="error-card glassmorphic-card">
+        <h1>⚠️ Error</h1>
+        <p class="error-message">{{ error }}</p>
+        <div class="error-actions">
+            <a href="{{ url_for('contracts_mgmt.list_contracts') }}" class="btn btn-primary">Go to My Contracts</a>
+            <a href="{{ url_for('contract.generator') }}" class="btn btn-secondary">Create New Contract</a>
+        </div>
+    </div>
+</div>
+
+<style>
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.error-card {
+    text-align: center;
+    max-width: 500px;
+    padding: 40px;
+}
+
+.error-card h1 {
+    color: #ef4444;
+    margin-bottom: 15px;
+}
+
+.error-message {
+    color: var(--text-color);
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.error-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.error-actions .btn {
+    flex: 1;
+    min-width: 150px;
+}
+</style>
+{% endblock %}

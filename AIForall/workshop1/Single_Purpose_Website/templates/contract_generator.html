@@ -1,0 +1,493 @@
+{% extends "base.html" %}
+
+{% block title %}Contract Generator - Quick Contract Generator{% endblock %}
+
+{% block content %}
+<div class="generator-container">
+    <div class="welcome-header glassmorphic-card">
+        <div class="welcome-info">
+            <h2>👋 Welcome back!</h2>
+            <p>{{ user_name }}</p>
+        </div>
+        <div class="header-buttons">
+            <a href="{{ url_for('contracts_mgmt.list_contracts') }}" class="btn btn-secondary">My Contracts</a>
+            <a href="{{ url_for('auth.logout') }}" class="btn btn-logout">Logout</a>
+        </div>
+    </div>
+    
+    <div class="header">
+        <h1>Quick Contract Generator</h1>
+        <p class="subtitle">Fill in the details below to generate your contract</p>
+    </div>
+    
+    <form id="contract-form" class="contract-form">
+        <div class="form-sections">
+            <!-- Parties Information -->
+            <div class="form-section glassmorphic-card">
+                <h2>1. Parties Information</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <div class="label-wrapper">
+                            <label for="party1_name">Party 1 Name *</label>
+                            <div class="info-icon">?
+                                <div class="tooltip">The full legal name of the first party entering the contract</div>
+                            </div>
+                        </div>
+                        <input type="text" id="party1_name" name="party1_name" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="label-wrapper">
+                            <label for="party1_entity_type">Entity Type *</label>
+                            <div class="info-icon">?
+                                <div class="tooltip">The legal structure of the party (Individual, Company, or Partnership)</div>
+                            </div>
+                        </div>
+                        <select id="party1_entity_type" name="party1_entity_type" required>
+                            <option value="">Select...</option>
+                            <option value="Individual">Individual</option>
+                            <option value="Company">Company</option>
+                            <option value="Partnership">Partnership</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="party1_address">Party 1 Address *</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">Complete legal address including street, city, state, and postal code</div>
+                        </div>
+                    </div>
+                    <textarea id="party1_address" name="party1_address" rows="2" required></textarea>
+                </div>
+                
+                <hr>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <div class="label-wrapper">
+                            <label for="party2_name">Party 2 Name *</label>
+                            <div class="info-icon">?
+                                <div class="tooltip">The full legal name of the second party entering the contract</div>
+                            </div>
+                        </div>
+                        <input type="text" id="party2_name" name="party2_name" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="label-wrapper">
+                            <label for="party2_entity_type">Entity Type *</label>
+                            <div class="info-icon">?
+                                <div class="tooltip">The legal structure of the party (Individual, Company, or Partnership)</div>
+                            </div>
+                        </div>
+                        <select id="party2_entity_type" name="party2_entity_type" required>
+                            <option value="">Select...</option>
+                            <option value="Individual">Individual</option>
+                            <option value="Company">Company</option>
+                            <option value="Partnership">Partnership</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="party2_address">Party 2 Address *</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">Complete legal address including street, city, state, and postal code</div>
+                        </div>
+                    </div>
+                    <textarea id="party2_address" name="party2_address" rows="2" required></textarea>
+                </div>
+            </div>
+            
+            <!-- Purpose & Scope -->
+            <div class="form-section glassmorphic-card">
+                <h2>2. Purpose & Scope</h2>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="contract_purpose">Contract Purpose *</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">The main objective and reason for entering into this contract</div>
+                        </div>
+                    </div>
+                    <textarea id="contract_purpose" name="contract_purpose" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="scope_of_work">Scope of Work *</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">Detailed description of work, services, or products to be provided</div>
+                        </div>
+                    </div>
+                    <textarea id="scope_of_work" name="scope_of_work" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="deliverables">Deliverables *</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">Specific outputs, products, or results to be delivered under the contract</div>
+                        </div>
+                    </div>
+                    <textarea id="deliverables" name="deliverables" rows="3" required></textarea>
+                </div>
+            </div>
+            
+            <!-- Key Terms -->
+            <div class="form-section glassmorphic-card">
+                <h2>3. Key Terms</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <div class="label-wrapper">
+                            <label for="start_date">Start Date *</label>
+                            <div class="info-icon">?
+                                <div class="tooltip">The date when the contract becomes effective</div>
+                            </div>
+                        </div>
+                        <input type="date" id="start_date" name="start_date" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="label-wrapper">
+                            <label for="end_date">End Date *</label>
+                            <div class="info-icon">?
+                                <div class="tooltip">The date when the contract expires or terminates</div>
+                            </div>
+                        </div>
+                        <input type="date" id="end_date" name="end_date" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <div class="label-wrapper">
+                            <label for="payment_amount">Payment Amount *</label>
+                            <div class="info-icon">?
+                                <div class="tooltip">Total compensation or payment value for the contract</div>
+                            </div>
+                        </div>
+                        <input type="text" id="payment_amount" name="payment_amount" placeholder="e.g., $5,000" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="label-wrapper">
+                            <label for="payment_schedule">Payment Schedule *</label>
+                            <div class="info-icon">?
+                                <div class="tooltip">How and when payments will be made (e.g., Monthly, Upfront, Upon Completion)</div>
+                            </div>
+                        </div>
+                        <input type="text" id="payment_schedule" name="payment_schedule" placeholder="e.g., Monthly" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="late_payment_penalty">Late Payment Penalty</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">Interest or fees charged for late payments (e.g., 1.5% per month)</div>
+                        </div>
+                    </div>
+                    <input type="text" id="late_payment_penalty" name="late_payment_penalty" placeholder="e.g., 1.5% per month">
+                </div>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="performance_standards">Performance Standards</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">Quality, timeliness, and other metrics the work must meet</div>
+                        </div>
+                    </div>
+                    <textarea id="performance_standards" name="performance_standards" rows="2"></textarea>
+                </div>
+            </div>
+            
+            <!-- Legal Compliance -->
+            <div class="form-section glassmorphic-card">
+                <h2>4. Legal Compliance</h2>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="legal_compliance">Legal Compliance</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">Laws, regulations, and standards that must be followed</div>
+                        </div>
+                    </div>
+                    <textarea id="legal_compliance" name="legal_compliance" rows="2"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="licenses_permits">Licenses & Permits</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">Required licenses, certifications, or permits for performing the work</div>
+                        </div>
+                    </div>
+                    <textarea id="licenses_permits" name="licenses_permits" rows="2"></textarea>
+                </div>
+            </div>
+            
+            <!-- Risk & Liability -->
+            <div class="form-section glassmorphic-card">
+                <h2>5. Risk & Liability</h2>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="liability_clauses">Liability Clauses</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">Limits on financial responsibility for damages or losses</div>
+                        </div>
+                    </div>
+                    <textarea id="liability_clauses" name="liability_clauses" rows="2"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="indemnity_provisions">Indemnity Provisions</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">Agreement to compensate the other party for losses or legal claims</div>
+                        </div>
+                    </div>
+                    <textarea id="indemnity_provisions" name="indemnity_provisions" rows="2"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="insurance_requirements">Insurance Requirements</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">Types and amounts of insurance coverage required by each party</div>
+                        </div>
+                    </div>
+                    <textarea id="insurance_requirements" name="insurance_requirements" rows="2"></textarea>
+                </div>
+            </div>
+            
+            <!-- Confidentiality & IP -->
+            <div class="form-section glassmorphic-card">
+                <h2>6. Confidentiality & IP</h2>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="confidentiality_obligations">Confidentiality Obligations</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">Duties to keep sensitive information private and protected</div>
+                        </div>
+                    </div>
+                    <textarea id="confidentiality_obligations" name="confidentiality_obligations" rows="2"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="ip_ownership">IP Ownership</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">Who owns intellectual property rights created during the contract</div>
+                        </div>
+                    </div>
+                    <textarea id="ip_ownership" name="ip_ownership" rows="2"></textarea>
+                </div>
+            </div>
+            
+            <!-- Termination -->
+            <div class="form-section glassmorphic-card">
+                <h2>7. Termination</h2>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="termination_conditions">Termination Conditions</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">Circumstances under which either party can end the contract</div>
+                        </div>
+                    </div>
+                    <textarea id="termination_conditions" name="termination_conditions" rows="2"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="notice_period">Notice Period</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">Time required to notify the other party before termination takes effect</div>
+                        </div>
+                    </div>
+                    <input type="text" id="notice_period" name="notice_period" placeholder="e.g., 30 days">
+                </div>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="termination_consequences">Termination Consequences</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">What happens to obligations, payments, and assets upon termination</div>
+                        </div>
+                    </div>
+                    <textarea id="termination_consequences" name="termination_consequences" rows="2"></textarea>
+                </div>
+            </div>
+            
+            <!-- Dispute Resolution -->
+            <div class="form-section glassmorphic-card">
+                <h2>8. Dispute Resolution</h2>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="dispute_resolution_method">Dispute Resolution Method *</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">How disputes will be resolved: Mediation (negotiated), Arbitration (private), or Litigation (court)</div>
+                        </div>
+                    </div>
+                    <select id="dispute_resolution_method" name="dispute_resolution_method" required>
+                        <option value="">Select...</option>
+                        <option value="Mediation">Mediation</option>
+                        <option value="Arbitration">Arbitration</option>
+                        <option value="Litigation">Litigation</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="jurisdiction">Jurisdiction *</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">The court or location where disputes will be handled</div>
+                        </div>
+                    </div>
+                    <input type="text" id="jurisdiction" name="jurisdiction" placeholder="e.g., State/Country" required>
+                </div>
+                
+                <div class="form-group">
+                    <div class="label-wrapper">
+                        <label for="governing_law">Governing Law *</label>
+                        <div class="info-icon">?
+                            <div class="tooltip">Which state or country's laws will apply to the contract</div>
+                        </div>
+                    </div>
+                    <input type="text" id="governing_law" name="governing_law" placeholder="e.g., State/Country Law" required>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large">Generate Contract</button>
+            <a href="{{ url_for('contracts_mgmt.list_contracts') }}" class="btn btn-secondary btn-large">My Contracts</a>
+        </div>
+        
+        <div id="form-message" class="form-message"></div>
+    </form>
+</div>
+
+<div id="save-modal" class="modal" style="display: none;">
+    <div class="modal-content glassmorphic-card">
+        <h2>Save Contract</h2>
+        <div class="form-group">
+            <label for="contract-title">Contract Title</label>
+            <input type="text" id="contract-title" placeholder="e.g., Service Agreement with Acme Corp" required>
+        </div>
+        <div class="form-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="save-as-draft">
+                <span>Save as Draft (can edit later)</span>
+            </label>
+        </div>
+        <div class="modal-actions">
+            <button onclick="saveContract()" class="btn btn-primary">Save</button>
+            <button onclick="closeModal()" class="btn btn-secondary">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script>
+let generatedContractData = null;
+
+document.getElementById('contract-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(document.getElementById('contract-form'));
+    const data = Object.fromEntries(formData);
+    const messageDiv = document.getElementById('form-message');
+    
+    try {
+        const response = await fetch('{{ url_for("contract.generate") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            generatedContractData = data;
+            messageDiv.innerHTML = `
+                <div class="success-message">
+                    <p>Contract generated successfully!</p>
+                    <div class="download-buttons">
+                        <a href="{{ url_for('contract.preview') }}" class="btn btn-primary">Preview Contract</a>
+                        <a href="{{ url_for('contract.download_pdf') }}" class="btn btn-secondary">Download PDF</a>
+                        <a href="{{ url_for('contract.download_docx') }}" class="btn btn-secondary">Download Word</a>
+                        <button onclick="openSaveModal()" class="btn btn-primary">💾 Save Contract</button>
+                    </div>
+                </div>
+            `;
+        } else {
+            const errors = result.errors ? result.errors.join('<br>') : result.error;
+            messageDiv.innerHTML = `<div class="error-message">${errors}</div>`;
+        }
+    } catch (error) {
+        messageDiv.innerHTML = `<div class="error-message">An error occurred. Please try again.</div>`;
+    }
+});
+
+function openSaveModal() {
+    document.getElementById('save-modal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('save-modal').style.display = 'none';
+}
+
+async function saveContract() {
+    const title = document.getElementById('contract-title').value;
+    const saveAsDraft = document.getElementById('save-as-draft').checked;
+    
+    if (!title.trim()) {
+        alert('Please enter a contract title');
+        return;
+    }
+    
+    try {
+        const response = await fetch('{{ url_for("contracts_mgmt.save_new_contract") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                title: title,
+                contract_data: generatedContractData,
+                save_as_draft: saveAsDraft
+            })
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            const message = saveAsDraft ? 'Contract saved as draft!' : 'Contract saved successfully!';
+            alert(message);
+            closeModal();
+            document.getElementById('contract-title').value = '';
+            document.getElementById('save-as-draft').checked = false;
+            window.location.href = '{{ url_for("contracts_mgmt.list_contracts") }}';
+        } else {
+            alert('Error saving contract: ' + result.error);
+        }
+    } catch (error) {
+        alert('Error: ' + error);
+    }
+}
+
+// Close modal when clicking outside
+document.getElementById('save-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+</script>
+{% endblock %}
