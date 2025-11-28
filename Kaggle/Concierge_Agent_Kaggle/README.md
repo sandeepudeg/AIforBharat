@@ -107,12 +107,14 @@ docker run -p 8080:8080 -e GOOGLE_API_KEY=your_key_here concierge-agent
 
 ## 5. File Structure
 ```
-Concierge_Agent/
-├── app.py                  # Main ADK application definition
-├── run_gui_fixed.py        # Recommended launcher script
-├── Concierge_Agent.ipynb   # Interactive notebook implementation
-├── requirements.txt        # Project dependencies
-└── README.md               # This documentation
+Concierge_Agent_Kaggle/
+├── Concierge_Agent.ipynb                       # Interactive notebook implementation
+├── requirements.txt                            # Project dependencies
+├── README.md                                   # This documentation
+└── MCP_IMPLEMENTATION_SUMMARY.md               # MCP Implementation Summary
+└── QUICKSTART.ipynb                            # Quick start guide
+
+
 ```
 
 ## License
