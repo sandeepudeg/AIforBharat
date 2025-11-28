@@ -77,8 +77,8 @@ graph TD
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/concierge-agent.git
-cd concierge-agent
+git clone https://github.com/yourusername/AIforBharat/tree/Kaggle/Kaggle/Concierge_Agent_Kaggle.git
+cd Concierge_Agent_Kaggle
 
 # Install dependencies
 pip install google-adk uvicorn python-dotenv
@@ -93,17 +93,6 @@ python run_gui_fixed.py
 ```
 *   **URL**: `http://127.0.0.1:8000`
 *   **Action**: Opens your browser automatically to the chat interface.
-
-### Running via Docker
-To containerize for production:
-
-```bash
-# Build the image
-docker build -t concierge-agent .
-
-# Run the container
-docker run -p 8080:8080 -e GOOGLE_API_KEY=your_key_here concierge-agent
-```
 
 ## 5. File Structure
 ```
