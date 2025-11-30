@@ -196,12 +196,11 @@ labs/content_summarizer/
 - [ ] Set up CloudWatch monitoring and alerts
 - [ ] Auto-scaling based on demand
 
-**Projected Capacity Growth**
-- Current: 10 concurrent users
-- Phase 1: 50 concurrent users
-- Phase 2: 500 concurrent users
-- Phase 3: 5,000 concurrent users
-- Phase 4: 50,000+ concurrent users (unlimited with Lambda)
+#### **Phase 5: AI Integration (Months 6+)**
+- [ ] Integrate with Amazon SageMaker for advanced summarization
+- [ ] Implement fine-tuning for Claude 3.7 Sonnet
+- [ ] Use Amazon Comprehend for content analysis and summarization
+- [ ] Integrate with Amazon Kendra for document search and summarization
 
 ---
 
