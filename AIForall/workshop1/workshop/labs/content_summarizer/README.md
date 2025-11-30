@@ -57,8 +57,8 @@ The **Content Summarizer** application provides:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    User Interface Layer                      │
-│                   (Streamlit Web App)                        │
+│                    User Interface Layer                     │
+│                   (Streamlit Web App)                       │
 │  ┌──────────────────────────────────────────────────────┐   │
 │  │  • Text Input Area (Paste Content)                   │   │
 │  │  • Summarize Button                                  │   │
@@ -67,8 +67,8 @@ The **Content Summarizer** application provides:
 └─────────────────────────────────────────────────────────────┘
                             ↓
 ┌─────────────────────────────────────────────────────────────┐
-│                   Application Layer                          │
-│              (content_summarization_app.py)                  │
+│                   Application Layer                         │
+│              (content_summarization_app.py)                 │
 │  ┌──────────────────────────────────────────────────────┐   │
 │  │  • Input Validation                                  │   │
 │  │  • User Interaction Handling                         │   │
@@ -77,8 +77,8 @@ The **Content Summarizer** application provides:
 └─────────────────────────────────────────────────────────────┘
                             ↓
 ┌─────────────────────────────────────────────────────────────┐
-│                    Library Layer                             │
-│            (content_summarization_lib.py)                    │
+│                    Library Layer                            │
+│            (content_summarization_lib.py)                   │
 │  ┌──────────────────────────────────────────────────────┐   │
 │  │  • Message Formatting                                │   │
 │  │  • Bedrock API Integration                           │   │
@@ -87,8 +87,8 @@ The **Content Summarizer** application provides:
 └─────────────────────────────────────────────────────────────┘
                             ↓
 ┌─────────────────────────────────────────────────────────────┐
-│                   AWS Services Layer                         │
-│                  (Amazon Bedrock)                            │
+│                   AWS Services Layer                        │
+│                  (Amazon Bedrock)                           │
 │  ┌──────────────────────────────────────────────────────┐   │
 │  │  • Claude 3.7 Sonnet Model                           │   │
 │  │  • Inference Processing                              │   │
@@ -196,13 +196,10 @@ labs/content_summarizer/
 - [ ] Set up CloudWatch monitoring and alerts
 - [ ] Auto-scaling based on demand
 
-**Projected Capacity Growth**
-- Current: 10 concurrent users
-- Phase 1: 50 concurrent users
-- Phase 2: 500 concurrent users
-- Phase 3: 5,000 concurrent users
-- Phase 4: 50,000+ concurrent users (unlimited with Lambda)
-
+#### **Phase 5: Community Engagement (Months 6+)**
+- [ ] Develop a community forum for user feedback
+- [ ] Implement a user feedback system for continuous improvement
+- [ ] Engage with Amazon Bedrock community for feedback and updates
 ---
 
 ## 4. Visual Documentation
@@ -211,13 +208,13 @@ labs/content_summarizer/
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│                         End User                                  │
-│                    (Browser/Web Client)                           │
+│                         End User                                 │
+│                    (Browser/Web Client)                          │
 └────────────────────────────┬─────────────────────────────────────┘
                              │
                              ↓
 ┌──────────────────────────────────────────────────────────────────┐
-│                    Streamlit Application                          │
+│                    Streamlit Application                         │
 │  ┌────────────────────────────────────────────────────────────┐  │
 │  │  Frontend UI                                               │  │
 │  │  • Text Input Component                                    │  │
@@ -229,7 +226,7 @@ labs/content_summarizer/
                              │
                              ↓
 ┌──────────────────────────────────────────────────────────────────┐
-│              Python Backend (content_summarization_app.py)        │
+│              Python Backend (content_summarization_app.py)       │
 │  ┌────────────────────────────────────────────────────────────┐  │
 │  │  • Input Validation                                        │  │
 │  │  • Error Handling                                          │  │
@@ -239,7 +236,7 @@ labs/content_summarizer/
                              │
                              ↓
 ┌──────────────────────────────────────────────────────────────────┐
-│         Library Layer (content_summarization_lib.py)              │
+│         Library Layer (content_summarization_lib.py)             │
 │  ┌────────────────────────────────────────────────────────────┐  │
 │  │  • Boto3 Client Initialization                             │  │
 │  │  • Message Formatting                                      │  │
@@ -252,7 +249,7 @@ labs/content_summarizer/
                              │
                              ↓
 ┌──────────────────────────────────────────────────────────────────┐
-│                    Amazon Bedrock Service                         │
+│                    Amazon Bedrock Service                        │
 │  ┌────────────────────────────────────────────────────────────┐  │
 │  │  Model: Claude 3.7 Sonnet                                  │  │
 │  │  • Text Processing                                         │  │
