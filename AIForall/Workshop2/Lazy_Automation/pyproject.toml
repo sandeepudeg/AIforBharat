@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lazy-automation-platform"
+version = "0.1.0"
+description = "A multi-tool Gradio application for automating repetitive tasks"
+requires-python = ">=3.8"
+dependencies = [
+    "gradio>=3.50.0",
+    "pytest>=7.0.0",
+    "hypothesis>=6.0.0",
+    "cryptography>=41.0.0",
+    "apscheduler>=3.10.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "hypothesis>=6.0.0",
+    "pytest-cov>=4.0.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.hypothesis]
+profile = "default"
+max_examples = 100
