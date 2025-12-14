@@ -1,0 +1,350 @@
+{
+  "countries": {
+    "USA": {
+      "name": "United States of America",
+      "states": {
+        "NY": {
+          "name": "New York",
+          "latitude": 42.1657,
+          "longitude": -74.9481,
+          "districts": {
+            "Manhattan": {
+              "latitude": 40.7831,
+              "longitude": -73.9712
+            },
+            "Brooklyn": {
+              "latitude": 40.6501,
+              "longitude": -73.9496
+            },
+            "Queens": {
+              "latitude": 40.7282,
+              "longitude": -73.7949
+            },
+            "Bronx": {
+              "latitude": 40.8448,
+              "longitude": -73.8648
+            },
+            "Staten Island": {
+              "latitude": 40.5795,
+              "longitude": -74.1502
+            }
+          }
+        },
+        "CA": {
+          "name": "California",
+          "latitude": 36.1162,
+          "longitude": -119.6816,
+          "districts": {
+            "Los Angeles": {
+              "latitude": 34.0522,
+              "longitude": -118.2437
+            },
+            "San Francisco": {
+              "latitude": 37.7749,
+              "longitude": -122.4194
+            },
+            "San Diego": {
+              "latitude": 32.7157,
+              "longitude": -117.1611
+            },
+            "Sacramento": {
+              "latitude": 38.5816,
+              "longitude": -121.4944
+            }
+          }
+        },
+        "TX": {
+          "name": "Texas",
+          "latitude": 31.9686,
+          "longitude": -99.9018,
+          "districts": {
+            "Houston": {
+              "latitude": 29.7604,
+              "longitude": -95.3698
+            },
+            "Dallas": {
+              "latitude": 32.7767,
+              "longitude": -96.7970
+            },
+            "Austin": {
+              "latitude": 30.2672,
+              "longitude": -97.7431
+            },
+            "San Antonio": {
+              "latitude": 29.4241,
+              "longitude": -98.4936
+            }
+          }
+        },
+        "FL": {
+          "name": "Florida",
+          "latitude": 27.9947,
+          "longitude": -81.7603,
+          "districts": {
+            "Miami": {
+              "latitude": 25.7617,
+              "longitude": -80.1918
+            },
+            "Orlando": {
+              "latitude": 28.5421,
+              "longitude": -81.3723
+            },
+            "Tampa": {
+              "latitude": 27.9506,
+              "longitude": -82.4572
+            },
+            "Jacksonville": {
+              "latitude": 30.3322,
+              "longitude": -81.6557
+            }
+          }
+        }
+      }
+    },
+    "India": {
+      "name": "India",
+      "states": {
+        "MH": {
+          "name": "Maharashtra",
+          "latitude": 19.7515,
+          "longitude": 75.7139,
+          "districts": {
+            "Mumbai": {
+              "latitude": 19.0760,
+              "longitude": 72.8777
+            },
+            "Pune": {
+              "latitude": 18.5204,
+              "longitude": 73.8567
+            },
+            "Nagpur": {
+              "latitude": 21.1458,
+              "longitude": 79.0882
+            },
+            "Aurangabad": {
+              "latitude": 19.8762,
+              "longitude": 75.3433
+            }
+          }
+        },
+        "DL": {
+          "name": "Delhi",
+          "latitude": 28.7041,
+          "longitude": 77.1025,
+          "districts": {
+            "New Delhi": {
+              "latitude": 28.6139,
+              "longitude": 77.2090
+            },
+            "East Delhi": {
+              "latitude": 28.6100,
+              "longitude": 77.3200
+            },
+            "West Delhi": {
+              "latitude": 28.6500,
+              "longitude": 77.0500
+            },
+            "North Delhi": {
+              "latitude": 28.7500,
+              "longitude": 77.2300
+            }
+          }
+        },
+        "KA": {
+          "name": "Karnataka",
+          "latitude": 15.3173,
+          "longitude": 75.7139,
+          "districts": {
+            "Bangalore": {
+              "latitude": 12.9716,
+              "longitude": 77.5946
+            },
+            "Mysore": {
+              "latitude": 12.2958,
+              "longitude": 76.6394
+            },
+            "Mangalore": {
+              "latitude": 12.8628,
+              "longitude": 74.8455
+            },
+            "Belgaum": {
+              "latitude": 15.8497,
+              "longitude": 75.6193
+            }
+          }
+        },
+        "TN": {
+          "name": "Tamil Nadu",
+          "latitude": 11.1271,
+          "longitude": 79.2787,
+          "districts": {
+            "Chennai": {
+              "latitude": 13.0827,
+              "longitude": 80.2707
+            },
+            "Coimbatore": {
+              "latitude": 11.0081,
+              "longitude": 76.9875
+            },
+            "Madurai": {
+              "latitude": 9.9252,
+              "longitude": 78.1198
+            },
+            "Salem": {
+              "latitude": 11.6643,
+              "longitude": 78.1460
+            }
+          }
+        }
+      }
+    },
+    "UK": {
+      "name": "United Kingdom",
+      "states": {
+        "ENG": {
+          "name": "England",
+          "latitude": 52.3555,
+          "longitude": -1.1743,
+          "districts": {
+            "London": {
+              "latitude": 51.5074,
+              "longitude": -0.1278
+            },
+            "Manchester": {
+              "latitude": 53.4808,
+              "longitude": -2.2426
+            },
+            "Birmingham": {
+              "latitude": 52.5086,
+              "longitude": -1.8853
+            },
+            "Leeds": {
+              "latitude": 53.8008,
+              "longitude": -1.5491
+            }
+          }
+        },
+        "SCT": {
+          "name": "Scotland",
+          "latitude": 56.4907,
+          "longitude": -4.2026,
+          "districts": {
+            "Edinburgh": {
+              "latitude": 55.9533,
+              "longitude": -3.1883
+            },
+            "Glasgow": {
+              "latitude": 55.8642,
+              "longitude": -4.2518
+            },
+            "Aberdeen": {
+              "latitude": 57.1497,
+              "longitude": -2.0943
+            },
+            "Dundee": {
+              "latitude": 56.4627,
+              "longitude": -2.9707
+            }
+          }
+        },
+        "WAL": {
+          "name": "Wales",
+          "latitude": 52.1307,
+          "longitude": -3.7837,
+          "districts": {
+            "Cardiff": {
+              "latitude": 51.4816,
+              "longitude": -3.1791
+            },
+            "Swansea": {
+              "latitude": 51.6214,
+              "longitude": -3.9436
+            },
+            "Newport": {
+              "latitude": 51.5880,
+              "longitude": -3.0028
+            },
+            "Wrexham": {
+              "latitude": 53.0469,
+              "longitude": -3.0045
+            }
+          }
+        }
+      }
+    },
+    "Canada": {
+      "name": "Canada",
+      "states": {
+        "ON": {
+          "name": "Ontario",
+          "latitude": 51.2538,
+          "longitude": -85.3232,
+          "districts": {
+            "Toronto": {
+              "latitude": 43.6532,
+              "longitude": -79.3832
+            },
+            "Ottawa": {
+              "latitude": 45.4215,
+              "longitude": -75.6972
+            },
+            "Hamilton": {
+              "latitude": 43.2557,
+              "longitude": -79.8711
+            },
+            "London": {
+              "latitude": 42.9849,
+              "longitude": -81.2453
+            }
+          }
+        },
+        "BC": {
+          "name": "British Columbia",
+          "latitude": 53.7267,
+          "longitude": -127.6476,
+          "districts": {
+            "Vancouver": {
+              "latitude": 49.2827,
+              "longitude": -123.1207
+            },
+            "Victoria": {
+              "latitude": 48.4281,
+              "longitude": -123.3656
+            },
+            "Surrey": {
+              "latitude": 49.0504,
+              "longitude": -122.3045
+            },
+            "Burnaby": {
+              "latitude": 49.2503,
+              "longitude": -122.9723
+            }
+          }
+        },
+        "QC": {
+          "name": "Quebec",
+          "latitude": 46.8139,
+          "longitude": -71.2080,
+          "districts": {
+            "Montreal": {
+              "latitude": 45.5017,
+              "longitude": -73.5673
+            },
+            "Quebec City": {
+              "latitude": 46.8139,
+              "longitude": -71.2080
+            },
+            "Laval": {
+              "latitude": 45.5695,
+              "longitude": -73.7292
+            },
+            "Gatineau": {
+              "latitude": 45.4215,
+              "longitude": -75.6972
+            }
+          }
+        }
+      }
+    }
+  }
+}

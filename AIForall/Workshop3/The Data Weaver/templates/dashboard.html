@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Weather & Pollen Dashboard - Track weather conditions and pollen levels with interactive visualizations">
+    <title>Weather & Pollen Dashboard</title>
+    <!-- Preload critical resources -->
+    <link rel="preload" href="{{ url_for('static', filename='css/style.min.css') }}" as="style">
+    <link rel="preload" href="{{ url_for('static', filename='js/dashboard.min.js') }}" as="script">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.min.css') }}">
+    <!-- Chart.js library with async loading -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" async></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🌤️ Weather & Pollen Dashboard</h1>
+            <div class="header-controls">
+                <div class="location-selectors">
+                    <select class="location-selector" id="countrySelect">
+                        <option value="">Select Country</option>
+                        <option value="USA">United States</option>
+                        <option value="India">India</option>
+                        <option value="UK">United Kingdom</option>
+                        <option value="Canada">Canada</option>
+                    </select>
+                    <span class="location-separator">→</span>
+                    <select class="location-selector" id="stateSelect">
+                        <option value="">Select State</option>
+                    </select>
+                    <span class="location-separator">→</span>
+                    <select class="location-selector" id="districtSelect">
+                        <option value="">Select District</option>
+                    </select>
+                </div>
+                <div class="metric-selector">
+                    <span style="font-size: 12px;">Units:</span>
+                    <button class="metric-btn active" data-metric="imperial">Imperial Units (°F / mph)</button>
+                    <button class="metric-btn" data-metric="metric">Metric Units (°C / km/h)</button>
+                </div>
+                <div class="last-updated">Last Updated: 2:45 PM</div>
+            </div>
+        </div>
+
+        <!-- Time Range Filters -->
+        <div class="time-range-filters">
+            <button class="time-btn active">📅 Weekly</button>
+            <button class="time-btn">📊 Monthly</button>
+            <button class="time-btn">📈 Half-Yearly</button>
+            <button class="time-btn">📊 Yearly</button>
+        </div>
+
+        <!-- Info Panels -->
+        <div class="info-panels">
+            <!-- Weather Panel -->
+            <div class="panel">
+                <h2>🌡️ Current Weather</h2>
+                <div class="weather-item">
+                    <label>Temperature:</label>
+                    <value>72°F</value>
+                </div>
+                <div class="weather-item">
+                    <label>Humidity:</label>
+                    <value>65%</value>
+                </div>
+                <div class="weather-item">
+                    <label>Wind Speed:</label>
+                    <value>12 mph</value>
+                </div>
+                <div class="weather-item">
+                    <label>Atmospheric Pressure:</label>
+                    <value>1013 mb</value>
+                </div>
+                <div class="weather-item">
+                    <label>Precipitation:</label>
+                    <value>0 mm</value>
+                </div>
+                <div class="weather-item">
+                    <label>UV Index:</label>
+                    <value>6 (High)</value>
+                </div>
+                <div class="weather-item">
+                    <label>Conditions:</label>
+                    <value>Partly Cloudy</value>
+                </div>
+            </div>
+
+            <!-- Pollen Panel -->
+            <div class="panel">
+                <h2>🌾 Pollen Levels by Type</h2>
+                <div class="pollen-item">
+                    <label>Grass Pollen:</label>
+                    <value>850 <span class="pollen-level high">HIGH</span></value>
+                </div>
+                <div class="pollen-item">
+                    <label>Tree Pollen:</label>
+                    <value>450 <span class="pollen-level moderate">MODERATE</span></value>
+                </div>
+                <div class="pollen-item">
+                    <label>Weed Pollen:</label>
+                    <value>150 <span class="pollen-level low">LOW</span></value>
+                </div>
+                <div class="pollen-item">
+                    <label>Ragweed Pollen:</label>
+                    <value>200 <span class="pollen-level low">LOW</span></value>
+                </div>
+                <div class="pollen-item">
+                    <label>Mold Spores:</label>
+                    <value>320 <span class="pollen-level moderate">MODERATE</span></value>
+                </div>
+                <div class="alert">
+                    ⚠️ <strong>High Pollen Alert:</strong> Grass pollen levels are elevated today. Consider staying indoors if you have allergies.
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-section">
+            <!-- Weather Parameters Trend Chart -->
+            <div class="chart-container">
+                <div class="chart-title">📈 Weather Parameters Trend (Weekly View)</div>
+                <div class="date-range">Jan 1 - Jan 7, 2024</div>
+                
+                <div class="parameter-selector">
+                    <h4>Select Parameters to Display:</h4>
+                    <div class="parameter-checkboxes">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="tempCheck" checked>
+                            <label for="tempCheck">🌡️ Temperature</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="humidityCheck">
+                            <label for="humidityCheck">💧 Humidity</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="windCheck">
+                            <label for="windCheck">💨 Wind Speed</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="pressureCheck">
+                            <label for="pressureCheck">🔽 Pressure</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="precipCheck">
+                            <label for="precipCheck">🌧️ Precipitation</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="uvCheck">
+                            <label for="uvCheck">☀️ UV Index</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: relative; height: 350px; width: 100%; margin-bottom: 30px;">
+                    <canvas id="temperatureChart"></canvas>
+                </div>
+
+                <div class="comparative-feedback" id="comparativeFeedback">
+                    <strong>📊 Comparative Analysis:</strong> Currently showing Temperature trend. Select additional parameters to see how they interact with pollen levels.
+                </div>
+            </div>
+
+            <!-- Pollen Levels Chart -->
+            <div class="chart-container">
+                <div class="chart-title">📊 Pollen Levels by Type (Weekly View)</div>
+                <div class="date-range">Jan 1 - Jan 7, 2024</div>
+                
+                <div class="parameter-selector">
+                    <h4>Select Pollen Types to Display:</h4>
+                    <div class="parameter-checkboxes">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="grassPollenCheck" checked>
+                            <label for="grassPollenCheck">🌾 Grass Pollen</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="treePollenCheck" checked>
+                            <label for="treePollenCheck">🌳 Tree Pollen</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="weedPollenCheck" checked>
+                            <label for="weedPollenCheck">🌱 Weed Pollen</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: relative; height: 350px; width: 100%; margin-bottom: 30px;">
+                    <canvas id="pollenChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Combined Trend Chart -->
+            <div class="chart-container">
+                <div class="chart-title">🔗 Weather vs Pollen Correlation (Weekly View)</div>
+                <div class="date-range">Jan 1 - Jan 7, 2024</div>
+                
+                <div class="parameter-selector">
+                    <h4>Select Weather Parameters:</h4>
+                    <div class="parameter-checkboxes">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="corrTempCheck" checked>
+                            <label for="corrTempCheck">🌡️ Temperature</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="corrHumidityCheck">
+                            <label for="corrHumidityCheck">💧 Humidity</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="corrWindCheck">
+                            <label for="corrWindCheck">💨 Wind Speed</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="corrPressureCheck">
+                            <label for="corrPressureCheck">🔽 Pressure</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="corrPrecipCheck">
+                            <label for="corrPrecipCheck">🌧️ Precipitation</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="corrUVCheck">
+                            <label for="corrUVCheck">☀️ UV Index</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="parameter-selector">
+                    <h4>Select Pollen Types:</h4>
+                    <div class="parameter-checkboxes">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="corrGrassCheck" checked>
+                            <label for="corrGrassCheck">🌾 Grass Pollen</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="corrTreeCheck">
+                            <label for="corrTreeCheck">🌳 Tree Pollen</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="corrWeedCheck">
+                            <label for="corrWeedCheck">🌱 Weed Pollen</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: relative; height: 350px; width: 100%; margin-bottom: 30px;">
+                    <canvas id="correlationChart"></canvas>
+                </div>
+
+                <div class="comparative-feedback" id="correlationFeedback">
+                    <strong>🔗 Correlation Analysis:</strong> Showing Temperature vs Grass Pollen. Select additional parameters to analyze their combined correlation patterns.
+                </div>
+            </div>
+        </div>
+
+        <!-- Spacer -->
+        <div style="height: 500px; clear: both;"></div>
+
+        <!-- Correlation Section -->
+        <div class="correlation-section">
+            <div class="correlation-container">
+                <h2>🔍 Correlation Insights - Weather Factors vs Pollen Levels</h2>
+                
+                <div class="correlation-item">
+                    <strong>Wind Speed ↔ Pollen Levels</strong>
+                    <span class="correlation-strength strong">+0.78 (Strong Positive)</span>
+                    <div class="correlation-value">
+                        Higher wind speeds increase pollen dispersion in the air. On windy days, expect higher pollen counts and more severe allergy symptoms.
+                    </div>
+                </div>
+
+                <div class="correlation-item">
+                    <strong>Temperature ↔ Pollen Levels</strong>
+                    <span class="correlation-strength moderate">+0.45 (Moderate Positive)</span>
+                    <div class="correlation-value">
+                        Warmer days tend to have higher pollen counts. Plants release more pollen in warm weather, so spring and summer typically have elevated levels.
+                    </div>
+                </div>
+
+                <div class="correlation-item">
+                    <strong>Humidity ↔ Pollen Levels</strong>
+                    <span class="correlation-strength moderate">-0.62 (Moderate Negative)</span>
+                    <div class="correlation-value">
+                        High humidity reduces pollen in the air. Rainy or humid days typically have lower pollen counts, making them better for outdoor activities if you have allergies.
+                    </div>
+                </div>
+
+                <div class="correlation-item">
+                    <strong>Atmospheric Pressure ↔ Pollen Levels</strong>
+                    <span class="correlation-strength moderate">+0.55 (Moderate Positive)</span>
+                    <div class="correlation-value">
+                        Low atmospheric pressure is associated with higher pollen levels. Low pressure systems trigger plants to release more pollen and reduce pollen settling.
+                    </div>
+                </div>
+
+                <div class="correlation-item">
+                    <strong>Precipitation ↔ Pollen Levels</strong>
+                    <span class="correlation-strength strong">-0.81 (Strong Negative)</span>
+                    <div class="correlation-value">
+                        Rain significantly reduces airborne pollen by washing it out of the air. Rainy days are ideal for allergy sufferers to spend time outdoors.
+                    </div>
+                </div>
+
+                <div class="correlation-item">
+                    <strong>UV Index ↔ Pollen Levels</strong>
+                    <span class="correlation-strength moderate">+0.52 (Moderate Positive)</span>
+                    <div class="correlation-value">
+                        High UV index (sunny days) correlates with higher pollen counts. Clear, sunny weather promotes pollen release and dispersal.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <button class="btn btn-export">📥 Export as JSON</button>
+            <button class="btn btn-screenshot">📸 Screenshot</button>
+            <button class="btn btn-refresh">🔄 Refresh Data</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}" defer></script>
+</body>
+</html>
