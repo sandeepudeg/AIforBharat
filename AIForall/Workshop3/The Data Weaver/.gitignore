@@ -137,3 +137,20 @@ Thumbs.db
 *.cache
 .env.local
 config.local.json
+
+# API Keys and Secrets
+.env.*.local
+*.key
+*.pem
+secrets.json
+credentials.json
+api_keys.json
+location_config.json
+
+# Configuration files with sensitive data
+config.*.json
+settings.*.json
+
+# Logs with sensitive data
+*.log
+dashboard.log

@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Real-time data dashboards require seamless integration of multiple data sources. In this technical article, we'll explore how we built a comprehensive Weather & Pollen Dashboard that combines data from two distinct APIs: **Open-Meteo** (weather data) and **AQICN** (air quality and pollen data). We'll discuss the architecture, integration challenges, caching strategies, and how Kiro accelerated our development process.
+Real-time data dashboards require seamless integration of multiple data sources. In this technical article, we'll explore how we built a comprehensive Weather & Pollen Dashboard that combines data from two distinct APIs:weather data and air quality and pollen data. We'll discuss the architecture, integration challenges, caching strategies, and how Kiro accelerated our development process.
 
 ## The Challenge: Multi-API Integration
 
