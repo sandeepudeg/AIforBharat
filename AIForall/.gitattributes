@@ -1,2 +1,3 @@
 AIForall/Workshop2/rag-workshop-amazon-bedrock-knowledge-bases.zip filter=lfs diff=lfs merge=lfs -text
 AIForall/Workshop2/rag-workshop-amazon_completed.zip filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
