@@ -1,0 +1,30 @@
+{
+  "name": "snake-adaptive-ai",
+  "version": "1.0.0",
+  "description": "Snake game with adaptive difficulty AI",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "dev": "ts-node src/index.ts"
+  },
+  "keywords": [
+    "snake",
+    "game",
+    "ai",
+    "adaptive"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "canvas": "^3.2.0",
+    "fast-check": "^3.13.0",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.0"
+  }
+}
