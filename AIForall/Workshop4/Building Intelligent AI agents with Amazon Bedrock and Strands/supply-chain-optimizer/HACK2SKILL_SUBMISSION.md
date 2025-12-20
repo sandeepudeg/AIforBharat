@@ -394,7 +394,7 @@ This solution is ready for production deployment and can be adapted for various 
 ## 13. Resources & Documentation
 
 ### Code Repository
-- **GitHub**: [Supply Chain Optimizer](https://github.com/your-org/supply-chain-optimizer)
+- **GitHub**: [Supply Chain Optimizer](https://github.com/sandeepudeg/AIforBharat/tree/master/AIForall/Workshop4/Building%20Intelligent%20AI%20agents%20with%20Amazon%20Bedrock%20and%20Strands/supply_chain_optimizer_AWS)
 - **Documentation**: [README.md](./README.md)
 - **Blog Post**: [BLOG_POST.md](./BLOG_POST.md)
 
