@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\response.py
+# hypothesis_version: 6.148.7
+
+[b'\n', 100, 101, 200, 204, 301, 302, 303, 304, 307, 308, ',', 'HEAD', 'Read timed out.', '^([0-9]+)\\.([0-9]+)', '_dsa', '_eot', 'br', 'chunked', 'closed', 'content-encoding', 'content-length', 'decompress', 'decompressobj', 'deflate', 'fileno', 'flush', 'from_promise', 'gzip', 'isclosed', 'location', 'read', 'trailers', 'transfer-encoding', 'utf-8', 'zstd']

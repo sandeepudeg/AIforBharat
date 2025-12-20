@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/services/notification_service.py
+# hypothesis_version: 6.148.7
+
+['Item', 'SKU cannot be empty', 'alert_id', 'alerts', 'approved', 'critical', 'delivered', 'high', 'low', 'medium', 'rejected', 'shipped']

@@ -1,0 +1,288 @@
+================================================================================
+AGENTS AS TOOLS - ARCHITECTURE DIAGRAM
+================================================================================
+
+BEFORE: Standalone Agents
+================================================================================
+
+run_with_aws_services.py
+    ↓
+    ├─→ Forecasting Agent
+    ├─→ Inventory Agent
+    ├─→ Supplier Agent
+    ├─→ Anomaly Agent
+    └─→ Report Agent
+    ↓
+    AWS Services (DynamoDB, S3, SNS)
+
+
+AFTER: Agents as Tools
+================================================================================
+
+User Query
+    ↓
+supply_chain_orchestrator.py (Strands Agent)
+    ↓
+    Analyzes query and decides which tools to use
+    ↓
+    ├─→ @tool forecast_demand()
+    ├─→ @tool optimize_inventory()
+    ├─→ @tool create_purchase_order()
+    ├─→ @tool detect_anomalies()
+    ├─→ @tool generate_report()
+    └─→ @tool get_inventory_status()
+    ↓
+    Each tool calls the underlying agent
+    ↓
+    AWS Services (DynamoDB, S3, SNS)
+    ↓
+    Results returned to user
+
+
+TOOL ARCHITECTURE
+================================================================================
+
+src/agents/agent_tools.py
+│
+├─ @tool forecast_demand()
+│  └─ Calls: DemandForecastingAgent
+│     └─ Stores: DynamoDB (forecasts table)
+│
+├─ @tool optimize_inventory()
+│  └─ Calls: InventoryOptimizerAgent
+│     └─ Returns: EOQ, reorder point
+│
+├─ @tool create_purchase_order()
+│  └─ Calls: SupplierCoordinationAgent
+│     └─ Stores: DynamoDB (purchase_orders table)
+│
+├─ @tool detect_anomalies()
+│  └─ Calls: AnomalyDetectionAgent
+│     └─ Stores: DynamoDB (anomalies table)
+│     └─ Sends: SNS alerts
+│
+├─ @tool generate_report()
+│  └─ Calls: ReportGenerationAgent
+│     └─ Stores: S3 (reports bucket)
+│
+└─ @tool get_inventory_status()
+   └─ Reads: DynamoDB (inventory table)
+
+
+ORCHESTRATOR AGENT FLOW
+================================================================================
+
+User Input
+    ↓
+supply_chain_orchestrator.py
+    ├─ Receives query
+    ├─ Analyzes with Claude (Bedrock)
+    ├─ Decides which tools to use
+    ├─ Calls tools in sequence
+    ├─ Collects results
+    └─ Returns response to user
+
+
+EXAMPLE: "Optimize supply chain for PROD-001"
+================================================================================
+
+User Query
+    ↓
+Orchestrator Agent
+    ├─ Understands: Need to optimize supply chain
+    ├─ Decides: Need forecast → optimization → PO → anomaly check → report
+    ├─ Calls: forecast_demand(sku='PROD-001', ...)
+    │   └─ Returns: Forecast with confidence intervals
+    ├─ Calls: optimize_inventory(sku='PROD-001', annual_demand=..., ...)
+    │   └─ Returns: EOQ, reorder point
+    ├─ Calls: create_purchase_order(sku='PROD-001', quantity=..., ...)
+    │   └─ Returns: PO details
+    ├─ Calls: detect_anomalies(sku='PROD-001', ...)
+    │   └─ Returns: Anomaly status
+    ├─ Calls: generate_report(inventory_data=..., ...)
+    │   └─ Returns: Report with KPIs
+    └─ Returns: Complete optimization summary
+
+
+DATA FLOW
+================================================================================
+
+Tool Execution
+    ↓
+    ├─ forecast_demand()
+    │  └─ DynamoDB: forecasts table
+    │
+    ├─ optimize_inventory()
+    │  └─ Returns calculations (no storage)
+    │
+    ├─ create_purchase_order()
+    │  └─ DynamoDB: purchase_orders table
+    │
+    ├─ detect_anomalies()
+    │  ├─ DynamoDB: anomalies table
+    │  └─ SNS: Alert notifications
+    │
+    ├─ generate_report()
+    │  └─ S3: reports/YYYY/MM/DD/
+    │
+    └─ get_inventory_status()
+       └─ DynamoDB: inventory table (read)
+
+
+TOOL INTERACTION PATTERNS
+================================================================================
+
+Pattern 1: Sequential Tools
+    forecast_demand()
+        ↓
+    optimize_inventory()
+        ↓
+    create_purchase_order()
+
+Pattern 2: Parallel Tools
+    get_inventory_status()  ─┐
+    detect_anomalies()      ├─→ generate_report()
+    get_supplier_data()     ─┘
+
+Pattern 3: Conditional Tools
+    detect_anomalies()
+        ↓
+    if anomaly detected:
+        ├─ generate_report()
+        └─ send_alert()
+    else:
+        └─ return "No issues"
+
+
+AGENT CAPABILITIES
+================================================================================
+
+Orchestrator Agent can:
+
+1. Understand natural language queries
+   "Forecast demand for PROD-001"
+   "Optimize inventory"
+   "Check for anomalies"
+
+2. Decide which tools to use
+   Query → Analysis → Tool Selection
+
+3. Call tools in sequence
+   Tool 1 → Tool 2 → Tool 3
+
+4. Combine results
+   Result 1 + Result 2 + Result 3 = Final Answer
+
+5. Provide recommendations
+   Based on tool results, suggest actions
+
+
+COMPARISON: BEFORE vs AFTER
+================================================================================
+
+BEFORE (Standalone):
+┌─────────────────────────────────────────┐
+│ run_with_aws_services.py                │
+│                                         │
+│ 1. Create inventory data                │
+│ 2. Generate forecast                    │
+│ 3. Optimize inventory                   │
+│ 4. Create purchase order                │
+│ 5. Detect anomalies                     │
+│ 6. Generate report                      │
+│                                         │
+│ Fixed workflow, no flexibility          │
+└─────────────────────────────────────────┘
+
+AFTER (Tools):
+┌─────────────────────────────────────────┐
+│ supply_chain_orchestrator.py            │
+│                                         │
+│ User: "Forecast demand for PROD-001"   │
+│ ↓                                       │
+│ Agent: Calls forecast_demand()          │
+│ ↓                                       │
+│ Result: Forecast returned               │
+│                                         │
+│ User: "Optimize inventory"              │
+│ ↓                                       │
+│ Agent: Calls optimize_inventory()       │
+│ ↓                                       │
+│ Result: EOQ and reorder point           │
+│                                         │
+│ Flexible, interactive, intelligent     │
+└─────────────────────────────────────────┘
+
+
+INTEGRATION WITH OTHER AGENTS
+================================================================================
+
+Your Tools can be used in:
+
+1. Other Strands Agents
+   from src.agents.agent_tools import forecast_demand
+   
+   agent = Agent(
+       model=model,
+       tools=[forecast_demand, ...],
+   )
+
+2. Multi-Agent Systems
+   Agent 1 (Planning) → forecast_demand()
+   Agent 2 (Execution) → create_purchase_order()
+   Agent 3 (Monitoring) → detect_anomalies()
+
+3. Custom Workflows
+   Your own orchestration logic using the tools
+
+
+RUNNING THE SYSTEM
+================================================================================
+
+Interactive Mode:
+┌─────────────────────────────────────────┐
+│ $ python supply_chain_orchestrator.py   │
+│                                         │
+│ 👤 You: Forecast demand for PROD-001   │
+│ 🤖 Orchestrator: [calls forecast_demand]│
+│ 🤖 Result: Forecast generated...       │
+│                                         │
+│ 👤 You: Optimize inventory             │
+│ 🤖 Orchestrator: [calls optimize_inv]  │
+│ 🤖 Result: EOQ calculated...           │
+│                                         │
+│ 👤 You: exit                           │
+│ 👋 Goodbye!                            │
+└─────────────────────────────────────────┘
+
+Example Mode:
+┌─────────────────────────────────────────┐
+│ $ python supply_chain_orchestrator.py   │
+│   --example                             │
+│                                         │
+│ Running example workflow...             │
+│ ✓ Step 1: Forecasting demand           │
+│ ✓ Step 2: Optimizing inventory         │
+│ ✓ Step 3: Creating purchase order      │
+│ ✓ Step 4: Detecting anomalies          │
+│ ✓ Step 5: Generating report            │
+│ ✓ Workflow completed!                  │
+└─────────────────────────────────────────┘
+
+
+SUMMARY
+================================================================================
+
+Your agents are now:
+✓ Tools that can be called by Strands Agents
+✓ Flexible and composable
+✓ Intelligent and interactive
+✓ Integrated with AWS services
+✓ Ready for multi-agent systems
+
+Start with:
+  python supply_chain_orchestrator.py
+
+Then ask questions and watch the agent work!
+
+================================================================================

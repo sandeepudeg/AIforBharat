@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\aws\clients.py
+# hypothesis_version: 6.148.7
+
+['adaptive', 'aws_access_key_id', 'config', 'dynamodb', 'endpoint_url', 'events', 'lambda', 'max_attempts', 'mode', 'rds', 'region_name', 's3', 'sns']

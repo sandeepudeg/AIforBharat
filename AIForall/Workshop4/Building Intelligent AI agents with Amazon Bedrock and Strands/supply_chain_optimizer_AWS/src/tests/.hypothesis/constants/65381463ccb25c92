@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/agents/demand_forecasting_agent.py
+# hypothesis_version: 6.148.7
+
+[0.0, 1.0, 1.28, 1.96, '_with_seasonality', 'confidence_80', 'confidence_95', 'created_at', 'data_points', 'external_factor', 'forecast_date', 'forecasted_demand', 'forecasts', 'max_sales', 'mean', 'method', 'min_sales', 'quantity', 'seasonal_factor', 'std_dev', 'trend', 'updated_at']

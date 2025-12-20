@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/config/environment.py
+# hypothesis_version: 6.148.7
+
+['5432', 'AWS_ACCESS_KEY_ID', 'AWS_REGION', 'BEDROCK_MODEL_ID', 'BEDROCK_REGION', 'DYNAMODB_ENDPOINT', 'DYNAMODB_REGION', 'INFO', 'LAMBDA_ROLE_ARN', 'LOG_FORMAT', 'LOG_LEVEL', 'NODE_ENV', 'RDS_DATABASE', 'RDS_HOST', 'RDS_PASSWORD', 'RDS_PORT', 'RDS_USERNAME', 'S3_BUCKET_NAME', 'S3_REGION', 'SNS_TOPIC_ARN_ALERTS', 'development', 'json', 'localhost', 'postgres', 'production', 'supply-chain-events', 'supply_chain_db', 'us-east-1']

@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/observability/setup.py
+# hypothesis_version: 6.148.7
+
+[300, 900, 'AgentMetrics', 'ForecastAccuracyLow', 'SLAMetrics', 'SupplyChainOptimizer', 'agent_dashboard', 'alarms', 'comprehensive', 'dashboards', 'error', 'forecast_accuracy', 'main_dashboard', 'sla_dashboard', 'standard', 'standard_report_sla']

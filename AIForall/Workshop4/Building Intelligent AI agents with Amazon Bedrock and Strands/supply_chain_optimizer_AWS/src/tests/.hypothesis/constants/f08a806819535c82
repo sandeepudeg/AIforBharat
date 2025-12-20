@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/models/forecast.py
+# hypothesis_version: 6.148.7
+
+[100, 900, 950, 1000, '2024-01-01', 'FCST-001', 'PROD-001', 'SKU cannot be empty', 'Stock Keeping Unit', 'accuracy_percentage', 'actual_demand', 'confidence_80', 'confidence_95', 'example', 'forecast_date', 'forecast_id', 'forecast_period', 'forecasted_demand', 'sku']

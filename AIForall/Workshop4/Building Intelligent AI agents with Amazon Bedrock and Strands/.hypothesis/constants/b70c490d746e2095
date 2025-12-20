@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\observability\dashboards.py
+# hypothesis_version: 6.148.7
+
+[100, 300, 900, 3600, '.', 'Agent Failure Count', 'Agent Performance', 'Agent Success Count', 'AgentExecutionTime', 'AgentFailure', 'AgentMetrics', 'AgentName', 'AgentSuccess', 'AnomaliesDetected', 'Average', 'DashboardEntries', 'DashboardName', 'Forecast Accuracy', 'ForecastAccuracy', 'Maximum', 'PurchaseOrderCount', 'ReportGenerationTime', 'ReportType', 'SLAMetrics', 'Sum', 'Supplier Performance', 'SupplyChainOptimizer', 'cloudwatch', 'comprehensive', 'dimensions', 'left', 'max', 'metric', 'metrics', 'min', 'period', 'properties', 'region', 'standard', 'stat', 'title', 'type', 'widgets', 'yAxis']

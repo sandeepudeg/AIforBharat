@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\_async\connection.py
+# hypothesis_version: 6.148.7
+
+[-1.0, '%', "', '", '.', 'Content-Length', 'Content-Type', 'Transfer-Encoding', 'User-Agent', '[]', '__aiter__', '_connect_timings', 'accept-encoding', 'charset', 'chunked', 'content-length', 'content-type', 'context', 'h2', 'host', 'http', 'http/1.1', 'https', 'on_early_response', 'response_options', 'system://', 'transfer-encoding', 'user-agent', 'utf-8', 'utf8', 'utf_8']

@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\aws_xray_sdk\core\sampling\local\sampling_rule.py
+# hypothesis_version: 6.148.7
+
+['fixed_target', 'host', 'http_method', 'rate', 'service_name', 'url_path']

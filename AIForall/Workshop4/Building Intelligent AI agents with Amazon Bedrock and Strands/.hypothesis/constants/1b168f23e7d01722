@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\cryptography\hazmat\primitives\asymmetric\rsa.py
+# hypothesis_version: 6.148.7
+
+[1000, 1024, 65537]

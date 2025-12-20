@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\contrib\resolver\utils.py
+# hypothesis_version: 6.148.7
+
+[b'\x02', 192, 253, 16383, '!H', '!HH', '%u.%u.%u.%u', '.', '0', ':', '::', '::ffff:', 'alpn', 'echconfig', 'ffff', 'inet4_ntoa', 'inet6_ntoa', 'ipv4hint', 'ipv6hint', 'is_ipv4', 'is_ipv6', 'packet_fragment', 'parse_https_rdata', 'priority', 'rfc1035_pack', 'rfc1035_should_read', 'rfc1035_unpack', 'target', 'validate_length_of']

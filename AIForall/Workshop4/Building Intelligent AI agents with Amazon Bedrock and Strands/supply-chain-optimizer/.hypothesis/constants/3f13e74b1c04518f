@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\models\report.py
+# hypothesis_version: 6.148.7
+
+[0.0, 0.02, 4.5, 88.5, 92.0, 5000.0, 100, '2024-01-01', '2024-01-07', 'Cost savings amount', 'RPT-001', 'Stockout rate 0-1', 'Type of report', 'cost_savings', 'custom', 'daily', 'example', 'forecast_accuracy', 'generated_by', 'inventory_turnover', 'monthly', 'period_end', 'period_start', 'recommendations', 'report_id', 'report_type', 'stockout_rate', 'weekly']

@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/observability/alarms.py
+# hypothesis_version: 6.148.7
+
+[300, 3600, 'AgentExecutionTime', 'AgentFailure', 'AgentName', 'AlarmName', 'Average', 'ForecastAccuracy', 'ForecastAccuracyLow', 'GreaterThanThreshold', 'LessThanThreshold', 'Maximum', 'MetricAlarms', 'Name', 'ReportGenerationTime', 'ReportType', 'Sum', 'SupplierId', 'SupplyChainOptimizer', 'Value', 'cloudwatch', 'standard']

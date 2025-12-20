@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\models\forecast.py
+# hypothesis_version: 6.148.7
+
+[100, 900, 950, 1000, '2024-01-01', 'FCST-001', 'PROD-001', 'SKU cannot be empty', 'Stock Keeping Unit', 'accuracy_percentage', 'actual_demand', 'confidence_80', 'confidence_95', 'example', 'forecast_date', 'forecast_id', 'forecast_period', 'forecasted_demand', 'sku']

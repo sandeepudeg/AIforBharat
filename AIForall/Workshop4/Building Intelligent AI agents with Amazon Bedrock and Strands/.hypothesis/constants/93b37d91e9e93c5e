@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\_async\connectionpool.py
+# hypothesis_version: 6.148.7
+
+[1.0, 5.0, 101, 200, 300, 303, '/', '443', '80', 'CONNECT', 'Connection aborted.', 'GET', 'No host specified.', 'Pool is closed', 'Pool is closed.', 'Redirecting %s -> %s', 'Retry-After', 'Retry: %s', '_SelfT', '_start_last_request', 'assert_same_host', 'body', 'body_pos', 'ca_cert_data', 'ca_cert_dir', 'ca_certs', 'chunked', 'copy', 'decode_content', 'disabled_svn', 'errno', 'extension', 'from_promise', 'headers', 'http', 'https', 'keepalive_delay', 'method', 'on_early_response', 'pool_timeout', 'preload_content', 'proxy', 'proxy_config', 'read_timeout', 'redirect', 'resolver', 'response_kw', 'retries', 'socket_family', 'socket_options', 'source_address', 'timeout', 'url']

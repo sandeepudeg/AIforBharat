@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/agents/anomaly_detection_agent.py
+# hypothesis_version: 6.148.7
+
+[0.1, 0.2, 0.3, 0.65, 0.7, 0.75, 0.85, 0.9, 0.95, 100, ':sku', 'Competitor stockout', 'Damage or spoilage', 'Data entry error', 'Item', 'Items', 'Promotional campaign', 'Review access logs', 'SKU cannot be empty', 'Theft or loss', 'Unrecorded sales', 'Unrecorded transfers', 'anomalies', 'anomaly_id', 'anomaly_type', 'confidence_level', 'confidence_score', 'created_at', 'description', 'deviation', 'deviation_percentage', 'immediate_actions', 'is_outlier', 'long_term_actions', 'mean', 'possible_causes', 'priority_level', 'recommended_action', 'root_cause', 'severity', 'short_term_actions', 'sku', 'sku = :sku', 'status', 'stdev', 'trend_analysis', 'warehouse_id', 'z_score']

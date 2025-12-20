@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py
+# hypothesis_version: 6.148.7
+
+[b'.', '-?\\d+', '.', 'Expected bytes', '_TAccessorValue', '_missing', 'ascii', 'encode', 'environ', 'idna', 'latin1', 'no value', 'read only property', 'replace', 'strict', 'utf-8', 'werkzeug']

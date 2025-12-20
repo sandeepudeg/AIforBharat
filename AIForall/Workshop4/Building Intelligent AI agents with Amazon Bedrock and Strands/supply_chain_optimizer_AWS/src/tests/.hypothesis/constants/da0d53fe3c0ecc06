@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/models/purchase_order.py
+# hypothesis_version: 6.148.7
+
+[0.0, 10.5, 1050.0, 100, '2024-01-15', 'Actual delivery date', 'Order quantity', 'Order status', 'PO-001', 'PROD-001', 'Price per unit', 'SKU cannot be empty', 'SUP-001', 'Stock Keeping Unit', 'Supplier identifier', 'Total order cost', 'after', 'cancelled', 'confirmed', 'delivered', 'example', 'pending', 'po_id', 'quantity', 'shipped', 'sku', 'status', 'supplier_id', 'total_cost', 'unit_price']

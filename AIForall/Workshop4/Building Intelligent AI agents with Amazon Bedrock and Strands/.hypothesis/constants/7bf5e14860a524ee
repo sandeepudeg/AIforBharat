@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\agents\report_generation_agent.py
+# hypothesis_version: 6.148.7
+
+[0.0, 0.05, 100, 'actual_demand', 'application/json', 'bar', 'change', 'charts', 'cost_savings', 'critical', 'current', 'current_period', 'data', 'data_points', 'declining', 'forecast_accuracy', 'forecasted_demand', 'gauge', 'generated_at', 'generated_by', 'improving', 'inventory_turnover', 'line', 'metrics', 'period_comparison', 'period_end', 'period_start', 'previous', 'previous_period', 'quantity', 'quantity_on_hand', 'recommendations', 'reliability_score', 'report_id', 'report_type', 's3_key', 'severity', 'stockout_rate', 'supply-chain-reports', 'title', 'trend_direction', 'type', 'unit_cost', 'value', 'variance_percentage', 'visualization_types', 'visualizations']

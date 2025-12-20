@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/api/anomaly_routes.py
+# hypothesis_version: 6.148.7
+
+[100, 200, 400, 404, 500, 1000, '/<anomaly_id>', '/<anomaly_id>/status', '/api/anomalies', '/critical', '/open', 'Anomaly not found', 'GET', 'PATCH', 'Status is required', 'anomaly', 'anomaly_type', 'count', 'critical', 'data', 'demand_spike', 'error', 'inventory_deviation', 'inventory_shrinkage', 'investigating', 'limit', 'offset', 'open', 'resolved', 'severity', 'sku', 'status', 'supplier_delay', 'total', 'warehouse_id']

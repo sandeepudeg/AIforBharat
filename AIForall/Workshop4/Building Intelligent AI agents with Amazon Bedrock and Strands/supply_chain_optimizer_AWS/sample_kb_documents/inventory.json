@@ -1,0 +1,44 @@
+[
+  {
+    "sku": "PROD-001",
+    "product_name": "Widget A",
+    "current_quantity": 1500,
+    "reorder_point": 200,
+    "safety_stock": 300,
+    "warehouse": "WH-001",
+    "lead_time_days": 7,
+    "ordering_cost": 50,
+    "holding_cost_per_unit": 2,
+    "unit_price": 10.5,
+    "category": "Electronics",
+    "last_updated": "2025-12-20T09:59:23.169266"
+  },
+  {
+    "sku": "PROD-002",
+    "product_name": "Widget B",
+    "current_quantity": 800,
+    "reorder_point": 150,
+    "safety_stock": 250,
+    "warehouse": "WH-002",
+    "lead_time_days": 5,
+    "ordering_cost": 40,
+    "holding_cost_per_unit": 1.5,
+    "unit_price": 15.75,
+    "category": "Electronics",
+    "last_updated": "2025-12-20T09:59:23.169281"
+  },
+  {
+    "sku": "PROD-003",
+    "product_name": "Gadget X",
+    "current_quantity": 2000,
+    "reorder_point": 300,
+    "safety_stock": 400,
+    "warehouse": "WH-001",
+    "lead_time_days": 10,
+    "ordering_cost": 60,
+    "holding_cost_per_unit": 3,
+    "unit_price": 25.0,
+    "category": "Hardware",
+    "last_updated": "2025-12-20T09:59:23.169284"
+  }
+]

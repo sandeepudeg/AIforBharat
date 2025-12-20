@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\config\logger.py
+# hypothesis_version: 6.148.7
+
+[10485760, 'combined.log', 'error.log', 'exception', 'extra_data', 'json', 'level', 'logger', 'logs', 'message', 'service', 'timestamp']

@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/models/report.py
+# hypothesis_version: 6.148.7
+
+[0.0, 0.02, 4.5, 88.5, 92.0, 5000.0, 100, '2024-01-01', '2024-01-07', 'Cost savings amount', 'RPT-001', 'Stockout rate 0-1', 'Type of report', 'cost_savings', 'custom', 'daily', 'example', 'forecast_accuracy', 'generated_by', 'inventory_turnover', 'monthly', 'period_end', 'period_start', 'recommendations', 'report_id', 'report_type', 'stockout_rate', 'weekly']

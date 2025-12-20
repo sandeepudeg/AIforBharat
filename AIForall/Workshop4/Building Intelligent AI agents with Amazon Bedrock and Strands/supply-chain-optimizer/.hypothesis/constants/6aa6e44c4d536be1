@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\contrib\webextensions\sse.py
+# hypothesis_version: 6.148.7
+
+['\x00', ':', 'abort', 'accept', 'cache-control', 'data', 'event', 'http', 'https', 'id', 'message', 'native', 'no-store', 'preload_content', 'psse', 'retry', 'sse', 'text/event-stream', 'utf-8']

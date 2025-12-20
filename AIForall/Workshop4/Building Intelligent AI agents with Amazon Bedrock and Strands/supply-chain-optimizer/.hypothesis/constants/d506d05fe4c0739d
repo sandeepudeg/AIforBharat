@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\api\supplier_routes.py
+# hypothesis_version: 6.148.7
+
+[0.5, 50.0, 100, 200, 201, 400, 404, 500, 1000, '/<supplier_id>', '/api/suppliers', '/top-performers', 'GET', 'POST', 'PUT', 'Supplier not found', 'contact_email', 'contact_phone', 'count', 'data', 'error', 'last_order_date', 'lead_time_days', 'limit', 'min_reliability', 'name', 'offset', 'reliability_score', 'supplier', 'supplier_id', 'total', 'total_orders']

@@ -1,0 +1,197 @@
+================================================================================
+  SUPPLY CHAIN OPTIMIZER - QUICK REFERENCE CARD
+================================================================================
+
+🚀 QUICK START (Choose One)
+
+Option A: Use Sample Data (Fastest)
+  1. python ingest_sample_data.py
+  2. python supply_chain_orchestrator.py
+
+Option B: Use Knowledge Base (Recommended)
+  1. export BEDROCK_KB_ID=your_kb_id
+  2. python supply_chain_orchestrator.py
+  3. Ask: "Sync data from knowledge base"
+
+================================================================================
+
+📋 AVAILABLE TOOLS (8 Total)
+
+Supply Chain Tools:
+  • forecast_demand(sku, forecast_days=30)
+  • optimize_inventory(sku)
+  • create_purchase_order(sku, supplier_id, quantity, delivery_days=7)
+  • detect_anomalies(sku)
+  • generate_report(sku=None)
+  • get_inventory_status(sku)
+
+Knowledge Base Tools:
+  • sync_data_from_knowledge_base()
+  • retrieve_from_knowledge_base(query, data_type)
+
+================================================================================
+
+💬 EXAMPLE QUERIES
+
+Data Management:
+  "Sync data from knowledge base"
+  "Retrieve inventory data for PROD-001"
+  "Retrieve sales history from knowledge base"
+
+Supply Chain Operations:
+  "Forecast demand for PROD-001"
+  "Optimize inventory for PROD-001"
+  "Create a purchase order for 1500 units from SUPP-001"
+  "Check for anomalies in PROD-001"
+  "Generate a report for all products"
+  "What is the current inventory status for PROD-001?"
+
+================================================================================
+
+🔧 ENVIRONMENT VARIABLES
+
+Required:
+  AWS_REGION=us-east-1
+  AWS_ACCESS_KEY_ID=your_key
+  AWS_SECRET_ACCESS_KEY=your_secret
+
+Optional:
+  BEDROCK_KB_ID=your_kb_id
+  S3_BUCKET_NAME=supply-chain-optimizer-reports
+  SNS_TOPIC_ARN_ALERTS=arn:aws:sns:...
+
+================================================================================
+
+📊 DYNAMODB TABLES
+
+Tables Created:
+  • inventory - Product inventory data
+  • sales_history - Historical sales data
+  • suppliers - Supplier information
+  • forecasts - Generated forecasts
+  • purchase_orders - Purchase orders
+  • anomalies - Detected anomalies
+
+================================================================================
+
+🧪 TESTING
+
+Test Sample Data:
+  python ingest_sample_data.py
+
+Test Agent Tools:
+  python test_agent_tools_standalone.py
+
+Run Orchestrator:
+  python supply_chain_orchestrator.py
+
+================================================================================
+
+📁 KEY FILES
+
+Core:
+  • src/agents/agent_tools.py - 8 tools
+  • src/agents/knowledge_base_manager.py - KB integration
+  • supply_chain_orchestrator.py - Orchestrator agent
+
+Scripts:
+  • ingest_sample_data.py - Sample data ingestion
+  • test_agent_tools_standalone.py - Tool tests
+
+Documentation:
+  • KNOWLEDGE_BASE_INTEGRATION.md - KB setup
+  • COMPLETE_SETUP_GUIDE.md - Full setup
+  • AGENTS_AS_TOOLS_UPDATED.md - Tool docs
+  • QUICK_START_UPDATED_TOOLS.md - Quick start
+
+================================================================================
+
+🐛 TROUBLESHOOTING
+
+Problem: "Table not found"
+Solution: Create DynamoDB tables using AWS CLI
+
+Problem: "No data found"
+Solution: Run python ingest_sample_data.py
+
+Problem: "KB not configured"
+Solution: Set BEDROCK_KB_ID environment variable
+
+Problem: "AWS credentials error"
+Solution: Check .env file has correct credentials
+
+================================================================================
+
+📚 DOCUMENTATION
+
+Quick Start:
+  → QUICK_START_UPDATED_TOOLS.md
+
+Complete Setup:
+  → COMPLETE_SETUP_GUIDE.md
+
+Knowledge Base:
+  → KNOWLEDGE_BASE_INTEGRATION.md
+
+Tool Documentation:
+  → AGENTS_AS_TOOLS_UPDATED.md
+
+System Overview:
+  → IMPLEMENTATION_COMPLETE.md
+
+Implementation Summary:
+  → FINAL_IMPLEMENTATION_SUMMARY.md
+
+================================================================================
+
+✅ CHECKLIST
+
+Setup:
+  [ ] AWS credentials configured
+  [ ] .env file created
+  [ ] DynamoDB tables created
+  [ ] Sample data ingested or KB configured
+
+Testing:
+  [ ] Sample data ingestion works
+  [ ] Agent tools tests pass
+  [ ] Orchestrator runs
+
+Ready:
+  [ ] Can forecast demand
+  [ ] Can optimize inventory
+  [ ] Can create purchase orders
+  [ ] Can detect anomalies
+  [ ] Can generate reports
+
+================================================================================
+
+🎯 NEXT STEPS
+
+1. Set up environment variables
+2. Create DynamoDB tables
+3. Ingest sample data or configure Knowledge Base
+4. Run tests
+5. Try orchestrator
+6. Integrate into your application
+
+================================================================================
+
+📞 SUPPORT
+
+For help:
+  1. Check COMPLETE_SETUP_GUIDE.md
+  2. Check KNOWLEDGE_BASE_INTEGRATION.md
+  3. Check troubleshooting sections
+  4. Review error logs
+
+================================================================================
+
+🚀 YOU'RE READY!
+
+Run the orchestrator:
+  python supply_chain_orchestrator.py
+
+Start optimizing your supply chain! 🎉
+
+================================================================================

@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\charset_normalizer\__init__.py
+# hypothesis_version: 6.148.7
+
+['CharsetMatch', 'CharsetMatches', 'VERSION', '__version__', 'charset_normalizer', 'detect', 'from_bytes', 'from_fp', 'from_path', 'set_logging_handler']

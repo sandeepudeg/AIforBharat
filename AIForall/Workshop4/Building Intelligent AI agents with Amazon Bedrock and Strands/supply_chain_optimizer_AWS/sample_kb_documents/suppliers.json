@@ -1,0 +1,41 @@
+[
+  {
+    "supplier_id": "SUPP-001",
+    "name": "Global Supplies Inc",
+    "contact_email": "contact@globalsupplies.com",
+    "contact_phone": "+1-555-0101",
+    "unit_price": 10.5,
+    "reliability_score": 0.95,
+    "lead_time_days": 7,
+    "min_order_quantity": 100,
+    "payment_terms": "Net 30",
+    "location": "USA",
+    "rating": 4.8
+  },
+  {
+    "supplier_id": "SUPP-002",
+    "name": "Asia Trade Partners",
+    "contact_email": "sales@asiatrade.com",
+    "contact_phone": "+86-10-1234-5678",
+    "unit_price": 9.75,
+    "reliability_score": 0.88,
+    "lead_time_days": 14,
+    "min_order_quantity": 500,
+    "payment_terms": "Net 45",
+    "location": "China",
+    "rating": 4.5
+  },
+  {
+    "supplier_id": "SUPP-003",
+    "name": "European Distributors",
+    "contact_email": "info@eudist.eu",
+    "contact_phone": "+49-30-1234-5678",
+    "unit_price": 11.25,
+    "reliability_score": 0.92,
+    "lead_time_days": 5,
+    "min_order_quantity": 200,
+    "payment_terms": "Net 30",
+    "location": "Germany",
+    "rating": 4.7
+  }
+]

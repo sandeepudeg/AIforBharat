@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\flask_jwt_extended\utils.py
+# hypothesis_version: 6.148.7
+
+['_jwt_extended_jwt', 'access', 'csrf', 'current_user', 'jti', 'loaded_user', 'refresh']

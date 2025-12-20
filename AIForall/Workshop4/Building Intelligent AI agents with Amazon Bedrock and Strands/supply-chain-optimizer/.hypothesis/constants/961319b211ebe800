@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\contrib\imcc\_ctypes.py
+# hypothesis_version: 6.148.7
+
+[b'\n', b'\r\n', b'-----\r\n', b'-----BEGIN CERTIFICATE-----', b'-----END CERTIFICATE-----', 256, '.dll', 'BIO_free', 'BIO_new_mem_buf', 'CPython', 'DLLs', 'ERR_error_string', 'ERR_get_error', 'PEM_read_bio_X509', 'SSL_CTX_ctrl', 'SSL_CTX_get_options', 'Windows', '_is_gil_enabled', '_ob_next', '_ob_prev', '_ssl', 'libcrypto', 'libssl', 'linux', 'load_cert_chain', 'ob_refcnt', 'ob_type', 'ssl_ctx']

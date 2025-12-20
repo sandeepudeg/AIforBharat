@@ -1,0 +1,185 @@
+================================================================================
+SUPPLY CHAIN OPTIMIZER - QUICK START COMMANDS
+================================================================================
+
+STEP 1: CONFIGURE AWS CREDENTIALS
+================================================================================
+
+aws configure
+
+# Enter:
+# AWS Access Key ID: [your-access-key]
+# AWS Secret Access Key: [your-secret-key]
+# Default region: us-east-1
+# Default output format: json
+
+# Verify:
+aws sts get-caller-identity
+
+
+STEP 2: CREATE AWS RESOURCES
+================================================================================
+
+# Windows:
+setup_aws_resources.bat
+
+# macOS/Linux:
+chmod +x setup_aws_resources.sh
+./setup_aws_resources.sh
+
+# Note the output - you'll need it for .env file
+
+
+STEP 3: CREATE .env FILE
+================================================================================
+
+Create file: .env
+
+Content:
+---
+AWS_REGION=us-east-1
+AWS_ACCESS_KEY_ID=your_access_key
+AWS_SECRET_ACCESS_KEY=your_secret_key
+DYNAMODB_REGION=us-east-1
+S3_BUCKET_NAME=supply-chain-reports-XXXXX
+S3_REGION=us-east-1
+SNS_TOPIC_ARN_ALERTS=arn:aws:sns:us-east-1:ACCOUNT_ID:supply-chain-alerts
+LOG_LEVEL=INFO
+NODE_ENV=production
+---
+
+Replace XXXXX and ACCOUNT_ID with values from setup script output
+
+
+STEP 4: RUN THE WORKFLOW
+================================================================================
+
+python run_with_aws_services.py
+
+# Expected output:
+# ✓ DynamoDB: 5 tables found
+# ✓ S3: 1 buckets found
+# ✓ SNS: 1 topics found
+# [STEP 1] Creating inventory data in DynamoDB...
+# [STEP 2] Generating demand forecast...
+# [STEP 3] Optimizing inventory levels...
+# [STEP 4] Creating purchase order...
+# [STEP 5] Detecting anomalies...
+# [STEP 6] Generating analytics report...
+# ✓ Workflow completed successfully!
+
+
+STEP 5: VERIFY DATA IN AWS
+================================================================================
+
+# Check DynamoDB inventory
+aws dynamodb scan --table-name inventory --region us-east-1
+
+# Check DynamoDB forecasts
+aws dynamodb scan --table-name forecasts --region us-east-1
+
+# Check DynamoDB purchase orders
+aws dynamodb scan --table-name purchase_orders --region us-east-1
+
+# Check DynamoDB anomalies
+aws dynamodb scan --table-name anomalies --region us-east-1
+
+# Check S3 reports
+aws s3 ls s3://supply-chain-reports-XXXXX/reports/ --recursive
+
+# Check SNS topics
+aws sns list-topics --region us-east-1
+
+
+OPTIONAL: RUN MULTIPLE TIMES
+================================================================================
+
+# Each run creates new data with different timestamps
+
+python run_with_aws_services.py
+python run_with_aws_services.py
+python run_with_aws_services.py
+
+
+OPTIONAL: TEST INDIVIDUAL SERVICES
+================================================================================
+
+# Test DynamoDB
+python test_aws_dynamodb.py
+
+# Test S3
+python test_aws_s3.py
+
+# Test SNS
+python test_aws_sns.py
+
+# Test RDS (if configured)
+python test_aws_rds.py
+
+# Run integration tests
+pytest test_aws_integration.py -v
+
+
+TROUBLESHOOTING
+================================================================================
+
+# Problem: "Unable to locate credentials"
+aws configure
+
+# Problem: "ResourceNotFoundException"
+setup_aws_resources.bat  # Windows
+./setup_aws_resources.sh # macOS/Linux
+
+# Problem: "AccessDenied"
+# Check IAM user has these permissions:
+# - AmazonDynamoDBFullAccess
+# - AmazonS3FullAccess
+# - AmazonSNSFullAccess
+
+# Problem: "NoCredentialsError"
+# Verify .env file has AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+
+# View logs
+python run_with_aws_services.py 2>&1 | tee output.log
+
+
+CLEANUP (OPTIONAL)
+================================================================================
+
+# Delete DynamoDB tables
+aws dynamodb delete-table --table-name forecasts --region us-east-1
+aws dynamodb delete-table --table-name inventory --region us-east-1
+aws dynamodb delete-table --table-name anomalies --region us-east-1
+aws dynamodb delete-table --table-name purchase_orders --region us-east-1
+aws dynamodb delete-table --table-name suppliers --region us-east-1
+
+# Delete S3 bucket
+aws s3 rb s3://supply-chain-reports-XXXXX --force
+
+# Delete SNS topic
+aws sns delete-topic --topic-arn arn:aws:sns:us-east-1:ACCOUNT_ID:supply-chain-alerts
+
+# Delete IAM role
+aws iam delete-role --role-name supply-chain-lambda-role
+
+
+SUMMARY
+================================================================================
+
+Total time: ~9 minutes
+- AWS setup: 5 minutes
+- Configuration: 2 minutes
+- First run: 2 minutes
+
+Cost per run: ~$0.00012 (less than 1 cent)
+
+Files created:
+- run_with_aws_services.py (main script)
+- .env (configuration)
+
+Data stored in:
+- DynamoDB: inventory, forecasts, purchase_orders, anomalies
+- S3: reports/YYYY/MM/DD/
+- SNS: email notifications
+
+================================================================================

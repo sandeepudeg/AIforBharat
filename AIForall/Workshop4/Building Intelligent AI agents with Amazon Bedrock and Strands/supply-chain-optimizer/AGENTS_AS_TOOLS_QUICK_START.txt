@@ -1,0 +1,229 @@
+================================================================================
+AGENTS AS TOOLS - QUICK START
+================================================================================
+
+Your supply chain agents are now available as TOOLS for a Strands Agent.
+
+FILES CREATED:
+================================================================================
+
+1. src/agents/agent_tools.py
+   - 6 agent tools wrapped with @tool decorator
+   - Tools: forecast_demand, optimize_inventory, create_purchase_order,
+            detect_anomalies, generate_report, get_inventory_status
+
+2. supply_chain_orchestrator.py
+   - Master Strands Agent that uses all 6 tools
+   - Interactive mode for asking questions
+   - Example workflow mode
+
+3. AGENTS_AS_TOOLS.md
+   - Complete documentation
+   - Tool definitions and parameters
+   - Example workflows
+   - Usage examples
+
+
+QUICK START:
+================================================================================
+
+1. Prerequisites:
+   - AWS configured: aws configure
+   - AWS resources created: setup_aws_resources.bat or ./setup_aws_resources.sh
+   - .env file configured
+   - Dependencies: pip install -r requirements.txt
+
+2. Run Interactive Mode:
+   python supply_chain_orchestrator.py
+
+3. Run Example Workflow:
+   python supply_chain_orchestrator.py --example
+
+
+AVAILABLE TOOLS:
+================================================================================
+
+1. forecast_demand(sku, sales_data, forecast_days=30)
+   → Generates demand forecasts with confidence intervals
+   → Stores in DynamoDB
+
+2. optimize_inventory(sku, annual_demand, ordering_cost, holding_cost_per_unit)
+   → Calculates EOQ and reorder points
+   → Returns optimization recommendations
+
+3. create_purchase_order(sku, supplier_id, quantity, unit_price, delivery_days=7)
+   → Creates purchase orders
+   → Stores in DynamoDB
+
+4. detect_anomalies(sku, current_inventory, forecasted_inventory, confidence_80, confidence_95)
+   → Detects inventory anomalies
+   → Stores in DynamoDB
+   → Sends SNS alerts if needed
+
+5. generate_report(inventory_data, forecast_data, supplier_data)
+   → Generates analytics reports with KPIs
+   → Saves to S3
+
+6. get_inventory_status(sku)
+   → Gets current inventory level
+   → Reads from DynamoDB
+
+
+EXAMPLE QUERIES:
+================================================================================
+
+In interactive mode, try:
+
+• "Forecast demand for PROD-001"
+• "Optimize inventory for PROD-001"
+• "Create a purchase order for 1500 units"
+• "Check for anomalies in PROD-001"
+• "Generate a report"
+• "What's the current inventory status?"
+
+
+HOW IT WORKS:
+================================================================================
+
+User Input
+    ↓
+Strands Agent (supply_chain_orchestrator.py)
+    ↓
+Analyzes query and decides which tools to use
+    ↓
+Calls appropriate tools (forecast_demand, optimize_inventory, etc.)
+    ↓
+Tools execute and store data in AWS
+    ↓
+Agent returns results to user
+
+
+DATA FLOW:
+================================================================================
+
+Tools → AWS Services → Storage
+  ↓
+forecast_demand → DynamoDB (forecasts table)
+optimize_inventory → Returns calculations
+create_purchase_order → DynamoDB (purchase_orders table)
+detect_anomalies → DynamoDB (anomalies table) + SNS (alerts)
+generate_report → S3 (reports bucket)
+get_inventory_status → Reads from DynamoDB
+
+
+USING IN YOUR OWN AGENT:
+================================================================================
+
+from strands import Agent
+from strands.models import BedrockModel
+from src.agents.agent_tools import (
+    forecast_demand,
+    optimize_inventory,
+    create_purchase_order,
+    detect_anomalies,
+    generate_report,
+    get_inventory_status,
+)
+
+model = BedrockModel(model_id="us.anthropic.claude-sonnet-4-20250514-v1:0")
+
+agent = Agent(
+    model=model,
+    system_prompt="You are a supply chain expert...",
+    tools=[
+        forecast_demand,
+        optimize_inventory,
+        create_purchase_order,
+        detect_anomalies,
+        generate_report,
+        get_inventory_status,
+    ],
+)
+
+response = agent("Forecast demand for PROD-001")
+print(response)
+
+
+EXAMPLE WORKFLOWS:
+================================================================================
+
+Workflow 1: Complete Optimization
+  User: "Optimize supply chain for PROD-001"
+  → forecast_demand()
+  → optimize_inventory()
+  → create_purchase_order()
+  → detect_anomalies()
+  → generate_report()
+  Result: Complete optimization with recommendations
+
+Workflow 2: Anomaly Response
+  User: "Check PROD-001 for issues"
+  → get_inventory_status()
+  → detect_anomalies()
+  → generate_report()
+  Result: Issues identified with recommendations
+
+Workflow 3: Demand Planning
+  User: "Plan for next quarter"
+  → forecast_demand()
+  → optimize_inventory()
+  → create_purchase_order()
+  Result: Purchase orders created based on forecast
+
+
+RUNNING:
+================================================================================
+
+Interactive Mode:
+  python supply_chain_orchestrator.py
+  
+  Then type queries like:
+  - "Forecast demand for PROD-001"
+  - "Optimize inventory"
+  - "Create a purchase order"
+  - "Check for anomalies"
+  - "Generate a report"
+
+Example Mode:
+  python supply_chain_orchestrator.py --example
+  
+  Runs a complete example showing all tools in action
+
+
+TROUBLESHOOTING:
+================================================================================
+
+Error: "Unable to locate credentials"
+  → Run: aws configure
+
+Error: "ResourceNotFoundException"
+  → Run: setup_aws_resources.bat (Windows) or ./setup_aws_resources.sh (macOS/Linux)
+
+Error: "ModuleNotFoundError"
+  → Run: pip install -r requirements.txt
+
+Error: "No module named 'strands'"
+  → Run: pip install strands-agents
+
+
+SUMMARY:
+================================================================================
+
+You now have:
+✓ 6 agent tools ready to use
+✓ Master orchestrator agent
+✓ Interactive mode for testing
+✓ Example workflows
+✓ AWS integration for data storage
+
+Start with:
+  python supply_chain_orchestrator.py
+
+Then ask questions like:
+  "Forecast demand for PROD-001"
+  "Optimize inventory"
+  "Create a purchase order"
+
+The agent will automatically call the right tools and return results!
+
+================================================================================

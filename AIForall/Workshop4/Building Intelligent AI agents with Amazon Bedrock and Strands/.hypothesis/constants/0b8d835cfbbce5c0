@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\models\alert.py
+# hypothesis_version: 6.148.7
+
+['Alert', 'acknowledged', 'acknowledged_at', 'alert_id', 'alert_type', 'anomaly', 'anomaly_id', 'created_at', 'critical', 'critical_inventory', 'current_value', 'delivery_delay', 'description', 'forecast_change', 'high', 'low', 'medium', 'pending', 'po_id', 'recipients', 'recommended_action', 'resolved', 'resolved_at', 'sent', 'sent_at', 'severity', 'sku', 'status', 'threshold_value', 'title', 'warehouse_id']

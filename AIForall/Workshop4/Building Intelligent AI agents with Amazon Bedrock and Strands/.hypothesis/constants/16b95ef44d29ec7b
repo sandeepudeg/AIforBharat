@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\aws_xray_sdk\core\patcher.py
+# hypothesis_version: 6.148.7
+
+['%s already patched', ', ', '.', '/', '__', 'aioboto3', 'aiobotocore', 'aws_xray_sdk.ext.%s', 'boto3', 'botocore', 'httplib', 'httpx', 'mysql', 'pg8000', 'psycopg', 'psycopg2', 'pymongo', 'pymysql', 'pynamodb', 'requests', 'sqlalchemy_core', 'sqlite3', '{}.py', '{}.pyc', '{}.{}', '{}/__init__.py', '{}/__init__.pyc']

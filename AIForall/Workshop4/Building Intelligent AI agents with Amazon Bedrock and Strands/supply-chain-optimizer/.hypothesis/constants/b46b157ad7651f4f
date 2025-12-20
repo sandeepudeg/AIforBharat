@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\orchestration\orchestrator.py
+# hypothesis_version: 6.148.7
+
+['1', 'Arn', 'Detail', 'DetailType', 'ENABLED', 'Entries', 'EventId', 'FailedEntryCount', 'Id', 'Input', 'Inventory Update', 'Resources', 'RoleArn', 'RuleArn', 'Rules', 'Source', 'cron(0 * * * ? *)', 'cron(0 2 * * ? *)', 'cron(0 3 * * ? *)', 'cron(0 4 ? * MON *)', 'detail', 'detail-type', 'event_type', 'inventory_changed', 'source']

@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\connection.py
+# hypothesis_version: 6.148.7
+
+[-1.0, 443, '%', "', '", '.', 'Content-Length', 'Content-Type', 'Transfer-Encoding', 'User-Agent', '[]', '[^a-z]', '__aiter__', '_connect_timings', 'accept-encoding', 'charset', 'chunked', 'content-length', 'content-type', 'context', 'h2', 'host', 'http', 'http/1.1', 'https', 'on_early_response', 'record layer failure', 'response_options', 'system://', 'transfer-encoding', 'unknown protocol', 'user-agent', 'utf-8', 'utf8', 'utf_8', 'wrong version number']

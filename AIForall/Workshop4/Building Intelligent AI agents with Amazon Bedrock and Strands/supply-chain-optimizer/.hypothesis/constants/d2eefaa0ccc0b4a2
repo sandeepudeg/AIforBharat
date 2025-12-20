@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\util\request.py
+# hypothesis_version: 6.148.7
+
+[',', ',br', ',zstd', '@@@SKIP_HEADER@@@', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'TRACE', '__aiter__', 'accept-encoding', 'authorization', 'cache-control', 'connection', 'content-encoding', 'content-language', 'content-length', 'content-location', 'content-type', 'digest', 'gzip,deflate', 'host', 'keep-alive', 'last-modified', 'no-cache', 'proxy-authorization', 'read', 'seek', 'tell', 'user-agent', 'utf-8']

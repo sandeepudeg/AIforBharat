@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\backend\_async\hface.py
+# hypothesis_version: 6.148.7
+
+[b':', b':authority', b':method', b':path', b':protocol', b':scheme', b':status', b'CONNECT', b'accept-encoding', b'connection', b'content-length', b'host', b'identity', b'keep-alive', b'transfer-encoding', b'upgrade', 0.001, 0.01, 0.1, 3.0, 10.0, 300.0, 101, 200, 272, 298, 300, 400, 443, '()', ', ', ':', 'PEM_cert_to_DER_cert', 'TLSv1.0', 'TLSv1.1', 'TLSv1.2', 'TLSv1.3', 'Unknown', '_connect_timings', '_sslobj', 'actual_length', 'alt-svc', 'ascii', 'eof_received', 'expected_length', 'get_verified_chain', 'getpeername', 'h2', 'h2c', 'h3', 'header', 'http', 'http.client.send', 'http/1.1', 'https', 'idna', 'iso-8859-1', 'load_default_certs', 'sslobj', 'stream_id', 'x509_ca']

@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\api\auth.py
+# hypothesis_version: 6.148.7
+
+[401, 403, 'API_KEY', 'HS256', 'Invalid API key', 'JWT_ALGORITHM', 'JWT_SECRET_KEY', 'X-API-Key', 'X-User-Role', 'dev-api-key', 'error', 'user']

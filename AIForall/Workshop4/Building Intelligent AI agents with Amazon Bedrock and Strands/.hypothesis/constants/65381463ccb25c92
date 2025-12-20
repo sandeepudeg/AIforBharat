@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\agents\demand_forecasting_agent.py
+# hypothesis_version: 6.148.7
+
+[0.0, 1.0, 1.28, 1.96, '_with_seasonality', 'confidence_80', 'confidence_95', 'created_at', 'data_points', 'external_factor', 'forecast_date', 'forecasted_demand', 'forecasts', 'max_sales', 'mean', 'method', 'min_sales', 'quantity', 'seasonal_factor', 'std_dev', 'trend', 'updated_at']

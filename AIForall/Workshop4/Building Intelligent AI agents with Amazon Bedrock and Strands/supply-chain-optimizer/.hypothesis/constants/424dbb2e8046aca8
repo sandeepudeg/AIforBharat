@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\models\anomaly.py
+# hypothesis_version: 6.148.7
+
+[0.95, 1000, 'ANM-001', 'Anomaly description', 'Anomaly status', 'Confidence score 0-1', 'PROD-001', 'Recommended action', 'Resolution timestamp', 'Root cause analysis', 'SKU cannot be empty', 'Severity level', 'Stock Keeping Unit', 'Type of anomaly', 'WH-001', 'anomaly_id', 'anomaly_type', 'confidence_score', 'critical', 'demand_spike', 'description', 'example', 'high', 'inventory_deviation', 'inventory_shrinkage', 'investigating', 'low', 'medium', 'open', 'recommended_action', 'resolved', 'root_cause', 'severity', 'sku', 'status', 'supplier_delay', 'warehouse_id']

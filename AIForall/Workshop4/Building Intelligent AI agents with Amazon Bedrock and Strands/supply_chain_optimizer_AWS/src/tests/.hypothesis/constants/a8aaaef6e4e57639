@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/agents/supplier_coordination_agent.py
+# hypothesis_version: 6.148.7
+
+[0.0, 0.1, 0.2, 0.3, 0.4, 100.0, 'Item', 'SKU cannot be empty', 'Unknown', 'actual_delivery_date', 'comparison_scores', 'created_at', 'days_overdue', 'days_remaining', 'impact', 'is_delayed', 'last_order_date', 'lead_time_days', 'name', 'notes', 'order_date', 'po_id', 'purchase_orders', 'quantity', 'rationale', 'recommended_actions', 'reliability_score', 'sku', 'status', 'supplier_id', 'suppliers', 'total_cost', 'total_orders', 'unit_price', 'updated_at']

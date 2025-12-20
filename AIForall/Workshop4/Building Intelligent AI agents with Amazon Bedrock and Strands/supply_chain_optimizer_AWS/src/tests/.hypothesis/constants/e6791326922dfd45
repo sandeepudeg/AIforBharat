@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/api/auth.py
+# hypothesis_version: 6.148.7
+
+[401, 403, 'API_KEY', 'HS256', 'Invalid API key', 'JWT_ALGORITHM', 'JWT_SECRET_KEY', 'X-API-Key', 'X-User-Role', 'dev-api-key', 'error', 'user']

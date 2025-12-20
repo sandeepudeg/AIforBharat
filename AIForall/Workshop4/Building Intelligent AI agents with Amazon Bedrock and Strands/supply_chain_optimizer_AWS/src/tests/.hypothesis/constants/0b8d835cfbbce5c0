@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/models/alert.py
+# hypothesis_version: 6.148.7
+
+['Alert', 'acknowledged', 'acknowledged_at', 'alert_id', 'alert_type', 'anomaly', 'anomaly_id', 'created_at', 'critical', 'critical_inventory', 'current_value', 'delivery_delay', 'description', 'forecast_change', 'high', 'low', 'medium', 'pending', 'po_id', 'recipients', 'recommended_action', 'resolved', 'resolved_at', 'sent', 'sent_at', 'severity', 'sku', 'status', 'threshold_value', 'title', 'warehouse_id']

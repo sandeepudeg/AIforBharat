@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\flask_jwt_extended\tokens.py
+# hypothesis_version: 6.148.7
+
+['Missing claim: csrf', 'Missing claim: {}', 'access', 'aud', 'csrf', 'exp', 'fresh', 'iat', 'iss', 'jti', 'nbf', 'type', 'verify_aud', 'verify_exp', 'verify_sub']

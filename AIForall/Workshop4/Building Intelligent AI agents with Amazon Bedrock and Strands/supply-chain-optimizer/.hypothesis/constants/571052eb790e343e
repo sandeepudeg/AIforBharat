@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\models\inventory.py
+# hypothesis_version: 6.148.7
+
+[100, 400, 500, 'INV-001', 'PROD-001', 'SKU cannot be empty', 'Stock Keeping Unit', 'WH-001', 'Warehouse identifier', 'example', 'inventory_id', 'quantity_available', 'quantity_on_hand', 'quantity_reserved', 'reorder_point', 'sku', 'warehouse_id']

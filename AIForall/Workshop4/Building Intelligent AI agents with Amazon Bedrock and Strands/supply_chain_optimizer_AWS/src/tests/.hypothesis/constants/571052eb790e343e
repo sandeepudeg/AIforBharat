@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/models/inventory.py
+# hypothesis_version: 6.148.7
+
+[100, 400, 500, 'INV-001', 'PROD-001', 'SKU cannot be empty', 'Stock Keeping Unit', 'WH-001', 'Warehouse identifier', 'example', 'inventory_id', 'quantity_available', 'quantity_on_hand', 'quantity_reserved', 'reorder_point', 'sku', 'warehouse_id']

@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/models/warehouse.py
+# hypothesis_version: 6.148.7
+
+[0.5, 1.0, 5000, 10000, 'Central Warehouse', 'New York', 'WH-001', 'Warehouse name', 'capacity', 'closed', 'current_inventory', 'disrupted', 'example', 'location', 'maintenance', 'name', 'operational', 'status', 'warehouse_id']

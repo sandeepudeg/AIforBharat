@@ -1,0 +1,44 @@
+[
+  {
+    "sku": "PROD-001",
+    "date": "2025-12-01",
+    "quantity": 100,
+    "revenue": 1050,
+    "warehouse": "WH-001"
+  },
+  {
+    "sku": "PROD-001",
+    "date": "2025-11-01",
+    "quantity": 105,
+    "revenue": 1102.5,
+    "warehouse": "WH-001"
+  },
+  {
+    "sku": "PROD-001",
+    "date": "2025-10-01",
+    "quantity": 110,
+    "revenue": 1155,
+    "warehouse": "WH-001"
+  },
+  {
+    "sku": "PROD-002",
+    "date": "2025-12-01",
+    "quantity": 80,
+    "revenue": 1260,
+    "warehouse": "WH-002"
+  },
+  {
+    "sku": "PROD-002",
+    "date": "2025-11-01",
+    "quantity": 85,
+    "revenue": 1338.75,
+    "warehouse": "WH-002"
+  },
+  {
+    "sku": "PROD-003",
+    "date": "2025-12-01",
+    "quantity": 50,
+    "revenue": 1250,
+    "warehouse": "WH-001"
+  }
+]

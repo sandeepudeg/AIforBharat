@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\contrib\resolver\protocols.py
+# hypothesis_version: 6.148.7
+
+[b'\x00', b'\x00\x00', 256, 65535, '!B', '!H', '!HHHHHH', '!HHHI', '.', 'DNS', 'DNSKEY', 'DNSSEC', 'Format Error', 'No Error', 'Non-Existent Domain', 'Not Authorized', 'Query Refused', 'Server Failure', '[', '[]', 'ascii', 'custom', 'doh', 'doq', 'dot', 'dou', 'idna', 'ii', 'in-memory', 'kwargs', 'localhost', 'null', 'patterns', 'port', 'self', 'server', 'subjectAltName', 'system']

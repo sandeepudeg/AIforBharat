@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\_async\poolmanager.py
+# hypothesis_version: 6.148.7
+
+[101, 200, 300, 303, '*/*', '; ', 'Accept', 'AsyncPoolManager', 'AsyncProxyManager', 'CONNECT', 'GET', 'Host', 'No host specified.', 'Redirecting %s -> %s', 'Retry-After', 'Retry: %s', '_SelfT', '_proxy', '_proxy_config', '_proxy_headers', 'assert_same_host', 'block', 'blocksize', 'body', 'body_pos', 'ca_cert_data', 'ca_cert_dir', 'ca_certs', 'chunked', 'decode_content', 'disabled_svn', 'extension', 'from_promise', 'headers', 'host', 'http', 'https', 'is_idle', 'maxsize', 'method', 'multiplexed', 'pm_redirect', 'pm_url', 'pool_timeout', 'port', 'preload_content', 'proxy_from_url', 'redirect', 'resolver', 'response_kw', 'retries', 'scheme', 'strict', 'timeout']

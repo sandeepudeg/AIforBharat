@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\boto3\s3\transfer.py
+# hypothesis_version: 6.148.7
+
+[100, 256, 1024, '.', '/', 'max_concurrency', 'max_io_queue', 'max_io_queue_size']

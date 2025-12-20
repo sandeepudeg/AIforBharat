@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\contrib\ssa\__init__.py
+# hypothesis_version: 6.148.7
+
+[65536, '3', '7', 'AsyncSocket', 'PyPy', 'SSLAsyncSocket', 'SelectorEventLoop', 'WSAConnect', 'Windows', '_sock', 'close', 'shutdown', 'socket', 'ssl_object', 'sslcontext']

@@ -525,7 +525,7 @@ Want to try it yourself?
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/snake-adaptive-ai.git
+git clone https://github.com/sandeepudeg/AIforBharat/tree/master/AIForall/Workshop4/Retro_Revival)
 cd snake-adaptive-ai
 
 # Install dependencies
@@ -573,7 +573,7 @@ I'm a developer passionate about building reliable systems. This project was my 
 - [Kiro Documentation](https://kiro.dev)
 - [EARS Requirements Syntax](https://www.incose.org/products-and-publications/publications/se-handbook)
 - [Hypothesis: Property-Based Testing](https://hypothesis.readthedocs.io/)
-- [Snake Game Source Code](https://github.com/yourusername/snake-adaptive-ai)
+- [Snake Game Source Code](https://github.com/sandeepudeg/AIforBharat/tree/master/AIForall/Workshop4/Retro_Revival)
 
 ---
 

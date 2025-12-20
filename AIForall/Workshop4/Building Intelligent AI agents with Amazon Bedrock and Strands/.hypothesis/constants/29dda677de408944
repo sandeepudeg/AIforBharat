@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\services\notification_service.py
+# hypothesis_version: 6.148.7
+
+['Item', 'SKU cannot be empty', 'alert_id', 'alerts', 'approved', 'critical', 'delivered', 'high', 'low', 'medium', 'rejected', 'shipped']

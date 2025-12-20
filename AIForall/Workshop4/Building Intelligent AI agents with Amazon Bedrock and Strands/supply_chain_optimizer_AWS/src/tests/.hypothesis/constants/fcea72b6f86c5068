@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/api/inventory_routes.py
+# hypothesis_version: 6.148.7
+
+[100, 200, 400, 404, 500, 1000, '/<inventory_id>', '/api/inventory', '/low-stock', '/query', ':sku', ':warehouse_id', 'Count', 'GET', 'Inventory not found', 'Item', 'Items', 'count', 'data', 'error', 'inventory', 'inventory_id', 'limit', 'offset', 'sku', 'sku = :sku', 'sku-warehouse-index', 'total', 'warehouse_id']

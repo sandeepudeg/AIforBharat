@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\werkzeug\datastructures\auth.py
+# hypothesis_version: 6.148.7
+
+[', ', ':', '=', 'FALSE', 'TRUE', '__iter__', '_on_update', '_parameters', '_token', '_type', 'algorithm', 'auth', 'basic', 'clear', 'copy', 'digest', 'domain', 'items', 'keys', 'nonce', 'opaque', 'password', 'pop', 'popitem', 'qop', 'realm', 'setdefault', 'stale', 'true', 'update', 'username', 'utf8', 'values']

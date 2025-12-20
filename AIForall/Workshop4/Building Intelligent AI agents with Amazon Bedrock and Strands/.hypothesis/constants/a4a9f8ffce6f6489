@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\models\inventory_transfer.py
+# hypothesis_version: 6.148.7
+
+[0.0, 50.0, 100, 'Completion timestamp', 'PROD-001', 'Quantity to transfer', 'SKU cannot be empty', 'Stock Keeping Unit', 'TRF-001', 'Total transfer cost', 'Transfer status', 'WH-001', 'WH-002', 'cancelled', 'completed', 'example', 'in_transit', 'pending', 'quantity', 'sku', 'source_warehouse_id', 'status', 'transfer_cost', 'transfer_id']

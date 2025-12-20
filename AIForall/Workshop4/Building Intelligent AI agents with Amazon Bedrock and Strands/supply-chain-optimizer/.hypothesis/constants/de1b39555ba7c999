@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\__init__.py
+# hypothesis_version: 6.148.7
+
+['AsyncHTTPResponse', 'AsyncPoolManager', 'AsyncProxyManager', 'BaseHTTPResponse', 'ConnectionInfo', 'HTTPConnectionPool', 'HTTPHeaderDict', 'HTTPResponse', 'HTTPSConnectionPool', 'HttpVersion', 'MIT', 'PoolManager', 'ProxyManager', 'QUICLOGDIR', 'ResolverDescription', 'ResponsePromise', 'Retry', 'SSHKEYLOGFILE', 'Timeout', 'add_stderr_logger', 'always', 'async_proxy_from_url', 'connection_from_url', 'default', 'disable_warnings', 'ignore', 'make_headers', 'proxy_from_url', 'request']

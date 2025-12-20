@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\_async\response.py
+# hypothesis_version: 6.148.7
+
+[b'\n', ',', 'Read timed out.', '_dsa', '_eot', 'chunked', 'closed', 'read', 'trailers', 'transfer-encoding', 'utf-8']

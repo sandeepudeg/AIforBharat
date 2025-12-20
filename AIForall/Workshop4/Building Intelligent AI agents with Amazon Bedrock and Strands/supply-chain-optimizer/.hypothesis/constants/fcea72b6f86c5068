@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\api\inventory_routes.py
+# hypothesis_version: 6.148.7
+
+[100, 200, 400, 404, 500, 1000, '/<inventory_id>', '/api/inventory', '/low-stock', '/query', ':sku', ':warehouse_id', 'Count', 'GET', 'Inventory not found', 'Item', 'Items', 'count', 'data', 'error', 'inventory', 'inventory_id', 'limit', 'offset', 'sku', 'sku = :sku', 'sku-warehouse-index', 'total', 'warehouse_id']

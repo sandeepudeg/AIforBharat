@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\werkzeug\urls.py
+# hypothesis_version: 6.148.7
+
+[b' ', b'%', b'&', b'+', b':', b'@', b'[', b']', 127, 256, 65535, "!$'()*,/:;?@", '#', "%!#$&'()*+,/:;=?@", "%!$&'()*+,/:;=?@", "%!$&'()*+,/:;=@", "%!$&'()*+,;=", '&', '&=+#', '+', '.', '..', '/', "/%+$!*'(),", '//', '/:', '/:%', '/:%@', '/?#', '0123456789', '127.0.0.1', ':', ":&%=+$!*'(),", ':/', '::1', ':@/?#', '=', '?', '@', 'Invalid IPv6 URL', '[', '\\', ']', '^[a-zA-Z0-9+-.]+$', 'ascii', 'file', 'file://', 'fragment', 'idna', 'latin1', 'localhost', 'nt', 'path', 'posix', 'query', 'replace', 'strict', 'user', 'utf-8', 'werkzeug.url_quote', 'windows', '|', '|/', '|:']

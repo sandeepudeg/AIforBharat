@@ -1,0 +1,273 @@
+================================================================================
+SUPPLY CHAIN OPTIMIZER - COMPLETE SYSTEM FLOW
+================================================================================
+
+YOUR SCRIPT: run_with_aws_services.py
+│
+├─────────────────────────────────────────────────────────────────────────────
+│
+├─ STEP 1: CREATE INVENTORY DATA
+│  │
+│  └─→ Inventory Agent
+│      │
+│      └─→ DynamoDB (inventory table)
+│          └─ Stores: SKU, quantity, reorder point, safety stock
+│
+├─────────────────────────────────────────────────────────────────────────────
+│
+├─ STEP 2: GENERATE DEMAND FORECAST
+│  │
+│  ├─→ Demand Forecasting Agent
+│  │   │
+│  │   ├─ Analyzes: 12 months sales history
+│  │   ├─ Generates: 30-day forecast
+│  │   └─ Calculates: Confidence intervals (80%, 95%)
+│  │
+│  └─→ DynamoDB (forecasts table)
+│      └─ Stores: forecast_id, sku, forecasted_demand, confidence_80, confidence_95
+│
+├─────────────────────────────────────────────────────────────────────────────
+│
+├─ STEP 3: OPTIMIZE INVENTORY
+│  │
+│  ├─→ Inventory Optimizer Agent
+│  │   │
+│  │   ├─ Calculates: EOQ (Economic Order Quantity)
+│  │   ├─ Determines: Reorder Point
+│  │   └─ Checks: If reorder needed
+│  │
+│  └─→ DynamoDB (purchase_orders table)
+│      └─ Stores: po_id, sku, supplier_id, quantity, unit_price, delivery_date
+│
+├─────────────────────────────────────────────────────────────────────────────
+│
+├─ STEP 4: DETECT ANOMALIES
+│  │
+│  ├─→ Anomaly Detection Agent
+│  │   │
+│  │   ├─ Detects: Inventory deviations
+│  │   ├─ Checks: Supplier performance
+│  │   ├─ Flags: Demand spikes
+│  │   └─ Analyzes: Root causes
+│  │
+│  ├─→ DynamoDB (anomalies table)
+│  │   └─ Stores: anomaly_id, sku, type, is_anomaly, severity, description
+│  │
+│  └─→ SNS (if anomaly detected)
+│      └─ Sends: Email alert to subscribers
+│
+├─────────────────────────────────────────────────────────────────────────────
+│
+├─ STEP 5: GENERATE REPORT
+│  │
+│  ├─→ Report Generation Agent
+│  │   │
+│  │   ├─ Calculates: KPIs
+│  │   │   ├─ Inventory Turnover
+│  │   │   ├─ Forecast Accuracy
+│  │   │   └─ Supplier Reliability
+│  │   │
+│  │   ├─ Generates: Analytics Report
+│  │   └─ Creates: Recommendations
+│  │
+│  └─→ S3 (reports bucket)
+│      └─ Stores: reports/YYYY/MM/DD/report-{timestamp}.json
+│
+├─────────────────────────────────────────────────────────────────────────────
+│
+└─ STEP 6: SUMMARY
+   │
+   └─ Output:
+      ✓ Inventory data saved to DynamoDB
+      ✓ Forecast generated and saved to DynamoDB
+      ✓ Purchase order created and saved to DynamoDB
+      ✓ Anomalies detected and saved to DynamoDB
+      ✓ Report generated and saved to S3
+      ✓ Alert notification sent via SNS (if anomaly)
+
+
+================================================================================
+DATA STORAGE LOCATIONS
+================================================================================
+
+DynamoDB Tables:
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Table: inventory                                                            │
+│ ├─ inventory_id: INV-1703084800.123                                        │
+│ ├─ sku: PROD-001                                                           │
+│ ├─ warehouse: WH-001                                                       │
+│ ├─ current_quantity: 500                                                   │
+│ ├─ reorder_point: 300                                                      │
+│ └─ safety_stock: 200                                                       │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Table: forecasts                                                            │
+│ ├─ forecast_id: FCST-1703084800.456                                        │
+│ ├─ sku: PROD-001                                                           │
+│ ├─ forecasted_demand: 3000                                                 │
+│ ├─ confidence_80: 2700                                                     │
+│ ├─ confidence_95: 2400                                                     │
+│ └─ forecast_period_days: 30                                                │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Table: purchase_orders                                                      │
+│ ├─ po_id: PO-1703084800.789                                                │
+│ ├─ sku: PROD-001                                                           │
+│ ├─ supplier_id: SUPP-001                                                   │
+│ ├─ quantity: 1500                                                          │
+│ ├─ unit_price: 10.50                                                       │
+│ ├─ total_price: 15750.00                                                   │
+│ ├─ delivery_date: 2025-12-27                                               │
+│ └─ status: pending                                                         │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Table: anomalies                                                            │
+│ ├─ anomaly_id: ANM-1703084800.012                                          │
+│ ├─ sku: PROD-001                                                           │
+│ ├─ type: inventory_deviation                                               │
+│ ├─ is_anomaly: true                                                        │
+│ ├─ severity: medium                                                        │
+│ └─ description: Inventory below reorder point                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+S3 Bucket:
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ s3://supply-chain-reports-XXXXX/                                           │
+│ └─ reports/                                                                │
+│    └─ 2025/                                                                │
+│       └─ 12/                                                               │
+│          └─ 20/                                                            │
+│             └─ report-1703084800.345.json                                  │
+│                ├─ report_id: RPT-1703084800.345                            │
+│                ├─ report_date: 2025-12-20T10:30:00                         │
+│                ├─ kpis:                                                    │
+│                │  ├─ inventory_turnover: 2.45                              │
+│                │  ├─ forecast_accuracy: 92.50%                             │
+│                │  └─ supplier_reliability: 95.00%                          │
+│                └─ summary: {...}                                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+SNS Topic:
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Topic: supply-chain-alerts                                                 │
+│ ├─ Subject: Supply Chain Alert - MEDIUM                                    │
+│ └─ Message: Anomaly detected for SKU PROD-001:                             │
+│             Inventory below reorder point                                   │
+│                                                                             │
+│ Subscribers:                                                               │
+│ └─ your-email@example.com (receives email notification)                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+================================================================================
+EXECUTION TIMELINE
+================================================================================
+
+Time    Action                          Service         Result
+────────────────────────────────────────────────────────────────────────────
+0:00    Start script                    -               Script begins
+0:05    Verify AWS services             DynamoDB        ✓ 5 tables found
+        (check connectivity)            S3              ✓ 1 bucket found
+                                        SNS             ✓ 1 topic found
+
+0:10    Create inventory data           DynamoDB        ✓ Saved to inventory table
+        (Step 1)
+
+0:15    Generate forecast               Forecasting     ✓ Forecast: 3000 units
+        (Step 2)                        Agent           ✓ Saved to forecasts table
+                                        DynamoDB
+
+0:20    Optimize inventory              Inventory       ✓ EOQ: 1500 units
+        (Step 3)                        Agent           ✓ Reorder: 1000 units
+                                        DynamoDB        ✓ PO created
+
+0:25    Detect anomalies                Anomaly         ✓ Anomaly detected
+        (Step 4)                        Agent           ✓ Severity: medium
+                                        DynamoDB        ✓ Saved to anomalies table
+                                        SNS             ✓ Alert sent
+
+0:30    Generate report                 Report          ✓ KPIs calculated
+        (Step 5)                        Agent           ✓ Report generated
+                                        S3              ✓ Saved to S3
+
+0:35    Complete                        -               ✓ Workflow finished
+
+
+================================================================================
+AGENTS INVOLVED
+================================================================================
+
+1. DEMAND FORECASTING AGENT
+   Input:  Sales history (12 months)
+   Output: 30-day forecast with confidence intervals
+   Storage: DynamoDB (forecasts table)
+
+2. INVENTORY OPTIMIZER AGENT
+   Input:  Forecast, demand, costs
+   Output: EOQ, reorder point, PO recommendation
+   Storage: DynamoDB (purchase_orders table)
+
+3. SUPPLIER COORDINATION AGENT
+   Input:  PO details, supplier info
+   Output: Purchase order, tracking info
+   Storage: DynamoDB (purchase_orders table)
+
+4. ANOMALY DETECTION AGENT
+   Input:  Inventory, forecast, performance metrics
+   Output: Anomaly detection, severity, recommendations
+   Storage: DynamoDB (anomalies table), SNS (alerts)
+
+5. REPORT GENERATION AGENT
+   Input:  Inventory, forecast, supplier data
+   Output: KPIs, analytics, recommendations
+   Storage: S3 (reports bucket)
+
+
+================================================================================
+AWS SERVICES USED
+================================================================================
+
+DynamoDB
+├─ Purpose: Real-time data storage
+├─ Tables: inventory, forecasts, purchase_orders, anomalies, suppliers
+├─ Cost: ~$0.0001 per run
+└─ Data: Structured records with timestamps
+
+S3
+├─ Purpose: Report and archive storage
+├─ Bucket: supply-chain-reports-XXXXX
+├─ Cost: ~$0.00001 per run
+└─ Data: JSON reports organized by date
+
+SNS
+├─ Purpose: Alert notifications
+├─ Topic: supply-chain-alerts
+├─ Cost: ~$0.00001 per run
+└─ Data: Email notifications to subscribers
+
+RDS (Optional)
+├─ Purpose: Relational data storage
+├─ Database: supply_chain_db
+├─ Cost: ~$10/month (if used)
+└─ Data: Complex queries and relationships
+
+
+================================================================================
+TOTAL COST PER RUN
+================================================================================
+
+DynamoDB writes:     $0.0001
+S3 storage:          $0.00001
+SNS notification:    $0.00001
+─────────────────────────────
+TOTAL:               $0.00012 (less than 1 cent)
+
+100 runs:            $0.012 (1 cent)
+1000 runs:           $0.12 (12 cents)
+10000 runs:          $1.20 (1 dollar)
+
+
+================================================================================

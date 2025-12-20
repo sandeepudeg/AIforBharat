@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\aws_xray_sdk\core\models\entity.py
+# hypothesis_version: 6.148.7
+
+[400, 429, 500, '?;*()!$~^<>', 'AWS.', '_', '_cause_id', '_origin_trace_header', '_recorded', 'cause', 'default', 'exceptions', 'metadata', 'request', 'response', 'sampled', 'subsegments', 'utf-8', 'working_directory']

@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\backend\_base.py
+# hypothesis_version: 6.148.7
+
+[101, 200, 300, '.', '/', 'CONNECT', 'HTTP/1.1', 'HTTP/2.0', 'HTTP/3.0', 'ascii', 'certificate_der', 'certificate_dict', 'chunked', 'cipher', 'content-length', 'destination_address', 'established_latency', 'http', 'http_version', 'rb', 'request_sent_latency', 'resolution_latency', 'stream closed error', 'tcp', 'tls_version', 'transfer-encoding']

@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\config\environment.py
+# hypothesis_version: 6.148.7
+
+['5432', 'AWS_ACCESS_KEY_ID', 'AWS_REGION', 'BEDROCK_MODEL_ID', 'BEDROCK_REGION', 'DYNAMODB_ENDPOINT', 'DYNAMODB_REGION', 'INFO', 'LAMBDA_ROLE_ARN', 'LOG_FORMAT', 'LOG_LEVEL', 'NODE_ENV', 'RDS_DATABASE', 'RDS_HOST', 'RDS_PASSWORD', 'RDS_PORT', 'RDS_USERNAME', 'S3_BUCKET_NAME', 'S3_REGION', 'SNS_TOPIC_ARN_ALERTS', 'development', 'json', 'localhost', 'postgres', 'production', 'supply-chain-events', 'supply_chain_db', 'us-east-1']

@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/aws/__init__.py
+# hypothesis_version: 6.148.7
+
+['get_dynamodb_client', 'get_lambda_client', 'get_rds_client', 'get_s3_client', 'get_sns_client']

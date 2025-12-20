@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\agents\warehouse_manager.py
+# hypothesis_version: 6.148.7
+
+[0.0, 0.2, 0.5, 0.9, 100.0, 100, 'allocations', 'available_capacity', 'capacity', 'capacity_metrics', 'completed_at', 'current_inventory', 'inf', 'initiated_at', 'inventory', 'inventory_transfers', 'is_at_capacity', 'is_near_capacity', 'is_operational', 'location', 'quantity', 'reason', 'recommendations', 'recommended_quantity', 'redistribution_cost', 'sku', 'source_warehouse_id', 'status', 'total_allocated', 'total_redistributed', 'transfer_cost', 'transfer_id', 'transfers', 'unknown', 'warehouse_id', 'warehouses']

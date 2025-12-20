@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\api\app.py
+# hypothesis_version: 6.148.7
+
+[200, 400, 404, 405, 500, 3600, 5000, '*', '/api/*', '/api/auth/token', '/health', '0.0.0.0', 'Bearer', 'Endpoint not found', 'GET', 'JSON_SORT_KEYS', 'Method not allowed', 'POST', '__main__', 'access_token', 'environment', 'error', 'expires_in', 'healthy', 'origins', 'password', 'service', 'status', 'token_type', 'username']

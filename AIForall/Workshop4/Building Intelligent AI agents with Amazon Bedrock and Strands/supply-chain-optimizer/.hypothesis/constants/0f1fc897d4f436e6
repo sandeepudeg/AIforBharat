@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\contrib\hface\protocols\http1\_h11.py
+# hypothesis_version: 6.148.7
+
+[b'-', b':', b':authority', b':method', b':path', b':scheme', b':status', b'CONNECT', b'Host', b'host', 'Invalid stream ID.', 'ascii', 'h11']

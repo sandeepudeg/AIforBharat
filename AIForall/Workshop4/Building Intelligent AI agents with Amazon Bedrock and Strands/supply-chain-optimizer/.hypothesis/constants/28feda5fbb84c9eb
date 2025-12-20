@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\models\product.py
+# hypothesis_version: 6.148.7
+
+[2.1, 10.5, 50.0, 100, 200, 255, 'Cost per order', 'Cost per unit', 'Electronics', 'Lead time in days', 'PROD-001', 'Primary supplier ID', 'Product category', 'Product name', 'SKU cannot be empty', 'SUP-001', 'Widget A', 'category', 'example', 'lead_time_days', 'name', 'ordering_cost', 'reorder_point', 'safety_stock', 'sku', 'supplier_id', 'unit_cost']

@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\werkzeug\security.py
+# hypothesis_version: 6.148.7
+
+[132, 600000, '$', '.', '..', '../', '/', ':', 'pbkdf2', 'plain', 'scrypt', 'sha256', 'utf-8']

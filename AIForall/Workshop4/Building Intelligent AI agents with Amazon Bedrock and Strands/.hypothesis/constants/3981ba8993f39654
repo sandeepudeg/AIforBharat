@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\observability\cloudwatch.py
+# hypothesis_version: 6.148.7
+
+['AgentExecutionTime', 'AgentFailure', 'AgentName', 'AgentSuccess', 'AnomaliesDetected', 'AnomalyType', 'Count', 'Dimensions', 'ForecastAccuracy', 'MetricName', 'Name', 'None', 'Percent', 'PurchaseOrderCount', 'ReportGenerationTime', 'ReportType', 'Seconds', 'Status', 'SupplierId', 'SupplyChainOptimizer', 'Timestamp', 'Unit', 'Value', 'cloudwatch']

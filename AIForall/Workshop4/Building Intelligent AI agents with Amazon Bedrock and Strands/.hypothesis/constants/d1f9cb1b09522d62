@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\contrib\ssa\_timeout.py
+# hypothesis_version: 6.148.7
+
+['Timeout', 'active', 'created', 'expired', 'expiring', 'finished', 'timeout']

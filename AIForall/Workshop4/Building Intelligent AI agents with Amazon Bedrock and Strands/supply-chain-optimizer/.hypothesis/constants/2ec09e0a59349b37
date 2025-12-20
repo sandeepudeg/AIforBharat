@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\models\supplier.py
+# hypothesis_version: 6.148.7
+
+[0.0, 0.95, 6.5, 85.0, 95.0, 100, 255, '+1-555-0100', '@', 'Acme Supplies', 'Contact phone number', 'Date of last order', 'Invalid email format', 'SUP-001', 'Supplier name', 'contact@acme.com', 'contact_email', 'contact_phone', 'example', 'lead_time_days', 'name', 'reliability_score', 'supplier_id', 'total_orders']

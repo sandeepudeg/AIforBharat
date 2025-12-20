@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\contrib\imcc\_shm.py
+# hypothesis_version: 6.148.7
+
+['ascii', 'c', 'freebsd', 'linux', 'load_cert_chain', 'memfd_create', 'openbsd', 'rt', 'w']

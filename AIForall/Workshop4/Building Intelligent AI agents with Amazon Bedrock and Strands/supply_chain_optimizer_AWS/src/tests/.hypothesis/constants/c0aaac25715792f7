@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/agents/inventory_optimizer_agent.py
+# hypothesis_version: 6.148.7
+
+[0.0, 1.0, ':eoq', ':rp', ':updated_at', 'allocations', 'annual_demand', 'average_daily_demand', 'capacity', 'eoq', 'inf', 'inventory', 'po_id', 'products', 'purchase_orders', 'quantity', 'reorder_point', 'safety_stock', 'sku', 'status', 'supplier_id', 'total_allocated', 'total_cost', 'unit_price', 'warehouse_id']

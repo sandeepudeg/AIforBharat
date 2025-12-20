@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/models/product.py
+# hypothesis_version: 6.148.7
+
+[2.1, 10.5, 50.0, 100, 200, 255, 'Cost per order', 'Cost per unit', 'Electronics', 'Lead time in days', 'PROD-001', 'Primary supplier ID', 'Product category', 'Product name', 'SKU cannot be empty', 'SUP-001', 'Widget A', 'category', 'example', 'lead_time_days', 'name', 'ordering_cost', 'reorder_point', 'safety_stock', 'sku', 'supplier_id', 'unit_cost']

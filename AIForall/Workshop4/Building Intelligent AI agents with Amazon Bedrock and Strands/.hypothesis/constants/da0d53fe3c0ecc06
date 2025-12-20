@@ -1,0 +1,4 @@
+# file: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop4\Building Intelligent AI agents with Amazon Bedrock and Strands\supply-chain-optimizer\src\models\purchase_order.py
+# hypothesis_version: 6.148.7
+
+[0.0, 10.5, 1050.0, 100, '2024-01-15', 'Actual delivery date', 'Order quantity', 'Order status', 'PO-001', 'PROD-001', 'Price per unit', 'SKU cannot be empty', 'SUP-001', 'Stock Keeping Unit', 'Supplier identifier', 'Total order cost', 'after', 'cancelled', 'confirmed', 'delivered', 'example', 'pending', 'po_id', 'quantity', 'shipped', 'sku', 'status', 'supplier_id', 'total_cost', 'unit_price']

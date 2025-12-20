@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/models/inventory_transfer.py
+# hypothesis_version: 6.148.7
+
+[0.0, 50.0, 100, 'Completion timestamp', 'PROD-001', 'Quantity to transfer', 'SKU cannot be empty', 'Stock Keeping Unit', 'TRF-001', 'Total transfer cost', 'Transfer status', 'WH-001', 'WH-002', 'cancelled', 'completed', 'example', 'in_transit', 'pending', 'quantity', 'sku', 'source_warehouse_id', 'status', 'transfer_cost', 'transfer_id']

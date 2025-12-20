@@ -1,0 +1,4 @@
+# file: C:\Users\sande\AppData\Roaming\Python\Python313\site-packages\urllib3\util\socket_state.py
+# hypothesis_version: 6.148.7
+
+[262, 1024, 'B', 'BytesIn', 'BytesInFlight', 'BytesOut', 'BytesReordered', 'BytesRetrans', 'ConnectionTimeMs', 'Cwnd', 'DupAcksIn', 'FastRetrans', 'MinRttUs', 'Mss', 'RcvBuf', 'RcvWnd', 'RttUs', 'SndWnd', 'State', 'SynRetrans', 'TCP_CONNECTION_INFO', 'TCP_INFO', 'TimeoutEpisodes', 'TimestampsEnabled', 'bsd', 'cygwin', 'darwin', 'linux', 'msys', 'win32']

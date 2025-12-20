@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/models/anomaly.py
+# hypothesis_version: 6.148.7
+
+[0.95, 1000, 'ANM-001', 'Anomaly description', 'Anomaly status', 'Confidence score 0-1', 'PROD-001', 'Recommended action', 'Resolution timestamp', 'Root cause analysis', 'SKU cannot be empty', 'Severity level', 'Stock Keeping Unit', 'Type of anomaly', 'WH-001', 'anomaly_id', 'anomaly_type', 'confidence_score', 'critical', 'demand_spike', 'description', 'example', 'high', 'inventory_deviation', 'inventory_shrinkage', 'investigating', 'low', 'medium', 'open', 'recommended_action', 'resolved', 'root_cause', 'severity', 'sku', 'status', 'supplier_delay', 'warehouse_id']

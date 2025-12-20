@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/models/__init__.py
+# hypothesis_version: 6.148.7
+
+['Alert', 'AlertSeverity', 'AlertStatus', 'AlertType', 'Anomaly', 'AnomalyValidator', 'Forecast', 'ForecastValidator', 'Inventory', 'InventoryTransfer', 'InventoryValidator', 'Product', 'ProductValidator', 'PurchaseOrder', 'Report', 'ReportValidator', 'Supplier', 'SupplierValidator', 'TransferStatus', 'Warehouse', 'WarehouseStatus', 'WarehouseValidator']

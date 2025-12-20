@@ -1,0 +1,4 @@
+# file: /mnt/custom-file-systems/efs/fs-0630f0e3d0ccc5dac_fsap-03aca6736d6f03ef1/Sandeep_Udeg/supply_chain_optimizer/src/api/purchase_order_routes.py
+# hypothesis_version: 6.148.7
+
+[100, 200, 201, 400, 404, 500, 1000, '/<po_id>', '/<po_id>/status', '/api/purchase-orders', 'DELETE', 'GET', 'PATCH', 'POST', 'Status is required', 'actual_delivery_date', 'cancelled', 'confirmed', 'data', 'delivered', 'error', 'limit', 'message', 'offset', 'order_date', 'pending', 'po_id', 'purchase_order', 'quantity', 'shipped', 'sku', 'status', 'supplier_id', 'total', 'total_cost', 'unit_price']
