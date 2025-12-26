@@ -1,0 +1,114 @@
+{
+  "geography": {
+    "id": "geography",
+    "name": "Geography & Areas",
+    "description": "Explore Pune's neighborhoods and geographical areas",
+    "icon": "fa-map",
+    "article_count": 0
+  },
+  "food": {
+    "id": "food",
+    "name": "Food & Street Culture",
+    "description": "Discover authentic Puneri cuisine and street food",
+    "icon": "fa-utensils",
+    "article_count": 0
+  },
+  "culture": {
+    "id": "culture",
+    "name": "Puneri Culture & Humor",
+    "description": "Understand Puneri communication style and cultural values",
+    "icon": "fa-masks-theater",
+    "article_count": 0
+  },
+  "places": {
+    "id": "places",
+    "name": "Places to Roam",
+    "description": "Discover historical sites, temples, and attractions",
+    "icon": "fa-landmark",
+    "article_count": 0
+  },
+  "independence": {
+    "id": "independence",
+    "name": "Independence Fighters & Memorials",
+    "description": "Learn about Pune's role in India's independence",
+    "icon": "fa-flag",
+    "article_count": 0
+  },
+  "folk_culture": {
+    "id": "folk_culture",
+    "name": "Folk Culture & Drama",
+    "description": "Explore traditional Marathi art forms",
+    "icon": "fa-music",
+    "article_count": 0
+  },
+  "trekking": {
+    "id": "trekking",
+    "name": "Trekking & Nature",
+    "description": "Discover trekking routes and outdoor activities",
+    "icon": "fa-mountain",
+    "article_count": 0
+  },
+  "education": {
+    "id": "education",
+    "name": "Education",
+    "description": "Learn about Pune's educational institutions",
+    "icon": "fa-graduation-cap",
+    "article_count": 0
+  },
+  "language": {
+    "id": "language",
+    "name": "Language & Translation",
+    "description": "Understand Marathi phrases and Puneri tone",
+    "icon": "fa-language",
+    "article_count": 0
+  },
+  "transport": {
+    "id": "transport",
+    "name": "Transport & Connectivity",
+    "description": "Navigate Pune with transport information",
+    "icon": "fa-bus",
+    "article_count": 0
+  },
+  "sports": {
+    "id": "sports",
+    "name": "Sports & Adventure",
+    "description": "Discover sports and adventure activities",
+    "icon": "fa-basketball",
+    "article_count": 0
+  },
+  "shopping": {
+    "id": "shopping",
+    "name": "Shopping & Markets",
+    "description": "Explore traditional markets and malls",
+    "icon": "fa-shopping-bag",
+    "article_count": 0
+  },
+  "festivals": {
+    "id": "festivals",
+    "name": "Festivals & Celebrations",
+    "description": "Learn about Pune's major festivals",
+    "icon": "fa-fireworks",
+    "article_count": 0
+  },
+  "museums": {
+    "id": "museums",
+    "name": "Museums & Art Galleries",
+    "description": "Explore cultural and historical museums",
+    "icon": "fa-museum",
+    "article_count": 0
+  },
+  "zoos": {
+    "id": "zoos",
+    "name": "Zoos & Wildlife Parks",
+    "description": "Discover wildlife and nature parks",
+    "icon": "fa-paw",
+    "article_count": 0
+  },
+  "climate": {
+    "id": "climate",
+    "name": "Climate & Weather",
+    "description": "Learn about Pune's weather and seasons",
+    "icon": "fa-cloud-sun",
+    "article_count": 0
+  }
+}

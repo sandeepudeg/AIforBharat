@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category.name }} - Pune Knowledge Base{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/categories">Categories</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ category.name }}</li>
+        </ol>
+    </nav>
+
+    <!-- Category Header -->
+    <div class="category-header mb-5">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1>{{ category.name }}</h1>
+                <p class="lead text-muted">{{ category.description }}</p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="category-icon-large">
+                    {% if category.id == 'geography' %}
+                        <i class="fas fa-map"></i>
+                    {% elif category.id == 'food' %}
+                        <i class="fas fa-utensils"></i>
+                    {% elif category.id == 'culture' %}
+                        <i class="fas fa-masks-theater"></i>
+                    {% elif category.id == 'places' %}
+                        <i class="fas fa-landmark"></i>
+                    {% elif category.id == 'independence_fighters' %}
+                        <i class="fas fa-flag"></i>
+                    {% elif category.id == 'folk_culture' %}
+                        <i class="fas fa-music"></i>
+                    {% elif category.id == 'trekking' %}
+                        <i class="fas fa-mountain"></i>
+                    {% elif category.id == 'education' %}
+                        <i class="fas fa-graduation-cap"></i>
+                    {% elif category.id == 'language' %}
+                        <i class="fas fa-language"></i>
+                    {% elif category.id == 'transport' %}
+                        <i class="fas fa-bus"></i>
+                    {% elif category.id == 'sports' %}
+                        <i class="fas fa-basketball"></i>
+                    {% elif category.id == 'zoos' %}
+                        <i class="fas fa-paw"></i>
+                    {% elif category.id == 'shopping' %}
+                        <i class="fas fa-shopping-bag"></i>
+                    {% elif category.id == 'festivals' %}
+                        <i class="fas fa-fireworks"></i>
+                    {% elif category.id == 'museums' %}
+                        <i class="fas fa-image"></i>
+                    {% elif category.id == 'climate' %}
+                        <i class="fas fa-cloud-sun"></i>
+                    {% else %}
+                        <i class="fas fa-folder"></i>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Articles in Category -->
+    {% if articles %}
+    <div class="articles-section">
+        <h3 class="mb-4">Articles in this Category ({{ articles|length }})</h3>
+        <div class="row g-4">
+            {% for article in articles %}
+            <div class="col-md-6 col-lg-4">
+                <div class="article-card h-100">
+                    <div class="card-body">
+                        <!-- Article Title -->
+                        <h5 class="card-title">
+                            <a href="/articles/{{ article.id }}">{{ article.title }}</a>
+                        </h5>
+
+                        <!-- Article Description -->
+                        <p class="card-text text-muted">{{ article.description }}</p>
+
+                        <!-- Article Tags -->
+                        {% if article.tags %}
+                        <div class="article-tags mb-3">
+                            {% for tag in article.tags[:2] %}
+                                <span class="badge bg-light text-dark">{{ tag }}</span>
+                            {% endfor %}
+                            {% if article.tags|length > 2 %}
+                                <span class="badge bg-light text-dark">+{{ article.tags|length - 2 }}</span>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+
+                        <!-- Read More Link -->
+                        <a href="/articles/{{ article.id }}" class="btn btn-sm btn-outline-primary">
+                            Read More →
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-info" role="alert">
+        <strong>No articles found</strong> in this category yet.
+    </div>
+    {% endif %}
+
+    <!-- Navigation -->
+    <div class="mt-5">
+        <a href="/categories" class="btn btn-secondary">← Back to Categories</a>
+        <a href="/" class="btn btn-outline-secondary">Home</a>
+    </div>
+</div>
+
+<style>
+.category-header {
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 2rem;
+}
+
+.category-icon-large {
+    font-size: 4rem;
+    color: #0d6efd;
+    opacity: 0.8;
+}
+
+.article-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.article-card a {
+    text-decoration: none;
+    color: #0d6efd;
+}
+
+.article-card a:hover {
+    text-decoration: underline;
+}
+
+.article-tags {
+    font-size: 0.85rem;
+}
+
+.article-tags .badge {
+    margin-right: 0.25rem;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results - Pune Knowledge Base{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Search Header -->
+    <div class="search-header mb-5">
+        <h1>Search Results</h1>
+        <p class="text-muted">
+            {% if query %}
+                Found <strong>{{ results|length }}</strong> result(s) for "<strong>{{ query }}</strong>"
+            {% else %}
+                Enter a search query to get started
+            {% endif %}
+        </p>
+        
+        <!-- Search Box -->
+        <div class="search-box mb-4">
+            <input type="text" id="search-input" class="form-control form-control-lg" 
+                   placeholder="Search for anything about Pune..." value="{{ query }}">
+            <button class="btn btn-primary btn-lg" id="search-btn">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </div>
+    </div>
+
+    <!-- Error Message -->
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Error:</strong> {{ error }}
+    </div>
+    {% endif %}
+
+    <!-- Results -->
+    {% if results %}
+    <div class="search-results">
+        {% for result in results %}
+        <div class="result-item card mb-3">
+            <div class="card-body">
+                <!-- Result Title -->
+                <h5 class="card-title">
+                    <a href="/articles/{{ result.id }}">{{ result.title }}</a>
+                </h5>
+                
+                <!-- Result Meta -->
+                <div class="result-meta mb-2">
+                    <span class="badge bg-primary">{{ result.category|title }}</span>
+                    {% if result.subcategory %}
+                        <span class="badge bg-secondary">{{ result.subcategory|title }}</span>
+                    {% endif %}
+                    <span class="badge bg-light text-dark">
+                        Relevance: {{ "%.0f"|format(result.relevance_score) }}%
+                    </span>
+                </div>
+                
+                <!-- Result Description -->
+                <p class="card-text">{{ result.description }}</p>
+                
+                <!-- Result Tags -->
+                {% if result.tags %}
+                <div class="result-tags">
+                    {% for tag in result.tags[:3] %}
+                        <span class="badge bg-light text-dark">{{ tag }}</span>
+                    {% endfor %}
+                    {% if result.tags|length > 3 %}
+                        <span class="badge bg-light text-dark">+{{ result.tags|length - 3 }} more</span>
+                    {% endif %}
+                </div>
+                {% endif %}
+                
+                <!-- Read More Link -->
+                <a href="/articles/{{ result.id }}" class="btn btn-sm btn-outline-primary mt-2">
+                    Read More →
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% elif query %}
+    <div class="alert alert-info" role="alert">
+        <strong>No results found</strong> for "<strong>{{ query }}</strong>". Try a different search term.
+    </div>
+    {% endif %}
+
+    <!-- Back Button -->
+    <div class="mt-5">
+        <a href="/" class="btn btn-secondary">← Back to Home</a>
+    </div>
+</div>
+
+<style>
+.search-header {
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 2rem;
+}
+
+.result-item {
+    transition: box-shadow 0.3s ease;
+}
+
+.result-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.result-item a {
+    text-decoration: none;
+    color: #0d6efd;
+}
+
+.result-item a:hover {
+    text-decoration: underline;
+}
+
+.result-meta {
+    font-size: 0.9rem;
+}
+
+.result-tags {
+    margin-top: 0.5rem;
+}
+
+.result-tags .badge {
+    margin-right: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+</style>
+
+<script>
+document.getElementById('search-btn').addEventListener('click', function() {
+    const query = document.getElementById('search-input').value;
+    if (query.trim()) {
+        window.location.href = '/search?q=' + encodeURIComponent(query);
+    }
+});
+
+document.getElementById('search-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        document.getElementById('search-btn').click();
+    }
+});
+</script>
+{% endblock %}

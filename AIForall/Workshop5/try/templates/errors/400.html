@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Bad Request - {{ app_name }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="error-container text-center">
+                <!-- Error Icon -->
+                <div class="error-icon mb-4">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                
+                <!-- Error Code -->
+                <h1 class="error-code mb-3">400</h1>
+                
+                <!-- Error Title -->
+                <h2 class="error-title mb-3">Bad Request</h2>
+                
+                <!-- Error Message -->
+                <p class="error-message lead mb-4">
+                    The request you made is invalid or malformed. Please check your input and try again.
+                </p>
+                
+                <!-- Suggestions -->
+                <div class="error-suggestions mb-5 text-start" style="max-width: 500px; margin: 0 auto;">
+                    <h5 class="mb-3">Common issues:</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-arrow-right text-primary"></i>
+                            <span class="ms-2">Search query is too short (minimum 2 characters)</span>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-arrow-right text-primary"></i>
+                            <span class="ms-2">Search query contains invalid characters</span>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-arrow-right text-primary"></i>
+                            <span class="ms-2">Message is empty or too long</span>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-arrow-right text-primary"></i>
+                            <span class="ms-2">Invalid category or article ID</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="error-actions">
+                    <a href="/" class="btn btn-primary btn-lg me-2">
+                        <i class="fas fa-home"></i> Go to Homepage
+                    </a>
+                    <a href="javascript:history.back()" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-arrow-left"></i> Go Back
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .error-container {
+        padding: 60px 20px;
+    }
+    
+    .error-icon {
+        font-size: 5rem;
+        color: #ffc107;
+    }
+    
+    .error-code {
+        font-size: 4rem;
+        font-weight: 700;
+        color: #ffc107;
+    }
+    
+    .error-title {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--dark-text);
+    }
+    
+    .error-message {
+        color: #6c757d;
+        font-size: 1.1rem;
+    }
+    
+    .error-suggestions {
+        background-color: var(--light-bg);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid #ffc107;
+    }
+    
+    .error-suggestions h5 {
+        color: var(--dark-text);
+        font-weight: 600;
+    }
+    
+    .error-suggestions a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    .error-suggestions a:hover {
+        text-decoration: underline;
+    }
+    
+    @media (max-width: 576px) {
+        .error-container {
+            padding: 40px 10px;
+        }
+        
+        .error-icon {
+            font-size: 3rem;
+        }
+        
+        .error-code {
+            font-size: 2.5rem;
+        }
+        
+        .error-title {
+            font-size: 1.5rem;
+        }
+        
+        .error-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .error-actions .btn {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}

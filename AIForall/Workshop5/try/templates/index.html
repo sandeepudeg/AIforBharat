@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+
+{% block title %}Home - {{ app_name }}{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-4">Welcome to Pune</h1>
+                <p class="lead mb-4">
+                    Discover the heart of Maharashtra. Explore Pune's rich culture, authentic food, 
+                    historical landmarks, and vibrant lifestyle through our comprehensive knowledge base.
+                </p>
+                <div class="search-box mb-4">
+                    <input type="text" id="search-input" class="form-control form-control-lg" 
+                           placeholder="Search for anything about Pune...">
+                    <button class="btn btn-primary btn-lg" id="search-btn">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="hero-image">
+                    <i class="fas fa-city"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Categories Section -->
+<section class="categories-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Explore Pune</h2>
+        <div class="row g-4">
+            <!-- Geography -->
+            <div class="col-md-6 col-lg-4">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <h3>Geography & Areas</h3>
+                    <p>Discover Pune's neighborhoods, from historic Peths to modern IT hubs.</p>
+                    <a href="/categories" class="btn btn-outline-primary">Explore</a>
+                </div>
+            </div>
+
+            <!-- Food -->
+            <div class="col-md-6 col-lg-4">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Food & Street Culture</h3>
+                    <p>Explore authentic Puneri cuisine and famous street food spots.</p>
+                    <a href="/categories" class="btn btn-outline-primary">Explore</a>
+                </div>
+            </div>
+
+            <!-- Culture -->
+            <div class="col-md-6 col-lg-4">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-masks-theater"></i>
+                    </div>
+                    <h3>Puneri Culture & Humor</h3>
+                    <p>Understand the unique Puneri communication style and wit.</p>
+                    <a href="/categories" class="btn btn-outline-primary">Explore</a>
+                </div>
+            </div>
+
+            <!-- Places -->
+            <div class="col-md-6 col-lg-4">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3>Places to Roam</h3>
+                    <p>Discover historical sites, temples, nightlife, and attractions.</p>
+                    <a href="/categories" class="btn btn-outline-primary">Explore</a>
+                </div>
+            </div>
+
+            <!-- Independence -->
+            <div class="col-md-6 col-lg-4">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <h3>Independence Fighters</h3>
+                    <p>Learn about Pune's role in India's independence movement.</p>
+                    <a href="/categories" class="btn btn-outline-primary">Explore</a>
+                </div>
+            </div>
+
+            <!-- Folk Culture -->
+            <div class="col-md-6 col-lg-4">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Folk Culture & Drama</h3>
+                    <p>Explore traditional Marathi art forms and cultural heritage.</p>
+                    <a href="/categories" class="btn btn-outline-primary">Explore</a>
+                </div>
+            </div>
+
+            <!-- Trekking -->
+            <div class="col-md-6 col-lg-4">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Trekking & Nature</h3>
+                    <p>Discover trekking routes and outdoor adventure activities.</p>
+                    <a href="/categories" class="btn btn-outline-primary">Explore</a>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="col-md-6 col-lg-4">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Education</h3>
+                    <p>Learn about Pune's educational institutions and academic culture.</p>
+                    <a href="/categories" class="btn btn-outline-primary">Explore</a>
+                </div>
+            </div>
+
+            <!-- Transport -->
+            <div class="col-md-6 col-lg-4">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-bus"></i>
+                    </div>
+                    <h3>Transport & Connectivity</h3>
+                    <p>Navigate Pune with information about public transport and connectivity.</p>
+                    <a href="/categories" class="btn btn-outline-primary">Explore</a>
+                </div>
+            </div>
+
+            <!-- Sports -->
+            <div class="col-md-6 col-lg-4">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-basketball"></i>
+                    </div>
+                    <h3>Sports & Adventure</h3>
+                    <p>Discover sports facilities and adventure activities in Pune.</p>
+                    <a href="/categories" class="btn btn-outline-primary">Explore</a>
+                </div>
+            </div>
+
+            <!-- Shopping -->
+            <div class="col-md-6 col-lg-4">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h3>Shopping & Markets</h3>
+                    <p>Explore traditional markets, malls, and shopping destinations.</p>
+                    <a href="/categories" class="btn btn-outline-primary">Explore</a>
+                </div>
+            </div>
+
+            <!-- Festivals -->
+            <div class="col-md-6 col-lg-4">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-fireworks"></i>
+                    </div>
+                    <h3>Festivals & Celebrations</h3>
+                    <p>Learn about Pune's major festivals and cultural celebrations.</p>
+                    <a href="/categories" class="btn btn-outline-primary">Explore</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">How to Use</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <div class="feature-number">1</div>
+                    <h4>Browse Categories</h4>
+                    <p>Explore our 17 categories covering everything about Pune.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <div class="feature-number">2</div>
+                    <h4>Search Content</h4>
+                    <p>Use the search bar to find specific information quickly.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <div class="feature-number">3</div>
+                    <h4>Chat with Us</h4>
+                    <p>Ask questions naturally and get instant answers about Pune.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.getElementById('search-btn').addEventListener('click', function() {
+    const query = document.getElementById('search-input').value;
+    if (query.trim()) {
+        window.location.href = '/search?q=' + encodeURIComponent(query);
+    }
+});
+
+document.getElementById('search-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        document.getElementById('search-btn').click();
+    }
+});
+</script>
+{% endblock %}

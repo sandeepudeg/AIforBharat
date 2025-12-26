@@ -1,0 +1,112 @@
+Entrypoint parsed: file=D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop5\Building Agentic Workflow in Python\agentic-ai-with-mcp-and-strands\agentcore\runtime\weather_agentcore.py, bedrock_agentcore_name=weather_agentcore
+Memory disabled - agent will be stateless
+Configuring BedrockAgentCore agent: weather_agent
+Memory disabled
+Network mode: PUBLIC
+
+⚠️ Platform mismatch: Current system is 'linux/amd64' but Bedrock AgentCore requires 'linux/arm64', so local builds won't work.
+Please use default launch command which will do a remote cross-platform build using code build.For deployment other options and workarounds, see: https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/getting-started-custom.html      
+
+Generated Dockerfile: Dockerfile
+Generated .dockerignore: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop5\Building Agentic Workflow in Python\agentic-ai-with-mcp-and-strands\agentcore\.dockerignore
+Keeping 'weather_agent' as default agent
+Bedrock AgentCore configured: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop5\Building Agentic Workflow in Python\agentic-ai-with-mcp-and-strands\agentcore\.bedrock_agentcore.yaml
+🔧 Launching Bedrock AgentCore (local-build mode - NEW!)...
+   • Build container locally with Docker
+   • Deploy to Bedrock AgentCore cloud runtime
+   • Requires Docker/Finch/Podman to be installed
+   • Use when you need custom build control
+Memory disabled - skipping memory creation
+Memory disabled - skipping memory creation
+Launching Bedrock AgentCore agent 'weather_agent' to cloud
+Using build directory: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop5\Building Agentic Workflow in Python\agentic-ai-with-mcp-and-strands\agentcore
+Docker image built: bedrock_agentcore-weather_agent:latest
+Uploading to ECR...
+Getting or creating ECR repository for agent: weather_agent
+Repository doesn't exist, creating new ECR repository: bedrock-agentcore-weather_agent
+ECR repository available: 767397982000.dkr.ecr.us-west-2.amazonaws.com/bedrock-agentcore-weather_agent
+ECR repository ready: 767397982000.dkr.ecr.us-west-2.amazonaws.com/bedrock-agentcore-weather_agent
+Getting or creating execution role for agent: weather_agent
+Using AWS region: us-west-2, account ID: 767397982000
+Role name: AmazonBedrockAgentCoreSDKRuntime-us-west-2-425e274c35
+Role doesn't exist, creating new execution role: AmazonBedrockAgentCoreSDKRuntime-us-west-2-425e274c35
+Starting execution role creation process for agent: weather_agent
+✓ Role creating: AmazonBedrockAgentCoreSDKRuntime-us-west-2-425e274c35
+Creating IAM role: AmazonBedrockAgentCoreSDKRuntime-us-west-2-425e274c35
+✓ Role created: arn:aws:iam::767397982000:role/AmazonBedrockAgentCoreSDKRuntime-us-west-2-425e274c35
+✓ Execution policy attached: BedrockAgentCoreRuntimeExecutionPolicy-weather_agent
+Role creation complete and ready for use with Bedrock AgentCore
+Execution role available: arn:aws:iam::767397982000:role/AmazonBedrockAgentCoreSDKRuntime-us-west-2-425e274c35
+Authenticating with registry...
+Registry authentication successful
+Tagging image: bedrock_agentcore-weather_agent:latest -> 767397982000.dkr.ecr.us-west-2.amazonaws.com/bedrock-agentcore-weather_agent:latest
+Pushing image to registry...
+The push refers to repository [767397982000.dkr.ecr.us-west-2.amazonaws.com/bedrock-agentcore-weather_agent]
+dc77b8f6183e: Pushed
+c7802c5dcc05: Pushed
+8a4a7306158c: Pushed
+a2045459a973: Pushed
+d9f2f837b9ff: Pushed
+b2731ae20701: Pushed
+8ec6dc87bdba: Pushed
+d9cb732c9821: Pushed
+291962399695: Pushed
+d70e711c04a8: Pushed
+cddb6065c67c: Pushed
+05aa8a58a0f6: Pushed
+latest: digest: sha256:81c6d5294f1fefe2fa13814e7c68b3444e7622f6b54f518757c5e666d163f588 size: 856
+Image pushed successfully
+Image uploaded to ECR: 767397982000.dkr.ecr.us-west-2.amazonaws.com/bedrock-agentcore-weather_agent
+Deploying to Bedrock AgentCore...
+Agent created/updated: arn:aws:bedrock-agentcore:us-west-2:767397982000:runtime/weather_agent-E60OSOCheT
+Observability is enabled, configuring observability components...
+Created/updated CloudWatch Logs resource policy
+Getting or creating execution role for agent: weather_agent
+Using AWS region: us-west-2, account ID: 767397982000
+Role name: AmazonBedrockAgentCoreSDKRuntime-us-west-2-425e274c35
+Role doesn't exist, creating new execution role: AmazonBedrockAgentCoreSDKRuntime-us-west-2-425e274c35
+Starting execution role creation process for agent: weather_agent
+✓ Role creating: AmazonBedrockAgentCoreSDKRuntime-us-west-2-425e274c35
+Creating IAM role: AmazonBedrockAgentCoreSDKRuntime-us-west-2-425e274c35
+✓ Role created: arn:aws:iam::767397982000:role/AmazonBedrockAgentCoreSDKRuntime-us-west-2-425e274c35
+✓ Execution policy attached: BedrockAgentCoreRuntimeExecutionPolicy-weather_agent
+Role creation complete and ready for use with Bedrock AgentCore
+Execution role available: arn:aws:iam::767397982000:role/AmazonBedrockAgentCoreSDKRuntime-us-west-2-425e274c35
+Authenticating with registry...
+Registry authentication successful
+Tagging image: bedrock_agentcore-weather_agent:latest -> 767397982000.dkr.ecr.us-west-2.amazonaws.com/bedrock-agentcore-weather_agent:latest
+Pushing image to registry...
+The push refers to repository [767397982000.dkr.ecr.us-west-2.amazonaws.com/bedrock-agentcore-weather_agent]
+dc77b8f6183e: Pushed
+c7802c5dcc05: Pushed
+8a4a7306158c: Pushed
+a2045459a973: Pushed
+d9f2f837b9ff: Pushed
+b2731ae20701: Pushed
+8ec6dc87bdba: Pushed
+d9cb732c9821: Pushed
+291962399695: Pushed
+d70e711c04a8: Pushed
+cddb6065c67c: Pushed
+05aa8a58a0f6: Pushed
+latest: digest: sha256:81c6d5294f1fefe2fa13814e7c68b3444e7622f6b54f518757c5e666d163f588 size: 856
+Image pushed successfully
+Image uploaded to ECR: 767397982000.dkr.ecr.us-west-2.amazonaws.com/bedrock-agentcore-weather_agent
+Deploying to Bedrock AgentCore...
+Agent created/updated: arn:aws:bedrock-agentcore:us-west-2:767397982000:runtime/weather_agent-E60OSOCheT
+Observability is enabled, configuring observability components...
+Created/updated CloudWatch Logs resource policy
+Configured X-Ray trace segment destination to CloudWatch Logs
+X-Ray indexing rule already configured
+Transaction Search configured: resource_policy, trace_destination
+ObservabilityDeliveryManager initialized for region: us-west-2, account: 767397982000
+✅ Logs auto-created by AWS for runtime/weather_agent-E60OSOCheT
+✅ Traces delivery enabled for runtime/weather_agent-E60OSOCheT
+Observability enabled for runtime/weather_agent-E60OSOCheT - logs: True, traces: True
+✅ X-Ray traces delivery enabled for agent weather_agent-E60OSOCheT
+🔍 GenAI Observability Dashboard:
+   https://console.aws.amazon.com/cloudwatch/home?region=us-west-2#gen-ai-observability/agent-core
+Polling for endpoint to be ready...
+Agent endpoint: arn:aws:bedrock-agentcore:us-west-2:767397982000:runtime/weather_agent-E60OSOCheT/runtime-endpoint/DEFAULT
+Deployed to cloud: arn:aws:bedrock-agentcore:us-west-2:767397982000:runtime/weather_agent-E60OSOCheT
+Retrieved Bedrock AgentCore status for: weather_agent

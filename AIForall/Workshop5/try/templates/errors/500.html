@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% block title %}Server Error - {{ app_name }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="error-container text-center">
+                <!-- Error Icon -->
+                <div class="error-icon mb-4">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                
+                <!-- Error Code -->
+                <h1 class="error-code mb-3">500</h1>
+                
+                <!-- Error Title -->
+                <h2 class="error-title mb-3">Server Error</h2>
+                
+                <!-- Error Message -->
+                <p class="error-message lead mb-4">
+                    Oops! Something went wrong on our end. Our team has been notified and is working to fix it.
+                </p>
+                
+                <!-- Suggestions -->
+                <div class="error-suggestions mb-5 text-start" style="max-width: 500px; margin: 0 auto;">
+                    <h5 class="mb-3">What you can try:</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-arrow-right text-primary"></i>
+                            <span class="ms-2">Refresh the page and try again</span>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-arrow-right text-primary"></i>
+                            <a href="/" class="ms-2">Go back to the homepage</a>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-arrow-right text-primary"></i>
+                            <a href="/categories" class="ms-2">Browse our categories</a>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-arrow-right text-primary"></i>
+                            <span class="ms-2">Try again in a few moments</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Error Details (if available) -->
+                {% if error %}
+                <div class="error-details mb-4 text-start" style="max-width: 500px; margin: 0 auto;">
+                    <details>
+                        <summary class="cursor-pointer text-muted">
+                            <small>Error Details (for debugging)</small>
+                        </summary>
+                        <pre class="mt-2 p-2 bg-light rounded" style="font-size: 0.85rem; overflow-x: auto;">{{ error }}</pre>
+                    </details>
+                </div>
+                {% endif %}
+                
+                <!-- Action Buttons -->
+                <div class="error-actions">
+                    <a href="/" class="btn btn-primary btn-lg me-2">
+                        <i class="fas fa-home"></i> Go to Homepage
+                    </a>
+                    <a href="javascript:location.reload()" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-redo"></i> Refresh Page
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .error-container {
+        padding: 60px 20px;
+    }
+    
+    .error-icon {
+        font-size: 5rem;
+        color: #dc3545;
+    }
+    
+    .error-code {
+        font-size: 4rem;
+        font-weight: 700;
+        color: #dc3545;
+    }
+    
+    .error-title {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--dark-text);
+    }
+    
+    .error-message {
+        color: #6c757d;
+        font-size: 1.1rem;
+    }
+    
+    .error-suggestions {
+        background-color: var(--light-bg);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid #dc3545;
+    }
+    
+    .error-suggestions h5 {
+        color: var(--dark-text);
+        font-weight: 600;
+    }
+    
+    .error-suggestions a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    .error-suggestions a:hover {
+        text-decoration: underline;
+    }
+    
+    .error-details {
+        background-color: #f8f9fa;
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+    }
+    
+    .error-details summary {
+        cursor: pointer;
+        user-select: none;
+    }
+    
+    .error-details summary:hover {
+        text-decoration: underline;
+    }
+    
+    .error-details pre {
+        margin: 0;
+        color: #dc3545;
+    }
+    
+    @media (max-width: 576px) {
+        .error-container {
+            padding: 40px 10px;
+        }
+        
+        .error-icon {
+            font-size: 3rem;
+        }
+        
+        .error-code {
+            font-size: 2.5rem;
+        }
+        
+        .error-title {
+            font-size: 1.5rem;
+        }
+        
+        .error-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .error-actions .btn {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}

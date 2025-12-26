@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - Pune Knowledge Base{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/">{{ article.category|title }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ article.title }}</li>
+        </ol>
+    </nav>
+
+    <!-- Article Header -->
+    <div class="article-header mb-4">
+        <h1>{{ article.title }}</h1>
+        <div class="article-meta text-muted">
+            <span class="badge bg-primary">{{ article.category|title }}</span>
+            {% if article.subcategory %}
+                <span class="badge bg-secondary">{{ article.subcategory|title }}</span>
+            {% endif %}
+            {% if article.updated_at %}
+                <small>Updated: {{ article.updated_at }}</small>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Article Description -->
+    {% if article.description %}
+    <div class="alert alert-info" role="alert">
+        <p>{{ article.description }}</p>
+    </div>
+    {% endif %}
+
+    <!-- Article Content -->
+    <div class="article-content">
+        <div class="card">
+            <div class="card-body">
+                {{ article.content|safe }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Tags -->
+    {% if article.tags %}
+    <div class="mt-4">
+        <h5>Tags:</h5>
+        {% for tag in article.tags %}
+            <span class="badge bg-light text-dark">{{ tag }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Related Articles -->
+    {% if article.related_articles %}
+    <div class="mt-5">
+        <h5>Related Articles:</h5>
+        <div class="list-group">
+            {% for related_id in article.related_articles %}
+                <a href="/articles/{{ related_id }}" class="list-group-item list-group-item-action" title="View related article">
+                    <i class="fas fa-arrow-right"></i> {{ related_id|replace('_', ' ')|title }}
+                </a>
+            {% endfor %}
+        </div>
+        <small class="text-muted d-block mt-2">
+            <em>Note: Some related articles may not be available yet.</em>
+        </small>
+    </div>
+    {% else %}
+    <div class="mt-5">
+        <p class="text-muted"><em>No related articles available.</em></p>
+    </div>
+    {% endif %}
+
+    <!-- Back Button -->
+    <div class="mt-5">
+        <a href="/" class="btn btn-secondary">← Back to Home</a>
+    </div>
+</div>
+{% endblock %}

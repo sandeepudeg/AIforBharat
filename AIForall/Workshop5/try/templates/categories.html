@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Categories - Pune Knowledge Base{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Page Header -->
+    <div class="page-header mb-5">
+        <h1>Explore Pune by Category</h1>
+        <p class="lead text-muted">
+            Browse our comprehensive collection of information about Pune organized by topic.
+        </p>
+    </div>
+
+    <!-- Categories Grid -->
+    <div class="row g-4">
+        {% for category in categories %}
+        <div class="col-md-6 col-lg-4">
+            <div class="category-card h-100">
+                <div class="card-body">
+                    <!-- Category Icon -->
+                    <div class="category-icon mb-3">
+                        {% if category.id == 'geography' %}
+                            <i class="fas fa-map"></i>
+                        {% elif category.id == 'food' %}
+                            <i class="fas fa-utensils"></i>
+                        {% elif category.id == 'culture' %}
+                            <i class="fas fa-masks-theater"></i>
+                        {% elif category.id == 'places' %}
+                            <i class="fas fa-landmark"></i>
+                        {% elif category.id == 'independence_fighters' %}
+                            <i class="fas fa-flag"></i>
+                        {% elif category.id == 'folk_culture' %}
+                            <i class="fas fa-music"></i>
+                        {% elif category.id == 'trekking' %}
+                            <i class="fas fa-mountain"></i>
+                        {% elif category.id == 'education' %}
+                            <i class="fas fa-graduation-cap"></i>
+                        {% elif category.id == 'language' %}
+                            <i class="fas fa-language"></i>
+                        {% elif category.id == 'transport' %}
+                            <i class="fas fa-bus"></i>
+                        {% elif category.id == 'sports' %}
+                            <i class="fas fa-basketball"></i>
+                        {% elif category.id == 'zoos' %}
+                            <i class="fas fa-paw"></i>
+                        {% elif category.id == 'shopping' %}
+                            <i class="fas fa-shopping-bag"></i>
+                        {% elif category.id == 'festivals' %}
+                            <i class="fas fa-fireworks"></i>
+                        {% elif category.id == 'museums' %}
+                            <i class="fas fa-image"></i>
+                        {% elif category.id == 'climate' %}
+                            <i class="fas fa-cloud-sun"></i>
+                        {% else %}
+                            <i class="fas fa-folder"></i>
+                        {% endif %}
+                    </div>
+
+                    <!-- Category Name -->
+                    <h5 class="card-title">{{ category.name }}</h5>
+
+                    <!-- Category Description -->
+                    <p class="card-text text-muted">{{ category.description }}</p>
+
+                    <!-- Article Count -->
+                    <div class="category-meta mb-3">
+                        <small class="text-muted">
+                            <i class="fas fa-file-alt"></i> 
+                            {{ category.article_count }} article(s)
+                        </small>
+                    </div>
+
+                    <!-- Explore Button -->
+                    <a href="/categories/{{ category.id }}" class="btn btn-primary btn-sm">
+                        Explore →
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Back Button -->
+    <div class="mt-5">
+        <a href="/" class="btn btn-secondary">← Back to Home</a>
+    </div>
+</div>
+
+<style>
+.page-header {
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 2rem;
+}
+
+.category-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.category-icon {
+    font-size: 2.5rem;
+    color: #0d6efd;
+}
+
+.category-meta {
+    font-size: 0.85rem;
+}
+</style>
+{% endblock %}
