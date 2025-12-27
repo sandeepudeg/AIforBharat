@@ -1,0 +1,62 @@
+default_agent: agentsandeep
+agents:
+  agentsandeep:
+    name: agentsandeep
+    entrypoint: D:/Learning/IITKML/Self_learning/Hack2Skills/AIForall/Workshop5/Building
+      Agentic Workflow in Python/agentic-ai-with-mcp-and-strands/agentcore/runtime/mcp_server.py
+    deployment_type: container
+    runtime_type: null
+    platform: linux/arm64
+    container_runtime: docker
+    source_path: D:\Learning\IITKML\Self_learning\Hack2Skills\AIForall\Workshop5\Building
+      Agentic Workflow in Python\agentic-ai-with-mcp-and-strands\agentcore\runtime
+    aws:
+      execution_role: arn:aws:iam::767397982000:role/AmazonBedrockAgentCoreSDKRuntime-us-west-2-0ebf3d1cb3
+      execution_role_auto_create: false
+      account: '767397982000'
+      region: us-west-2
+      ecr_repository: 767397982000.dkr.ecr.us-west-2.amazonaws.com/bedrock-agentcore-agentsandeep
+      ecr_auto_create: false
+      s3_path: null
+      s3_auto_create: false
+      network_configuration:
+        network_mode: PUBLIC
+        network_mode_config: null
+      protocol_configuration:
+        server_protocol: MCP
+      observability:
+        enabled: true
+      lifecycle_configuration:
+        idle_runtime_session_timeout: null
+        max_lifetime: null
+    bedrock_agentcore:
+      agent_id: agentsandeep-P89Fzh7oyU
+      agent_arn: arn:aws:bedrock-agentcore:us-west-2:767397982000:runtime/agentsandeep-P89Fzh7oyU
+      agent_session_id: null
+    codebuild:
+      project_name: null
+      execution_role: null
+      source_bucket: null
+    memory:
+      mode: STM_ONLY
+      memory_id: agentsandeep_mem-28LVIQBLHr
+      memory_arn: arn:aws:bedrock-agentcore:us-west-2:767397982000:memory/agentsandeep_mem-28LVIQBLHr
+      memory_name: agentsandeep_mem
+      event_expiry_days: 30
+      first_invoke_memory_check_done: true
+      was_created_by_toolkit: true
+    identity:
+      credential_providers: []
+      workload: null
+    aws_jwt:
+      enabled: false
+      audiences: []
+      signing_algorithm: ES384
+      issuer_url: null
+      duration_seconds: 300
+    authorizer_configuration: null
+    request_header_configuration: null
+    oauth_configuration: null
+    api_key_env_var_name: null
+    api_key_credential_provider_name: null
+    is_generated_by_agentcore_create: false

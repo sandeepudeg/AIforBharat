@@ -1,0 +1,430 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                 TRAVEL PLANNING AGENT - VISUAL COMMUNICATION FLOW             ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│                          USER INTERFACE                                    │
+│                    (CLI / Streamlit / Chat)                                │
+│                                                                             │
+│  "Plan a 5-day trip to Paris with $3000 budget"                           │
+│                                                                             │
+└────────────────────────────────┬────────────────────────────────────────────┘
+                                 │
+                                 │ User Query
+                                 ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│                         TRAVEL_PLANNER                                     │
+│                      (Central Orchestrator)                                │
+│                                                                             │
+│  1. Parse query                                                            │
+│  2. Extract: destination, dates, budget, interests                        │
+│  3. Determine required agents                                              │
+│  4. Route to agents                                                        │
+│                                                                             │
+└────────────────────────────────┬────────────────────────────────────────────┘
+                                 │
+        ┌────────────────────────┼────────────────────────┬──────────────┐
+        │                        │                        │              │
+        ▼                        ▼                        ▼              ▼
+   ┌─────────┐            ┌─────────┐            ┌─────────┐      ┌──────────┐
+   │ Weather │            │ Flight  │            │ Hotel   │      │Itinerary │
+   │ Agent   │            │ Agent   │            │ Agent   │      │ Agent    │
+   └────┬────┘            └────┬────┘            └────┬────┘      └────┬─────┘
+        │                      │                      │                │
+        │ "Get weather for     │ "Search flights      │ "Find hotels   │ "Create
+        │  Paris, May 1-5"     │  NYC→Paris"          │  in Paris"     │  itinerary"
+        │                      │                      │                │
+        ▼                      ▼                      ▼                ▼
+   ┌─────────────────────────────────────────────────────────────────────────┐
+   │                                                                         │
+   │                    EXTERNAL APIs (Parallel)                            │
+   │                                                                         │
+   │  • National Weather Service API                                        │
+   │  • Flight Search APIs (Skyscanner, Kayak)                             │
+   │  • Hotel Search APIs (Booking.com)                                    │
+   │  • Google Maps API                                                    │
+   │  • TripAdvisor API                                                    │
+   │                                                                         │
+   └─────────────────────────────────────────────────────────────────────────┘
+        │                      │                      │                │
+        │ Forecast data        │ Flight options       │ Hotel list     │ Activities
+        │                      │                      │                │
+        ▼                      ▼                      ▼                ▼
+   ┌─────────┐            ┌─────────┐            ┌─────────┐      ┌──────────┐
+   │ Weather │            │ Flight  │            │ Hotel   │      │Itinerary │
+   │ Agent   │            │ Agent   │            │ Agent   │      │ Agent    │
+   │ (Process)            │ (Process)            │ (Process)       │(Process) │
+   └────┬────┘            └────┬────┘            └────┬────┘      └────┬─────┘
+        │                      │                      │                │
+        │ "Sunny, 22°C"        │ "3 options,          │ "5 options,    │ "25
+        │ "Perfect weather"    │  cheapest $650"      │  best $1120"   │  activities"
+        │                      │                      │                │
+        └──────────────────────┼──────────────────────┴────────────────┘
+                               │
+                               ▼
+        ┌──────────────────────────────────────────────────────────────┐
+        │                                                              │
+        │              TRAVEL_PLANNER (Coordinator)                   │
+        │                                                              │
+        │  Received all results, now coordinate with:                │
+        │  • Budget_Agent (analyze costs)                            │
+        │  • Visa_and_Age_Agent (check requirements)                 │
+        │  • Local_Transport_Agent (suggest transport)               │
+        │                                                              │
+        └────────────────────────┬─────────────────────────────────────┘
+                                 │
+        ┌────────────────────────┼────────────────────────┬──────────────┐
+        │                        │                        │              │
+        ▼                        ▼                        ▼              ▼
+   ┌─────────┐            ┌──────────┐            ┌──────────┐      ┌──────────┐
+   │ Budget  │            │ Visa &   │            │ Local    │      │Language  │
+   │ Agent   │            │ Age      │            │Transport │      │ Agent    │
+   │         │            │ Agent    │            │ Agent    │      │          │
+   └────┬────┘            └────┬─────┘            └────┬─────┘      └────┬─────┘
+        │                      │                      │                  │
+        │ "Analyze costs"      │ "Check visa"         │ "Suggest         │ "Translate
+        │ "Convert currency"   │ "Filter by age"      │  transport"      │  content"
+        │                      │                      │                  │
+        ▼                      ▼                      ▼                  ▼
+   ┌─────────┐            ┌──────────┐            ┌──────────┐      ┌──────────┐
+   │ Budget  │            │ Visa &   │            │ Local    │      │Language  │
+   │ Results │            │ Age      │            │Transport │      │ Results  │
+   │         │            │ Results  │            │ Results  │      │          │
+   └────┬────┘            └────┬─────┘            └────┬─────┘      └────┬─────┘
+        │                      │                      │                  │
+        │ "Total $2280"        │ "No visa needed"     │ "Public transit  │ "Translated
+        │ "Remaining $720"     │ "All activities OK"  │  $12, taxi $55"  │  itinerary"
+        │                      │                      │                  │
+        └──────────────────────┼──────────────────────┴──────────────────┘
+                               │
+                               ▼
+        ┌──────────────────────────────────────────────────────────────┐
+        │                                                              │
+        │              TRAVEL_PLANNER (Aggregator)                    │
+        │                                                              │
+        │  1. Combine all responses                                   │
+        │  2. Verify completeness                                     │
+        │  3. Check for conflicts                                     │
+        │  4. Format final response                                   │
+        │  5. Add booking links                                       │
+        │  6. Store in memory                                         │
+        │                                                              │
+        └────────────────────────┬─────────────────────────────────────┘
+                                 │
+                                 │ Complete Trip Plan
+                                 ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│                         COMPLETE TRIP PLAN                                 │
+│                                                                             │
+│  ✓ Weather forecast for each day                                          │
+│  ✓ Flight options with prices                                             │
+│  ✓ Hotel recommendations                                                  │
+│  ✓ Day-by-day itinerary                                                   │
+│  ✓ Budget breakdown (USD + EUR)                                           │
+│  ✓ Visa requirements                                                      │
+│  ✓ Age-appropriate activities                                             │
+│  ✓ Local transportation options                                           │
+│  ✓ Calendar export link                                                   │
+│  ✓ Booking links                                                          │
+│                                                                             │
+└────────────────────────────────┬────────────────────────────────────────────┘
+                                 │
+                                 ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│                          USER INTERFACE                                    │
+│                    Display Complete Trip Plan                              │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                         COMMUNICATION PATTERNS                                 ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+
+PATTERN 1: PARALLEL EXECUTION (Most Common)
+─────────────────────────────────────────────
+
+    Travel_Planner
+         │
+    ┌────┼────┬────┬────┐
+    │    │    │    │    │
+    ▼    ▼    ▼    ▼    ▼
+   W    F    H    I    B
+   e    l    o    t    u
+   a    i    t    i    d
+   t    g    e    n    g
+   h    h    l    e    e
+   t    t    r    r    t
+        │    │    │    │
+    ┌───┴────┴────┴────┴───┐
+    │                      │
+    ▼                      ▼
+  APIs                  Results
+  (Parallel)           (Aggregate)
+
+
+PATTERN 2: SEQUENTIAL EXECUTION
+────────────────────────────────
+
+    Travel_Planner
+         │
+         ▼
+    Weather_Agent ──→ API ──→ Results
+         │
+         ▼
+    Flight_Agent ──→ API ──→ Results
+         │
+         ▼
+    Hotel_Agent ──→ API ──→ Results
+         │
+         ▼
+    Budget_Agent ──→ Analyze ──→ Results
+         │
+         ▼
+    Visa_Agent ──→ Check ──→ Results
+         │
+         ▼
+    Transport_Agent ──→ Suggest ──→ Results
+         │
+         ▼
+    Complete Plan
+
+
+PATTERN 3: CONDITIONAL ROUTING
+───────────────────────────────
+
+    Travel_Planner
+         │
+         ├─ "weather" ──→ Weather_Agent
+         │
+         ├─ "flights" ──→ Flight_Agent
+         │
+         ├─ "hotels" ──→ Hotel_Agent
+         │
+         ├─ "activities" ──→ Itinerary_Agent
+         │
+         ├─ "budget" ──→ Budget_Agent
+         │
+         ├─ "visa" ──→ Visa_Agent
+         │
+         ├─ "transport" ──→ Transport_Agent
+         │
+         └─ "plan trip" ──→ ALL AGENTS
+
+
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                         RESPONSE TIME COMPARISON                               ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+
+Simple Query (Weather Only)
+───────────────────────────
+    User Query
+         │
+         ▼
+    Travel_Planner
+         │
+         ▼
+    Weather_Agent
+         │
+         ▼
+    NWS API
+         │
+         ▼
+    Response
+    
+    ⏱️  2-3 seconds
+
+
+Complete Trip Planning
+──────────────────────
+    User Query
+         │
+         ▼
+    Travel_Planner
+         │
+    ┌────┼────┬────┬────┐
+    ▼    ▼    ▼    ▼    ▼
+   W    F    H    I    B
+   e    l    o    t    u
+   a    i    t    i    d
+   t    g    e    n    g
+   h    h    l    e    e
+   t    t    r    r    t
+    │    │    │    │    │
+    └────┼────┴────┴────┘
+         │
+         ▼
+    Budget_Agent
+    Visa_Agent
+    Transport_Agent
+         │
+         ▼
+    Complete Plan
+    
+    ⏱️  5-8 seconds
+
+
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                         AGENT RESPONSIBILITIES                                 ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ TRAVEL_PLANNER (Orchestrator)                                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ • Parse user queries                                                        │
+│ • Extract parameters (destination, dates, budget, interests)               │
+│ • Route to appropriate agents                                              │
+│ • Coordinate multi-agent responses                                         │
+│ • Aggregate results into complete trip plan                                │
+│ • Manage user preferences and memory                                       │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ WEATHER_AGENT                                                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ • Retrieve weather forecasts from NWS API                                  │
+│ • Analyze climate patterns                                                 │
+│ • Suggest optimal travel dates                                             │
+│ • Provide packing recommendations                                          │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ FLIGHT_AGENT                                                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ • Search for available flights                                             │
+│ • Compare by price, duration, stops                                        │
+│ • Filter by budget constraints                                             │
+│ • Provide booking recommendations                                          │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ HOTEL_AGENT                                                                │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ • Search for accommodations                                                │
+│ • Filter by budget, amenities, ratings                                     │
+│ • Provide recommendations with details                                     │
+│ • Compare hotel options                                                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ ITINERARY_AGENT                                                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ • Generate day-by-day activity plans                                       │
+│ • Include attractions, restaurants, activities                             │
+│ • Tailor to user interests                                                 │
+│ • Calculate travel times between locations                                 │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ BUDGET_AGENT                                                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ • Break down trip costs by category                                        │
+│ • Convert currencies (USD ↔ EUR, etc.)                                     │
+│ • Track spending against budget                                            │
+│ • Suggest cost-saving alternatives                                         │
+│ • Calculate total trip cost                                                │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ VISA_AND_AGE_AGENT                                                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ • Retrieve visa requirements for destination                               │
+│ • Check age restrictions for activities                                    │
+│ • Provide visa application guidance                                        │
+│ • Filter age-appropriate activities                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ LOCAL_TRANSPORT_AGENT                                                      │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ • Suggest local transportation options                                     │
+│ • Calculate costs and travel times                                         │
+│ • Provide step-by-step navigation                                          │
+│ • Recommend airport-to-hotel transport                                     │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ LANGUAGE_AGENT                                                             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ • Translate travel information                                             │
+│ • Provide local language phrases                                           │
+│ • Support multiple languages                                               │
+│ • Translate itineraries and recommendations                                │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                         KEY FEATURES                                           ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+✅ PARALLEL EXECUTION
+   Multiple agents work simultaneously
+   Reduces total response time
+   Efficient resource usage
+
+✅ SEQUENTIAL COORDINATION
+   Budget_Agent waits for other agents
+   Visa_and_Age_Agent filters based on itinerary
+   Local_Transport_Agent uses hotel location
+
+✅ ERROR HANDLING
+   Timeouts with retries (3 attempts)
+   Fallback suggestions
+   Graceful degradation
+
+✅ CURRENCY CONVERSION
+   Automatic exchange rate lookup
+   Dual-currency display (USD + EUR)
+   Accurate cost calculations
+
+✅ VISA & AGE CHECKING
+   Automatic requirement lookup
+   Activity filtering by age
+   Document checklists
+
+✅ CALENDAR INTEGRATION
+   Event creation for flights, hotels, activities
+   Conflict detection
+   Export to Google Calendar/iCal
+
+✅ LOCAL TRANSPORTATION
+   Multiple options (taxi, transit, ride-share)
+   Cost and time estimates
+   Step-by-step directions
+
+✅ MEMORY PERSISTENCE
+   Stores user preferences
+   Remembers past trips
+   Personalizes recommendations
+
+
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                         SUMMARY                                               ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+The Travel Planning Agent communicates through:
+
+1. CENTRAL HUB (Travel_Planner) coordinates all agents
+2. PARALLEL EXECUTION for independent queries
+3. SEQUENTIAL COORDINATION for dependent queries
+4. EXTERNAL APIs for real-time data
+5. MEMORY SERVICE for personalization
+6. STRUCTURED MESSAGES for agent communication
+7. ERROR HANDLING with fallbacks
+8. REAL-TIME MONITORING for alerts
+
+RESULT: Complete, personalized trip plans in 5-8 seconds with all necessary
+details, costs, and booking links.
+
+═══════════════════════════════════════════════════════════════════════════════════
+Created: December 24, 2025
+Status: ✅ Complete Communication Architecture Documented
+═══════════════════════════════════════════════════════════════════════════════════

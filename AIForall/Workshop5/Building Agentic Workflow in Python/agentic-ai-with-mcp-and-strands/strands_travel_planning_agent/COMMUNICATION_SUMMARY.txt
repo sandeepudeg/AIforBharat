@@ -1,0 +1,468 @@
+================================================================================
+TRAVEL PLANNING AGENT - COMMUNICATION FLOW SUMMARY
+================================================================================
+
+HOW IT COMMUNICATES - QUICK OVERVIEW
+================================================================================
+
+The Travel Planning Agent uses a HUB-AND-SPOKE architecture:
+
+    TRAVEL_PLANNER (Central Hub)
+           ↓
+    ┌──────┼──────┬──────┬──────┐
+    ↓      ↓      ↓      ↓      ↓
+  Weather Flight Hotel Itinerary Budget
+  Agent   Agent  Agent  Agent    Agent
+    ↓      ↓      ↓      ↓      ↓
+    └──────┼──────┴──────┴──────┘
+           ↓
+    External APIs
+    (Weather, Flights, Hotels, Maps, etc.)
+           ↓
+    ┌──────┼──────┬──────┐
+    ↓      ↓      ↓      ↓
+  Budget  Visa   Local  Language
+  Agent   Agent  Trans  Agent
+           ↓
+    COMPLETE TRIP PLAN
+
+
+COMMUNICATION FLOW STEPS
+================================================================================
+
+1. USER QUERY
+   "Plan a 5-day trip to Paris with $3000 budget"
+
+2. TRAVEL_PLANNER RECEIVES & PARSES
+   - Destination: Paris
+   - Duration: 5 days
+   - Budget: $3000
+   - Determines: Need all agents
+
+3. TRAVEL_PLANNER ROUTES (PARALLEL)
+   → Weather_Agent: "Get forecast for Paris, May 1-5"
+   → Flight_Agent: "Search flights NYC→Paris, May 1-5"
+   → Hotel_Agent: "Find hotels in Paris, May 1-5"
+   → Itinerary_Agent: "Create 5-day itinerary"
+
+4. AGENTS CALL EXTERNAL APIs (SIMULTANEOUSLY)
+   Weather_Agent → National Weather Service API
+   Flight_Agent → Skyscanner/Kayak API
+   Hotel_Agent → Booking.com API
+   Itinerary_Agent → Google Maps + TripAdvisor APIs
+
+5. AGENTS RETURN RESULTS
+   Weather_Agent: "Sunny, 22°C, perfect weather"
+   Flight_Agent: "3 options, cheapest $650"
+   Hotel_Agent: "5 options, best rated $1120"
+   Itinerary_Agent: "25 activities planned"
+
+6. TRAVEL_PLANNER COORDINATES (SEQUENTIAL)
+   → Budget_Agent: "Analyze $650 + $1120 + activities"
+   → Visa_and_Age_Agent: "Check USA→France requirements"
+   → Local_Transport_Agent: "Suggest CDG→Hotel transport"
+
+7. COORDINATION AGENTS RETURN
+   Budget_Agent: "Total $2280, remaining $720"
+   Visa_and_Age_Agent: "No visa needed, all activities OK"
+   Local_Transport_Agent: "Public transit $12, taxi $55"
+
+8. TRAVEL_PLANNER AGGREGATES
+   Combines all responses into complete trip plan
+
+9. USER RECEIVES
+   Complete trip plan with:
+   ✓ Weather forecast
+   ✓ Flight options
+   ✓ Hotel recommendations
+   ✓ Day-by-day itinerary
+   ✓ Budget breakdown (USD + EUR)
+   ✓ Visa requirements
+   ✓ Age-appropriate activities
+   ✓ Local transport options
+   ✓ Booking links
+
+
+AGENT COMMUNICATION PATTERNS
+================================================================================
+
+PATTERN 1: PARALLEL EXECUTION (Most Common)
+Used when agents are independent:
+
+Travel_Planner
+    ├→ Weather_Agent ─→ (call API) ─→ return results
+    ├→ Flight_Agent  ─→ (call API) ─→ return results
+    ├→ Hotel_Agent   ─→ (call API) ─→ return results
+    └→ Itinerary_Agent → (call API) ─→ return results
+    
+    (All run simultaneously, ~2-3 seconds total)
+    
+    ↓ (wait for all to complete)
+    
+    Aggregate results
+
+
+PATTERN 2: SEQUENTIAL EXECUTION
+Used when one agent needs results from another:
+
+Travel_Planner
+    ↓
+    → Weather_Agent (get weather)
+    ↓ (wait for response)
+    → Flight_Agent (get flights)
+    ↓ (wait for response)
+    → Hotel_Agent (get hotels)
+    ↓ (wait for response)
+    → Budget_Agent (analyze costs with selected items)
+    ↓ (wait for response)
+    → Visa_and_Age_Agent (check requirements)
+    ↓ (wait for response)
+    → Local_Transport_Agent (suggest transport)
+    ↓
+    Return complete plan
+
+
+PATTERN 3: CONDITIONAL ROUTING
+Used when query type determines which agents are needed:
+
+Travel_Planner analyzes query:
+
+IF query contains "weather":
+    → Weather_Agent
+
+IF query contains "flights":
+    → Flight_Agent
+
+IF query contains "hotels":
+    → Hotel_Agent
+
+IF query contains "activities":
+    → Itinerary_Agent
+
+IF query contains "budget":
+    → Budget_Agent
+
+IF query contains "visa":
+    → Visa_and_Age_Agent
+
+IF query contains "transport":
+    → Local_Transport_Agent
+
+IF query is comprehensive (plan a trip):
+    → All agents (parallel)
+
+
+MESSAGE FORMAT EXAMPLE
+================================================================================
+
+USER QUERY:
+{
+  "type": "user_query",
+  "content": "Plan a 5-day trip to Paris with $3000 budget",
+  "metadata": {
+    "user_id": "user_123",
+    "timestamp": "2025-01-15T10:30:00Z"
+  }
+}
+
+TRAVEL_PLANNER → WEATHER_AGENT:
+{
+  "type": "agent_request",
+  "source": "travel_planner",
+  "target": "weather_agent",
+  "action": "get_forecast",
+  "parameters": {
+    "destination": "Paris",
+    "latitude": 48.8566,
+    "longitude": 2.3522,
+    "start_date": "2025-05-01",
+    "end_date": "2025-05-05"
+  }
+}
+
+WEATHER_AGENT → TRAVEL_PLANNER:
+{
+  "type": "agent_response",
+  "source": "weather_agent",
+  "target": "travel_planner",
+  "status": "success",
+  "data": {
+    "destination": "Paris",
+    "forecast": [
+      {
+        "date": "2025-05-01",
+        "high_temp": 22,
+        "low_temp": 15,
+        "condition": "Sunny",
+        "precipitation_chance": 10
+      }
+    ],
+    "recommendation": "Excellent weather for outdoor activities"
+  }
+}
+
+
+RESPONSE TIMES
+================================================================================
+
+Query Type                  Agents Used    Time
+─────────────────────────────────────────────────
+Weather only                1              2-3 sec
+Flights only                1              2-3 sec
+Hotels only                 1              2-3 sec
+Weather + Flights           2              3-4 sec
+Complete trip planning      8              5-8 sec
+Follow-up question          2-3            3-5 sec
+
+
+KEY FEATURES
+================================================================================
+
+✅ PARALLEL EXECUTION
+   - Multiple agents work simultaneously
+   - Reduces total response time
+   - Efficient resource usage
+
+✅ SEQUENTIAL COORDINATION
+   - Budget_Agent waits for other agents
+   - Visa_and_Age_Agent filters based on itinerary
+   - Local_Transport_Agent uses hotel location
+
+✅ ERROR HANDLING
+   - Timeouts with retries (3 attempts)
+   - Fallback suggestions
+   - Graceful degradation
+
+✅ CURRENCY CONVERSION
+   - Automatic exchange rate lookup
+   - Dual-currency display (USD + EUR)
+   - Accurate cost calculations
+
+✅ VISA & AGE CHECKING
+   - Automatic requirement lookup
+   - Activity filtering by age
+   - Document checklists
+
+✅ CALENDAR INTEGRATION
+   - Event creation for flights, hotels, activities
+   - Conflict detection
+   - Export to Google Calendar/iCal
+
+✅ LOCAL TRANSPORTATION
+   - Multiple options (taxi, transit, ride-share)
+   - Cost and time estimates
+   - Step-by-step directions
+
+✅ MEMORY PERSISTENCE
+   - Stores user preferences
+   - Remembers past trips
+   - Personalizes recommendations
+
+
+AGENTS & THEIR ROLES
+================================================================================
+
+1. TRAVEL_PLANNER (Orchestrator)
+   - Routes queries to appropriate agents
+   - Aggregates and formats responses
+   - Maintains conversation context
+   - Manages user preferences
+
+2. WEATHER_AGENT
+   - Retrieves weather forecasts
+   - Analyzes climate patterns
+   - Suggests optimal travel dates
+   - Provides packing recommendations
+
+3. FLIGHT_AGENT
+   - Searches for flights
+   - Compares flight options
+   - Filters by budget and preferences
+   - Provides booking recommendations
+
+4. HOTEL_AGENT
+   - Searches for accommodations
+   - Filters by budget and amenities
+   - Provides recommendations
+   - Compares hotel options
+
+5. ITINERARY_AGENT
+   - Generates day-by-day plans
+   - Includes attractions and activities
+   - Tailors to user interests
+   - Calculates travel logistics
+
+6. BUDGET_AGENT
+   - Breaks down trip costs
+   - Tracks spending
+   - Suggests cost-saving options
+   - Converts currencies
+   - Calculates total costs
+
+7. VISA_AND_AGE_AGENT
+   - Retrieves visa requirements
+   - Checks age restrictions
+   - Provides visa guidance
+   - Filters age-appropriate activities
+
+8. LOCAL_TRANSPORT_AGENT
+   - Suggests local transportation
+   - Calculates costs and times
+   - Provides navigation
+   - Recommends airport-to-hotel transport
+
+9. LANGUAGE_AGENT
+   - Translates travel information
+   - Provides local phrases
+   - Supports multiple languages
+
+
+ERROR HANDLING EXAMPLES
+================================================================================
+
+SCENARIO 1: API TIMEOUT
+Flight_Agent calls Skyscanner API
+    ↓
+API doesn't respond within 30 seconds
+    ↓
+Flight_Agent retries (up to 3 times with exponential backoff)
+    ↓
+If still fails:
+    - Return fallback message
+    - Suggest manual search links
+    - Continue with other agents
+    ↓
+Travel_Planner includes in response:
+    "Flights: Unable to fetch live data. 
+     Try: [link to Skyscanner]"
+
+
+SCENARIO 2: BUDGET EXCEEDED
+Travel_Planner receives:
+    - Budget: $3000
+    - Flights: $1500
+    - Hotels: $1800
+    - Total: $3300 (exceeds budget)
+    ↓
+Budget_Agent alerts:
+    "Budget exceeded by $300"
+    ↓
+Suggests alternatives:
+    - Cheaper hotel: $1500 (saves $300)
+    - Budget airline: $1200 (saves $300)
+    ↓
+Travel_Planner presents options to user
+
+
+SCENARIO 3: VISA REQUIRED
+Visa_and_Age_Agent checks:
+    Origin: USA
+    Destination: India
+    ↓
+Visa required: YES
+    ↓
+Returns:
+    - Visa type: Tourist visa
+    - Processing time: 5-7 business days
+    - Cost: $100
+    - Required documents: [list]
+    - Application link: [URL]
+    ↓
+Travel_Planner alerts user:
+    "Visa required for India. 
+     Allow 5-7 days for processing."
+
+
+REAL-TIME ALERTS
+================================================================================
+
+PRICE DROP ALERT:
+User books flight for $850
+    ↓
+Travel_Planner monitors price
+    ↓
+Price drops to $700
+    ↓
+Alert sent to user:
+    "Price dropped! You could save $150 by rebooking"
+
+
+FLIGHT DELAY ALERT:
+User's flight is scheduled
+    ↓
+Travel_Planner monitors flight status
+    ↓
+Flight delayed by 2 hours
+    ↓
+Alert sent to user:
+    "Your flight is delayed by 2 hours. 
+     New arrival: 12:00 PM instead of 10:00 AM"
+
+
+WEATHER ALERT:
+User's trip is in 3 days
+    ↓
+Travel_Planner monitors weather
+    ↓
+Severe weather predicted
+    ↓
+Alert sent to user:
+    "Severe weather expected in Paris on May 3-4.
+     Consider rescheduling outdoor activities."
+
+
+DOCUMENTATION FILES CREATED
+================================================================================
+
+1. COMMUNICATION_ARCHITECTURE.md
+   - Detailed system architecture
+   - Message format examples
+   - Data flow diagrams
+   - Error handling scenarios
+
+2. QUICK_REFERENCE.md
+   - Visual summaries
+   - Agent responsibilities table
+   - Communication patterns
+   - Response times
+
+3. COMMUNICATION_FLOW.md (in .kiro/specs)
+   - High-level communication architecture
+   - Detailed communication sequences
+   - Memory persistence flows
+   - Integration points
+
+4. AGENT_INTERACTIONS.md (in .kiro/specs)
+   - Agent interaction patterns
+   - Data flow examples
+   - Agent responsibilities
+   - Error handling in communication
+
+5. EXAMPLE_CONVERSATION.md (in .kiro/specs)
+   - Complete example conversation
+   - Step-by-step message flows
+   - JSON message examples
+   - Follow-up interactions
+
+
+SUMMARY
+================================================================================
+
+The Travel Planning Agent communicates through:
+
+1. CENTRAL HUB (Travel_Planner) coordinates all agents
+2. PARALLEL EXECUTION for independent queries
+3. SEQUENTIAL COORDINATION for dependent queries
+4. EXTERNAL APIs for real-time data
+5. MEMORY SERVICE for personalization
+6. STRUCTURED MESSAGES for agent communication
+7. ERROR HANDLING with fallbacks
+8. REAL-TIME MONITORING for alerts
+
+RESULT: Complete, personalized trip plans in 5-8 seconds with all necessary
+details, costs, and booking links.
+
+================================================================================
+Created: December 24, 2025
+Status: ✅ Complete Communication Architecture Documented
+================================================================================
