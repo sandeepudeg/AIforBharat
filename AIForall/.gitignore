@@ -16,3 +16,9 @@ AIForall/Workshop2/rag-workshop-amazon_completed.zip
 # Ignore Python cache and virtual environments
 __pycache__/
 venv/
+
+
+Certificate/
+.venv/
+__pycache__/
+*.log
