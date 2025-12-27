@@ -4,3 +4,15 @@ AIForall/Workshop2/rag-workshop-amazon_completed.zip
 
 ### Ignore extensions
 .env
+
+
+# Ignore environment files
+.env
+.venv
+
+# Ignore all .exe files
+*.exe
+
+# Ignore Python cache and virtual environments
+__pycache__/
+venv/
