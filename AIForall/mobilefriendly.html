@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gram-Setu | Mobile Cost Simulator</title>
+    <title>Gram-Setu | Cost Analysis & Optimization</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
@@ -20,19 +20,18 @@
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            margin: 0; padding: 15px; /* Reduced padding for mobile */
+            margin: 0; padding: 15px;
             display: flex; justify-content: center;
         }
 
         .dashboard {
-            width: 100%; /* Changed from 1050px to 100% */
+            width: 100%;
             max-width: 1050px;
             display: grid;
-            grid-template-columns: 1fr; /* Default to single column for mobile */
+            grid-template-columns: 1fr;
             gap: 15px;
         }
 
-        /* Responsive Grid: When the screen is wider than 850px, use two columns */
         @media (min-width: 850px) {
             .dashboard {
                 grid-template-columns: 400px 1fr;
@@ -44,17 +43,17 @@
         .card {
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 20px;
+            padding: 24px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             border: 1px solid #e2e8f0;
         }
 
-        h1 { margin: 0; font-size: 20px; color: var(--primary-green); border-bottom: 2px solid var(--primary-green); padding-bottom: 10px; margin-bottom: 15px;}
-        h2 { font-size: 14px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-sub); }
+        h1 { margin: 0; font-size: 22px; color: var(--primary-green); border-bottom: 2px solid var(--primary-green); padding-bottom: 10px; margin-bottom: 15px;}
+        h2 { font-size: 16px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-sub); }
 
         .control-group { margin-bottom: 20px; }
         .label-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; font-size: 14px; }
-        input[type="range"] { width: 100%; accent-color: var(--primary-green); cursor: pointer; height: 30px; }
+        input[type="range"] { width: 100%; accent-color: var(--primary-green); cursor: pointer; height: 35px; }
 
         .strategy-box { background: #f8fafc; padding: 12px; border-radius: 10px; border: 1px solid #edf2f7; margin-bottom: 10px; }
         .strategy-header { display: flex; justify-content: space-between; align-items: center; }
@@ -65,25 +64,29 @@
         .impact-title { font-weight: 800; font-size: 12px; color: var(--accent-blue); text-transform: uppercase; margin-bottom: 8px; }
         .impact-stats { font-size: 13px; color: #2c5282; line-height: 1.6; }
 
-        .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .metric-card { background: #fff; padding: 12px; border-radius: 10px; border: 1px solid #e2e8f0; text-align: center; }
-        .metric-value { font-size: 22px; font-weight: 800; color: var(--primary-green); }
+        .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .metric-card { background: #fff; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; text-align: center; }
+        .metric-value { font-size: 26px; font-weight: 800; color: var(--primary-green); }
         
-        .viz-container { height: 280px; width: 100%; margin-top: 10px; position: relative; }
+        .viz-container { height: 300px; margin-top: 20px; position: relative; }
 
         .footer-assumptions {
             background: #fdfdfd;
             border: 1px dashed #cbd5e0;
-            padding: 15px;
+            padding: 20px;
             border-radius: 12px;
-            font-size: 11px;
+            font-size: 12px;
             color: #4a5568;
+            margin-top: 10px;
         }
 
-        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        @media (min-width: 600px) {
+        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 25px; }
+        @media (min-width: 650px) {
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
+        .footer-title { font-weight: 800; font-size: 13px; color: #2d3748; margin-bottom: 10px; text-decoration: underline; }
+        ul { padding-left: 18px; margin: 0; }
+        li { margin-bottom: 5px; }
     </style>
 </head>
 <body>
@@ -91,7 +94,7 @@
 <div class="dashboard">
     <div class="card full-width">
         <h1>Gram-Setu: Cost Analysis</h1>
-        <p style="color: var(--text-sub); margin-top: 5px; font-size: 13px;">Multi-Agent Ecosystem Efficiency Simulator</p>
+        <p style="color: var(--text-sub); margin-top: 5px;">Multi-Agent Ecosystem Efficiency Simulator (ap-south-1)</p>
     </div>
 
     <div class="card">
@@ -100,13 +103,14 @@
             <input type="range" id="uSlider" min="100" max="100000" step="500" value="500">
         </div>
 
-        <h2>Optimization Strategies</h2>
+        <h2>Optimization Strategy</h2>
         
         <div class="strategy-box">
             <div class="strategy-header">
                 <span class="strategy-name">Prompt Caching</span>
                 <input type="checkbox" id="opt1" checked>
             </div>
+            <p class="strategy-comment">Up to 90% discount on repeated context—critical for history.</p>
         </div>
 
         <div class="strategy-box">
@@ -114,6 +118,7 @@
                 <span class="strategy-name">Batch Mode</span>
                 <input type="checkbox" id="opt2" checked>
             </div>
+            <p class="strategy-comment">50% discount for non-real-time agentic tasks.</p>
         </div>
 
         <div class="strategy-box">
@@ -121,10 +126,19 @@
                 <span class="strategy-name">Model Tiering</span>
                 <input type="checkbox" id="opt3" checked>
             </div>
+            <p class="strategy-comment">Dynamic routing between Claude 3.5 Sonnet and Haiku.</p>
+        </div>
+
+        <div class="strategy-box">
+            <div class="strategy-header">
+                <span class="strategy-name">Routing Layer</span>
+                <input type="checkbox" id="opt4" checked>
+            </div>
+            <p class="strategy-comment">Pre-classify queries to bypass Supervisor for simple FAQs.</p>
         </div>
 
         <div class="impact-section">
-            <div class="impact-title">Impact Analysis</div>
+            <div class="impact-title">Strategy Impact Analysis</div>
             <div class="impact-stats" id="impactText">Calculating...</div>
         </div>
     </div>
@@ -132,11 +146,11 @@
     <div class="card">
         <div class="metric-grid">
             <div class="metric-card">
-                <div style="font-size: 10px; color: var(--text-sub);">EST. MONTHLY OPEX</div>
+                <div style="font-size: 11px; color: var(--text-sub);">EST. MONTHLY OPEX</div>
                 <div class="metric-value" id="mCost">$0.00</div>
             </div>
             <div class="metric-card">
-                <div style="font-size: 10px; color: var(--text-sub);">UNIT COST / USER</div>
+                <div style="font-size: 11px; color: var(--text-sub);">UNIT COST / USER</div>
                 <div class="metric-value" id="uCost">$0.00</div>
             </div>
         </div>
@@ -146,25 +160,39 @@
         </div>
     </div>
 
-    <div class="footer-assumptions">
+    <div class="footer-assumptions full-width">
         <div class="footer-grid">
             <div>
-                <strong>Assumptions:</strong><br>
-                • 90 interactions/user/month (Claude 3.5)<br>
-                • ap-south-1 infrastructure pricing.
+                <div class="footer-title">Monthly Cost Projections (ap-south-1)</div>
+                <p style="margin-bottom: 8px;"><strong>Assumptions:</strong></p>
+                <ul>
+                    <li>90 interactions/user/month (60% text, 20% image, 20% RAG)</li>
+                    <li>supervisor + specialist = 2 Bedrock calls minimum</li>
+                    <li>1024 MB Lambda, 3s duration; HTTP API Gateway</li>
+                    <li>DynamoDB on-demand for user context persistence</li>
+                </ul>
             </div>
             <div>
-                <strong>Scalability:</strong><br>
-                • Dynamically calculated based on active strategies.
+                <div class="footer-title">Strategy Definitions</div>
+                <ul>
+                    <li><strong>Prompt Caching:</strong> Reuses cached token IDs to bypass compute.</li>
+                    <li><strong>Batch Mode:</strong> Leverages asynchronous processing for 50% API cost reduction.</li>
+                    <li><strong>Model Tiering:</strong> Cost-optimal routing between Claude model variants.</li>
+                    <li><strong>Routing Layer:</strong> Heuristic-based shortcutting to minimize LLM inference.</li>
+                </ul>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    // JS remains largely the same, logic is preserved
     const uSlider = document.getElementById('uSlider');
-    const opts = [document.getElementById('opt1'), document.getElementById('opt2'), document.getElementById('opt3')];
+    const opts = [
+        document.getElementById('opt1'), 
+        document.getElementById('opt2'), 
+        document.getElementById('opt3'),
+        document.getElementById('opt4')
+    ];
     
     const lineCtx = document.getElementById('lineChart').getContext('2d');
     const lineChart = new Chart(lineCtx, {
@@ -172,7 +200,7 @@
         data: {
             labels: ['100', '1K', '10K', '50K', '100K'],
             datasets: [{
-                label: 'Scale Cost',
+                label: 'Scale Projection ($)',
                 data: [],
                 borderColor: '#2e7d32',
                 backgroundColor: 'rgba(46, 125, 50, 0.05)',
@@ -190,19 +218,30 @@
     function update() {
         const users = parseInt(uSlider.value);
         document.getElementById('uCount').innerText = users.toLocaleString();
-        const baselinePerUser = 1.15;
+
+        const baselinePerUser = 1.15; 
         let discount = 0;
-        if (opts[0].checked) discount += 0.15;
-        if (opts[1].checked) discount += 0.10;
-        if (opts[2].checked) discount += 0.08;
+
+        if (opts[0].checked) discount += 0.15; 
+        if (opts[1].checked) discount += 0.10; 
+        if (opts[2].checked) discount += 0.08; 
+        if (opts[3].checked) discount += 0.05; 
 
         const finalPerUser = baselinePerUser * (1 - discount);
-        document.getElementById('mCost').innerText = '$' + (users * finalPerUser).toLocaleString(undefined, {maximumFractionDigits: 0});
+        const totalCost = users * finalPerUser;
+        const totalSavings = (baselinePerUser - finalPerUser) * users;
+
+        document.getElementById('mCost').innerText = '$' + totalCost.toLocaleString(undefined, {maximumFractionDigits: 0});
         document.getElementById('uCost').innerText = '$' + finalPerUser.toFixed(2);
 
-        document.getElementById('impactText').innerHTML = `• Efficiency Gain: ${(discount * 100).toFixed(1)}%<br>• Savings: $${((baselinePerUser - finalPerUser) * users).toLocaleString(undefined, {maximumFractionDigits: 0})}/mo`;
+        document.getElementById('impactText').innerHTML = `
+            • <strong>Efficiency Gain:</strong> ${(discount * 100).toFixed(1)}%<br>
+            • <strong>Opex Avoidance:</strong> $${totalSavings.toLocaleString(undefined, {maximumFractionDigits: 0})}/mo<br>
+            • <strong>Scale Readiness:</strong> ${users >= 50000 ? 'Enterprise Grade' : 'Growth Phase'}
+        `;
 
-        lineChart.data.datasets[0].data = [100, 1000, 10000, 50000, 100000].map(s => s * finalPerUser);
+        const scales = [100, 1000, 10000, 50000, 100000];
+        lineChart.data.datasets[0].data = scales.map(s => s * finalPerUser);
         lineChart.update();
     }
 
@@ -210,5 +249,6 @@
     opts.forEach(opt => opt.onchange = update);
     update();
 </script>
+
 </body>
 </html>
